@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Les Gracieux — Portail de la classe</title>
+<title>Branches — Les Gracieux</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="home-page">
+<body>
 
-<div class="home-photo-bg"></div>
-<div class="home-photo-overlay"></div>
+<div id="star-field"></div>
 
 <header class="site-header">
   <div class="wrap">
@@ -31,9 +30,9 @@
     <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
     <nav class="main-nav">
       <ul>
-        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="index.html">Accueil</a></li>
         <li><a href="objectifs.html">Objectifs</a></li>
-        <li><a href="branches.html">Branches</a></li>
+        <li><a href="branches.html" class="active">Branches</a></li>
         <li><a href="videos.html">Vidéos</a></li>
         <li><a href="infos-pratiques.html">Infos pratiques</a></li>
       </ul>
@@ -42,66 +41,68 @@
 </header>
 
 <main>
-  <section class="hero">
+  <section class="page-header">
     <div class="wrap">
-      <span class="eyebrow">✦ Bienvenue</span>
-      <h1>Le portail de la classe des Gracieux</h1>
-      <p class="lead">Retrouvez ici les objectifs de l'année, les branches enseignées, une bibliothèque de vidéos et les infos pratiques pour les parents.</p>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+        Retour à l'accueil
+      </a>
+      <h1>Branches</h1>
+      <p class="lead">Les documents et fiches de chaque matière, à télécharger librement.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <h2 class="section-title"><span class="spark">✦</span> Explorer le portail</h2>
       <div class="card-grid">
 
-        <a href="objectifs.html" class="card">
+        <a href="mathematiques.html" class="card">
           <div class="card-icon icon-blue">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
+              <path d="M4 4v16h16"/><path d="M4 15l5-5 4 3 6-7"/>
             </svg>
           </div>
-          <h3>Objectifs</h3>
-          <p>Les compétences et apprentissages visés cette année, matière par matière.</p>
+          <h3>Mathématiques</h3>
+          <p>Raisonner, calculer et résoudre des problèmes.</p>
           <span class="card-arrow">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
           </span>
         </a>
 
-        <a href="branches.html" class="card">
+        <a href="francais.html" class="card">
           <div class="card-icon icon-gold">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 4L3 8l9 4 9-4-9-4z"/><path d="M6 10.5V15c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4.5"/>
+              <path d="M4 5.5c3-1 6-1 8 0 2-1 5-1 8 0v13c-3-1-6-1-8 0-2-1-5-1-8 0v-13z"/><path d="M12 5.5v13"/>
             </svg>
           </div>
-          <h3>Branches</h3>
-          <p>Mathématiques, français, sciences et musique : les documents de chaque matière.</p>
+          <h3>Français</h3>
+          <p>Langue et littérature pour s'exprimer avec clarté.</p>
           <span class="card-arrow">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
           </span>
         </a>
 
-        <a href="videos.html" class="card">
+        <a href="sciences.html" class="card">
           <div class="card-icon icon-violet">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5v-7z" fill="currentColor" stroke="none"/>
+              <path d="M9 2v6.5L4.2 19a1.4 1.4 0 0 0 1.3 2h13a1.4 1.4 0 0 0 1.3-2L15 8.5V2"/><path d="M9 2h6"/><path d="M7.5 14h9"/>
             </svg>
           </div>
-          <h3>Vidéos</h3>
-          <p>Une sélection de vidéos pour découvrir, réviser ou approfondir.</p>
+          <h3>Sciences</h3>
+          <p>Explorer, comprendre et expérimenter le monde.</p>
           <span class="card-arrow">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
           </span>
         </a>
 
-        <a href="infos-pratiques.html" class="card">
+        <a href="musique.html" class="card">
           <div class="card-icon icon-green">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9.5h16"/><path d="M8 3v3"/><path d="M16 3v3"/>
+              <path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/>
             </svg>
           </div>
-          <h3>Infos pratiques</h3>
-          <p>Agenda, horaires, natation, dates importantes et sorties scolaires.</p>
+          <h3>Musique</h3>
+          <p>Écouter, créer et partager la musique.</p>
           <span class="card-arrow">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
           </span>

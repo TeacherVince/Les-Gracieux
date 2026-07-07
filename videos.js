@@ -2,10 +2,13 @@
    VIDÉOTHÈQUE — Les Gracieux
    -----------------------------------------------------------------------
    Pour AJOUTER une vidéo : copie un bloc { ... } ci-dessous, colle-le
-   juste avant le "];" final, et modifie les 4 valeurs.
+   juste avant le "];" final, et modifie les valeurs.
    Pour SUPPRIMER une vidéo : supprime son bloc { ... } en entier.
    N'oublie pas la virgule "," entre chaque bloc, sauf après le dernier.
 
+   id          : identifiant unique et stable de la vidéo (sert à relier
+                 les commentaires à la bonne vidéo). Ne change jamais
+                 l'id d'une vidéo qui a déjà des commentaires.
    category    : matière ou thème (sert de filtre sur la page)
    title       : titre affiché
    description : une phrase de présentation
@@ -16,24 +19,28 @@
 
 window.VIDEOS_DATA = [
   {
+    id: "video-sciences-1",
     category: "Sciences",
     title: "Exemple de vidéo — à remplacer",
     description: "Remplace ce titre, cette description et l'identifiant YouTube par ta propre vidéo.",
     youtubeId: "aqz-KE-bpKQ"
   },
   {
+    id: "video-francais-1",
     category: "Français",
     title: "Exemple de vidéo — à remplacer",
     description: "Une courte phrase qui explique ce que les élèves vont apprendre.",
     youtubeId: "aqz-KE-bpKQ"
   },
   {
+    id: "video-maths-1",
     category: "Mathématiques",
     title: "Exemple de vidéo — à remplacer",
     description: "Cette vidéo peut illustrer une notion vue en classe.",
     youtubeId: "aqz-KE-bpKQ"
   },
   {
+    id: "video-musique-1",
     category: "Musique",
     title: "Exemple de vidéo — à remplacer",
     description: "Idéal pour une écoute active ou une découverte d'instrument.",

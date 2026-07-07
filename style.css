@@ -779,3 +779,232 @@ footer.site-footer .wrap {
     align-items: flex-start;
   }
 }
+
+/* =========================================================
+   Page d'accueil : fond photo + mise en page compacte
+   ========================================================= */
+
+.home-photo-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: url("fond-accueil.jpg");
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+}
+
+.home-photo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(6, 9, 17, 0.6) 0%, rgba(6, 9, 17, 0.72) 45%, rgba(6, 9, 17, 0.94) 100%);
+}
+
+body.home-page .hero {
+  padding: 46px 0 26px;
+}
+
+body.home-page .hero h1 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+}
+
+body.home-page .hero p.lead {
+  font-size: 1rem;
+}
+
+body.home-page .section {
+  padding: 18px 0 10px;
+}
+
+body.home-page .section-title {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+}
+
+body.home-page .card {
+  padding: 18px 20px;
+}
+
+body.home-page .card-icon {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 10px;
+}
+
+body.home-page .card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+body.home-page .card h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+body.home-page .card p {
+  font-size: 0.86rem;
+}
+
+body.home-page main {
+  padding-bottom: 20px;
+}
+
+body.home-page footer.site-footer {
+  padding: 14px 0;
+}
+
+@media (max-height: 760px) {
+  body.home-page .hero {
+    padding: 30px 0 18px;
+  }
+  body.home-page .section-title {
+    margin-bottom: 12px;
+  }
+}
+
+/* =========================================================
+   Pages secondaires : retour, sections d'infos, commentaires
+   ========================================================= */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+  transition: color 0.18s ease;
+}
+
+.back-link:hover {
+  color: var(--accent-gold);
+}
+
+.info-section {
+  background: var(--bg-panel-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 26px 30px;
+  margin-bottom: 20px;
+}
+
+.info-section h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-section h2 .info-icon {
+  color: var(--accent-gold);
+  display: inline-flex;
+}
+
+.info-section h2 .info-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.info-section ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-secondary);
+}
+
+.info-section li {
+  margin-bottom: 7px;
+}
+
+.info-section .info-attachment {
+  margin-top: 14px;
+}
+
+.video-comments {
+  border-top: 1px solid var(--border-soft);
+  margin-top: 14px;
+  padding: 16px 20px 20px;
+}
+
+.video-comments h4 {
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+.comment-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}
+
+.comment-item .comment-meta {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.comment-item .comment-text {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.comment-empty {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.comment-form input[type="text"],
+.comment-form textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  color: var(--text-primary);
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.comment-form textarea {
+  min-height: 60px;
+}
+
+.comment-form .honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.comment-form-status {
+  font-size: 0.82rem;
+  margin-top: 4px;
+  display: none;
+}
+
+.comment-form-status.show {
+  display: block;
+}
+
+.comment-form-status.ok { color: var(--accent-green); }
+.comment-form-status.ko { color: #d99483; }

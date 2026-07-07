@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vidéos — Les Gracieux</title>
+<title>Musique — Les Gracieux</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -11,18 +11,6 @@
 <body>
 
 <div id="star-field"></div>
-
-<!--
-  Formulaire "canari" pour Netlify : invisible pour les visiteurs,
-  il sert uniquement à ce que Netlify détecte le formulaire de
-  commentaires au moment du déploiement. Ne pas supprimer.
--->
-<form name="video-comments" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="text" name="name" />
-  <input type="text" name="video" />
-  <textarea name="message"></textarea>
-  <input type="text" name="bot-field" />
-</form>
 
 <header class="site-header">
   <div class="wrap">
@@ -44,8 +32,8 @@
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="objectifs.html">Objectifs</a></li>
-        <li><a href="branches.html">Branches</a></li>
-        <li><a href="videos.html" class="active">Vidéos</a></li>
+        <li><a href="branches.html" class="active">Branches</a></li>
+        <li><a href="videos.html">Vidéos</a></li>
         <li><a href="infos-pratiques.html">Infos pratiques</a></li>
       </ul>
     </nav>
@@ -55,19 +43,19 @@
 <main>
   <section class="page-header">
     <div class="wrap">
-      <a href="index.html" class="back-link">
+      <a href="branches.html" class="back-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
-        Retour à l'accueil
+        Retour aux branches
       </a>
-      <h1>Bibliothèque de vidéos</h1>
-      <p class="lead">Une sélection de vidéos pour découvrir, réviser ou approfondir, classées par matière. Les élèves et les parents peuvent laisser un commentaire sous chaque vidéo.</p>
+      <h1>Musique</h1>
+      <p class="lead">Fiches et documents à télécharger pour la classe de musique.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="filter-bar" id="video-filters"></div>
-      <div class="video-grid" id="video-grid"></div>
+      <div class="filter-bar" id="doc-filters"></div>
+      <div class="doc-list" id="doc-list"></div>
     </div>
   </section>
 </main>
@@ -79,9 +67,8 @@
   </div>
 </footer>
 
-<script src="videos.js"></script>
-<script src="comments.js"></script>
-<script src="render-videos.js"></script>
+<script src="musique-documents.js"></script>
+<script src="render-documents.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

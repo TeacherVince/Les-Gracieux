@@ -8,30 +8,38 @@ Fichier à modifier : `videos.js`
 
 1. Va sur YouTube, ouvre la vidéo, copie le code qui suit `watch?v=` dans l'adresse (ex. pour `youtube.com/watch?v=aqz-KE-bpKQ`, le code est `aqz-KE-bpKQ`).
 2. Dans `videos.js`, copie un bloc existant entre accolades `{ ... }`, colle-le juste avant le `];` final.
-3. Remplace `category`, `title`, `description` et `youtubeId` par tes propres valeurs.
+3. Remplace `id` (un identifiant unique, ex. `video-maths-2`), `category`, `title`, `description` et `youtubeId` par tes propres valeurs.
 4. N'oublie pas la virgule après le bloc précédent.
 
-## Ajouter un document à télécharger
+## Ajouter un document dans une branche (Mathématiques, Français, Sciences, Musique)
 
-Fichier à modifier : `documents.js`
+Chaque branche a son propre fichier :
+
+- `mathematiques-documents.js`
+- `francais-documents.js`
+- `sciences-documents.js`
+- `musique-documents.js`
 
 1. Dépose ton fichier (PDF de préférence) à la racine du dépôt, au même niveau que `index.html`. Évite les espaces et les accents dans le nom du fichier (utilise des tirets, ex. `sortie-piscine.pdf`).
-2. Dans `documents.js`, copie un bloc existant, colle-le avant le `];` final.
-3. Renseigne `category`, `title`, `description`, et `file` (le nom exact de ton fichier, ex. `sortie-piscine.pdf`).
+2. Dans le fichier de la branche concernée, copie un bloc existant, colle-le avant le `];` final.
+3. Renseigne `category`, `title`, `description`, et `file` (le nom exact de ton fichier).
 
-## Ajouter des questions à un exercice
+## Modifier la page Infos pratiques
 
-Trois fichiers, un par modèle :
+Fichier à modifier : `infos-pratiques.js`. Toute la page (agenda, horaire, natation, dates importantes, sorties, infos parents) est pilotée depuis ce seul fichier.
 
-- `qcm-questions.js` — choix multiples
-- `texte-trous-questions.js` — texte à trous
-- `vrai-faux-questions.js` — vrai ou faux
-
-Chaque fichier commence par des explications en commentaire (les lignes en gris entre `/* */`). Le principe est toujours le même : copier un bloc existant (une série de questions, ou une question dans une série), le coller avant le `];`, puis changer le texte. Pour le QCM, `correct` indique la position de la bonne réponse en partant de 0 (0 = premier choix). Pour le vrai/faux, `answer` est `true` ou `false`.
+- Pour changer un texte : modifie directement une ligne dans le tableau `items` de la section concernée.
+- Pour ajouter une ligne : copie une ligne existante dans `items` et colle-la juste avant le `]`.
+- Pour ajouter une nouvelle section entière : copie un bloc `{ title, icon, items }` et colle-le avant le `];` final. Les icônes disponibles sont `"calendar"`, `"clock"`, `"drop"`, `"star"`, `"bus"`, `"info"`.
+- Pour joindre un PDF à une section (comme l'autorisation de sortie) : ajoute ou modifie le bloc `attachment: { label: "...", file: "..." }` à l'intérieur de la section.
 
 ## Modifier la page Objectifs
 
-Cette page n'a pas de fichier de contenu séparé : le texte est directement dans `objectifs.html`, dans des blocs qui commencent par `<div class="content-block">`. Pour changer un texte, repère la matière concernée et modifie le texte entre les balises `<li>...</li>` (une ligne = un objectif). Pour ajouter un objectif, copie une ligne `<li>...</li>` et colle-la juste avant `</ul>`. Tu peux aussi supprimer la ligne `<span class="placeholder-note">Exemple à remplacer</span>` une fois que le contenu est réel.
+Cette page n'a pas de fichier de contenu séparé : le texte est directement dans `objectifs.html`, dans des blocs qui commencent par `<div class="content-block">`. Pour changer un texte, repère la matière concernée et modifie le texte entre les balises `<li>...</li>` (une ligne = un objectif). Pour ajouter un objectif, copie une ligne `<li>...</li>` et colle-la juste avant `</ul>`.
+
+## Commentaires sous les vidéos
+
+Voir la fin de `GUIDE-MISE-EN-LIGNE.md` pour le fonctionnement complet (modération incluse). En résumé : les nouveaux commentaires arrivent dans l'onglet "Forms" de ton tableau de bord Netlify, pas directement sur le site. Pour publier un commentaire que tu as approuvé, ajoute-le dans `comments.js` (un bloc `{ videoId, name, text }`, `videoId` devant correspondre à l'`id` de la vidéo dans `videos.js`).
 
 ## Où éditer ces fichiers
 
