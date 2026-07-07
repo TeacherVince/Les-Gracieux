@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Objectifs — Les Gracieux</title>
+<title>Art — Les Gracieux</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -31,8 +31,8 @@
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="objectifs.html" class="active">Objectifs</a></li>
-        <li><a href="branches.html">Branches</a></li>
+        <li><a href="objectifs.html">Objectifs</a></li>
+        <li><a href="branches.html" class="active">Branches</a></li>
         <li><a href="videos.html">Vidéos</a></li>
         <li><a href="infos-pratiques.html">Infos pratiques</a></li>
       </ul>
@@ -43,54 +43,19 @@
 <main>
   <section class="page-header">
     <div class="wrap">
-      <h1>Objectifs de l'année</h1>
-      <p class="lead">Les compétences que nous travaillons ensemble, matière par matière, sont toutes listées ci-dessous.</p>
+      <a href="branches.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+        Retour aux branches
+      </a>
+      <h1>Art</h1>
+      <p class="lead">Fiches et documents à télécharger pour la classe d'art.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-
-      <div class="content-block">
-        <h2>Art</h2>
-        <ul>
-          <li>Explorer différentes formes d'expression artistique</li>
-          <li>Écouter, créer et s'exprimer à travers l'art</li>
-          <li>Découvrir des techniques et des œuvres variées</li>
-        </ul>
-        <span class="placeholder-note">Exemple à remplacer</span>
-      </div>
-
-      <div class="content-block">
-        <h2>Français</h2>
-        <ul>
-          <li>Lire avec fluidité et comprendre différents types de textes</li>
-          <li>Écrire des textes courts en respectant l'orthographe et la grammaire de base</li>
-          <li>Enrichir son vocabulaire à l'oral comme à l'écrit</li>
-        </ul>
-        <span class="placeholder-note">Exemple à remplacer</span>
-      </div>
-
-      <div class="content-block">
-        <h2>Mathématiques</h2>
-        <ul>
-          <li>Maîtriser les quatre opérations et leur sens</li>
-          <li>Résoudre des problèmes en plusieurs étapes</li>
-          <li>Comprendre les fractions et les nombres décimaux</li>
-        </ul>
-        <span class="placeholder-note">Exemple à remplacer</span>
-      </div>
-
-      <div class="content-block">
-        <h2>Sciences</h2>
-        <ul>
-          <li>Observer, questionner et expérimenter le monde qui nous entoure</li>
-          <li>Comprendre le fonctionnement du corps humain</li>
-          <li>Découvrir le système solaire et l'environnement</li>
-        </ul>
-        <span class="placeholder-note">Exemple à remplacer</span>
-      </div>
-
+      <div class="filter-bar" id="doc-filters"></div>
+      <div class="doc-list" id="doc-list"></div>
     </div>
   </section>
 </main>
@@ -102,6 +67,8 @@
   </div>
 </footer>
 
+<script src="art-documents.js"></script>
+<script src="render-documents.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
