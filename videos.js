@@ -20,9 +20,9 @@
 window.VIDEOS_DATA = [
   {
     id: "video-sciences-1",
-    category: "Sciences",
-    title: "Exemple de vidéo — à remplacer",
-    description: "Remplace ce titre, cette description et l'identifiant YouTube par ta propre vidéo.",
+    category: "Sciences & Histoire",
+    title: "Voyage de la Préhistoire à l'Antiquité",
+    description: "PLACEHOLDER : identifiant YouTube d'exemple à remplacer par le vrai lien de cette vidéo.",
     youtubeId: "aqz-KE-bpKQ"
   },
   {

@@ -11,14 +11,14 @@ Fichier à modifier : `videos.js`
 3. Remplace `id` (un identifiant unique, ex. `video-maths-2`), `category`, `title`, `description` et `youtubeId` par tes propres valeurs.
 4. N'oublie pas la virgule après le bloc précédent.
 
-## Ajouter un document dans une branche (Art, Français, Mathématiques, Sciences)
+## Ajouter un document dans une branche (Art, Français, Mathématiques, Sciences & Histoire)
 
 Chaque branche a son propre fichier :
 
 - `art-documents.js`
 - `francais-documents.js`
 - `mathematiques-documents.js`
-- `sciences-documents.js`
+- `sciences-histoire-documents.js`
 
 1. Dépose ton fichier (PDF de préférence) à la racine du dépôt, au même niveau que `index.html`. Évite les espaces et les accents dans le nom du fichier (utilise des tirets, ex. `sortie-piscine.pdf`).
 2. Dans le fichier de la branche concernée, copie un bloc existant, colle-le avant le `];` final.
