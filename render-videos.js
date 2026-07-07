@@ -1,42 +1,53 @@
-/* =======================================================================
-   VIDÉOTHÈQUE — Les Gracieux
-   -----------------------------------------------------------------------
-   Pour AJOUTER une vidéo : copie un bloc { ... } ci-dessous, colle-le
-   juste avant le "];" final, et modifie les 4 valeurs.
-   Pour SUPPRIMER une vidéo : supprime son bloc { ... } en entier.
-   N'oublie pas la virgule "," entre chaque bloc, sauf après le dernier.
+/* Les Gracieux — génère la page vidéos à partir de data/videos.js */
 
-   category    : matière ou thème (sert de filtre sur la page)
-   title       : titre affiché
-   description : une phrase de présentation
-   youtubeId   : le code après "watch?v=" dans l'adresse YouTube
-                 ex : https://www.youtube.com/watch?v=aqz-KE-bpKQ
-                      -> youtubeId = "aqz-KE-bpKQ"
-   ======================================================================= */
+(function () {
+  "use strict";
 
-window.VIDEOS_DATA = [
-  {
-    category: "Sciences",
-    title: "Exemple de vidéo — à remplacer",
-    description: "Remplace ce titre, cette description et l'identifiant YouTube par ta propre vidéo.",
-    youtubeId: "aqz-KE-bpKQ"
-  },
-  {
-    category: "Français",
-    title: "Exemple de vidéo — à remplacer",
-    description: "Une courte phrase qui explique ce que les élèves vont apprendre.",
-    youtubeId: "aqz-KE-bpKQ"
-  },
-  {
-    category: "Mathématiques",
-    title: "Exemple de vidéo — à remplacer",
-    description: "Cette vidéo peut illustrer une notion vue en classe.",
-    youtubeId: "aqz-KE-bpKQ"
-  },
-  {
-    category: "Musique",
-    title: "Exemple de vidéo — à remplacer",
-    description: "Idéal pour une écoute active ou une découverte d'instrument.",
-    youtubeId: "aqz-KE-bpKQ"
-  }
-];
+  document.addEventListener("DOMContentLoaded", function () {
+    var grid = document.getElementById("video-grid");
+    var filterBar = document.getElementById("video-filters");
+    if (!grid || !window.VIDEOS_DATA) return;
+
+    var categories = ["Tout"];
+    window.VIDEOS_DATA.forEach(function (v) {
+      if (categories.indexOf(v.category) === -1) categories.push(v.category);
+    });
+
+    categories.forEach(function (cat, i) {
+      var btn = document.createElement("button");
+      btn.className = "filter-btn" + (i === 0 ? " active" : "");
+      btn.textContent = cat;
+      btn.addEventListener("click", function () {
+        document.querySelectorAll("#video-filters .filter-btn").forEach(function (b) {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+        render(cat);
+      });
+      filterBar.appendChild(btn);
+    });
+
+    function render(filter) {
+      grid.innerHTML = "";
+      window.VIDEOS_DATA
+        .filter(function (v) { return filter === "Tout" || v.category === filter; })
+        .forEach(function (v) {
+          var card = document.createElement("div");
+          card.className = "video-card";
+          card.innerHTML =
+            '<div class="video-frame-wrap">' +
+              '<iframe src="https://www.youtube-nocookie.com/embed/' + v.youtubeId + '" ' +
+              'title="' + v.title.replace(/"/g, "&quot;") + '" allowfullscreen loading="lazy"></iframe>' +
+            '</div>' +
+            '<div class="video-meta">' +
+              '<span class="video-tag">' + v.category + '</span>' +
+              '<h3>' + v.title + '</h3>' +
+              '<p>' + v.description + '</p>' +
+            '</div>';
+          grid.appendChild(card);
+        });
+    }
+
+    render("Tout");
+  });
+})();
