@@ -9,9 +9,11 @@
    id          : identifiant unique et stable de la vidéo (sert à relier
                  les commentaires à la bonne vidéo). Ne change jamais
                  l'id d'une vidéo qui a déjà des commentaires.
-   category    : matière ou thème (sert de filtre sur la page)
+   category    : matière ("Art", "Français", "Mathématiques" ou
+                 "Sciences & Histoire"). Une matière sans aucune vidéo
+                 n'affiche tout simplement pas de section sur la page.
    title       : titre affiché
-   description : une phrase de présentation
+   description : une phrase de présentation (facultatif, peut être "")
    youtubeId   : le code après "watch?v=" dans l'adresse YouTube
                  ex : https://www.youtube.com/watch?v=aqz-KE-bpKQ
                       -> youtubeId = "aqz-KE-bpKQ"
@@ -19,31 +21,73 @@
 
 window.VIDEOS_DATA = [
   {
-    id: "video-sciences-1",
-    category: "Sciences & Histoire",
-    title: "Voyage de la Préhistoire à l'Antiquité",
-    description: "PLACEHOLDER : identifiant YouTube d'exemple à remplacer par le vrai lien de cette vidéo.",
-    youtubeId: "aqz-KE-bpKQ"
+    id: "video-art-1",
+    category: "Art",
+    title: "Concerto de clarinette",
+    description: "",
+    youtubeId: "0-jZJcpiy8I"
   },
   {
-    id: "video-francais-1",
-    category: "Français",
-    title: "Exemple de vidéo — à remplacer",
-    description: "Une courte phrase qui explique ce que les élèves vont apprendre.",
-    youtubeId: "aqz-KE-bpKQ"
+    id: "video-art-2",
+    category: "Art",
+    title: "Un super bassiste !",
+    description: "",
+    youtubeId: "2_qQzd-haA8"
+  },
+  {
+    id: "video-art-3",
+    category: "Art",
+    title: "Chanson à l'harmonica !",
+    description: "",
+    youtubeId: "d6UtcxyUspQ"
+  },
+  {
+    id: "video-art-4",
+    category: "Art",
+    title: "Une musique de Zelda à l'accordéon !",
+    description: "",
+    youtubeId: "uhPhK57_Hbo"
   },
   {
     id: "video-maths-1",
     category: "Mathématiques",
-    title: "Exemple de vidéo — à remplacer",
-    description: "Cette vidéo peut illustrer une notion vue en classe.",
-    youtubeId: "aqz-KE-bpKQ"
+    title: "Maître Lucas – Multiplier par 10, 100 et 1000",
+    description: "",
+    youtubeId: "5P8jLOcZMoc"
   },
   {
-    id: "video-arts-1",
-    category: "Arts",
-    title: "Exemple de vidéo — à remplacer",
-    description: "Idéal pour une écoute active ou une découverte artistique.",
-    youtubeId: "aqz-KE-bpKQ"
+    id: "video-maths-2",
+    category: "Mathématiques",
+    title: "Lire les grands nombres !",
+    description: "",
+    youtubeId: "U0KwKF4Swvg"
+  },
+  {
+    id: "video-sciences-2",
+    category: "Sciences & Histoire",
+    title: "Une vidéo passionnante sur la profondeur des océans !",
+    description: "",
+    youtubeId: "PhS30G3utyo"
+  },
+  {
+    id: "video-sciences-3",
+    category: "Sciences & Histoire",
+    title: "Une vidéo montrant un astronaute sortant de la Station spatiale internationale !",
+    description: "",
+    youtubeId: "mMZtpMSmqoE"
+  },
+  {
+    id: "video-sciences-4",
+    category: "Sciences & Histoire",
+    title: "Pourquoi y a-t-il des saisons sur la Terre ?",
+    description: "",
+    youtubeId: "Ps1UPv4ETRk"
+  },
+  {
+    id: "video-sciences-1",
+    category: "Sciences & Histoire",
+    title: "Voyage de la Préhistoire à l'Antiquité",
+    description: "",
+    youtubeId: "Cz4TpP2Isgs"
   }
 ];

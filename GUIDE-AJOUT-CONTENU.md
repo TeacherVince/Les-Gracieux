@@ -4,12 +4,16 @@ Aucune de ces opérations ne touche au design ni à la structure du site : tu mo
 
 ## Ajouter une vidéo
 
-Fichier à modifier : `videos.js`
+Fichier à modifier : `videos.js`. Les vidéos sont automatiquement regroupées par matière sur la page (Art, Français, Mathématiques, Sciences & Histoire) : une matière sans aucune vidéo n'affiche simplement pas de section, tu n'as rien à faire pour la masquer ou l'afficher.
 
-1. Va sur YouTube, ouvre la vidéo, copie le code qui suit `watch?v=` dans l'adresse (ex. pour `youtube.com/watch?v=aqz-KE-bpKQ`, le code est `aqz-KE-bpKQ`).
+1. Va sur YouTube, ouvre la vidéo, copie le code qui suit `watch?v=` dans l'adresse (ex. pour `youtube.com/watch?v=aqz-KE-bpKQ`, le code est `aqz-KE-bpKQ`). Si l'adresse contient d'autres paramètres après (`&list=...`, `&index=...`), ignore-les : seul le code juste après `watch?v=` compte.
 2. Dans `videos.js`, copie un bloc existant entre accolades `{ ... }`, colle-le juste avant le `];` final.
-3. Remplace `id` (un identifiant unique, ex. `video-maths-2`), `category`, `title`, `description` et `youtubeId` par tes propres valeurs.
+3. Remplace `id` (un identifiant unique, ex. `video-maths-3`), `category` (exactement `"Art"`, `"Français"`, `"Mathématiques"` ou `"Sciences & Histoire"`), `title`, `description` (facultatif, laisse `""` si tu n'en veux pas) et `youtubeId` par tes propres valeurs.
 4. N'oublie pas la virgule après le bloc précédent.
+
+La miniature YouTube et le bouton "Regarder sur YouTube" se génèrent automatiquement à partir du `youtubeId` : tu n'as rien d'autre à fournir. Cliquer sur la miniature lance la vidéo directement sur la page (rien ne se lance tout seul).
+
+À faire plus tard : ajouter la vidéo "Le fantastique Blob !" dans Sciences & Histoire dès que le bon lien YouTube sera transmis (le lien reçu précédemment pointait par erreur vers la vidéo de l'astronaute).
 
 ## Ajouter un document dans une branche (Art, Français, Mathématiques, Sciences & Histoire)
 

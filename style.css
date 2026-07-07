@@ -1008,3 +1008,78 @@ body.home-page footer.site-footer {
 
 .comment-form-status.ok { color: var(--accent-green); }
 .comment-form-status.ko { color: #d99483; }
+
+/* ---------- Vidéos : sections par matière + miniatures cliquables ---------- */
+
+.video-section {
+  margin-bottom: 44px;
+}
+
+.video-section:last-child {
+  margin-bottom: 0;
+}
+
+.video-section-title {
+  margin-bottom: 18px;
+}
+
+.video-thumb-btn {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.video-thumb-btn img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(10, 14, 24, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.video-thumb-btn:hover .video-play-icon {
+  background: var(--accent-gold);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.video-play-icon svg {
+  color: #fff;
+  transition: color 0.18s ease;
+}
+
+.video-thumb-btn:hover .video-play-icon svg {
+  color: #201404;
+}
+
+.video-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-sm {
+  padding: 7px 14px;
+  font-size: 0.82rem;
+}
