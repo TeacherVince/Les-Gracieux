@@ -40,10 +40,10 @@ window.VIDEOS_DATA = [
     youtubeId: "aqz-KE-bpKQ"
   },
   {
-    id: "video-musique-1",
-    category: "Musique",
+    id: "video-arts-1",
+    category: "Arts",
     title: "Exemple de vidéo — à remplacer",
-    description: "Idéal pour une écoute active ou une découverte d'instrument.",
+    description: "Idéal pour une écoute active ou une découverte artistique.",
     youtubeId: "aqz-KE-bpKQ"
   }
 ];

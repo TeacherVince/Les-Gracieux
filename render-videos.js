@@ -26,10 +26,12 @@
 
     var allComments = window.COMMENTS_DATA || [];
 
-    var categories = ["Tout"];
+    var categories = [];
     window.VIDEOS_DATA.forEach(function (v) {
       if (categories.indexOf(v.category) === -1) categories.push(v.category);
     });
+    categories.sort(function (a, b) { return a.localeCompare(b, "fr"); });
+    categories.unshift("Tout");
 
     categories.forEach(function (cat, i) {
       var btn = document.createElement("button");
@@ -53,6 +55,8 @@
       grid.innerHTML = "";
       window.VIDEOS_DATA
         .filter(function (v) { return filter === "Tout" || v.category === filter; })
+        .slice()
+        .sort(function (a, b) { return a.category.localeCompare(b.category, "fr"); })
         .forEach(function (v) {
           var card = document.createElement("div");
           card.className = "video-card";
