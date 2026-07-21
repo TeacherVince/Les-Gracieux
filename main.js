@@ -1,9 +1,26 @@
 /* Les Gracieux — comportements communs à toutes les pages
-   (fond étoilé + menu mobile). Ce fichier n'a jamais besoin
-   d'être modifié pour ajouter du contenu. */
+   (fond étoilé + menu mobile + pied de page). Ce fichier n'a
+   presque jamais besoin d'être modifié pour ajouter du contenu :
+   la seule exception est la ligne LAST_UPDATED ci-dessous. */
 
 (function () {
   "use strict";
+
+  // ---- Dernière mise à jour affichée en bas de chaque page ----
+  // Pour changer la date visible dans le pied de page de TOUT le site,
+  // modifie uniquement le texte entre guillemets ci-dessous.
+  var LAST_UPDATED = "juillet 2026";
+
+  // ---- Préparation multilingue ----
+  // Le site n'est qu'en français pour l'instant (aucun sélecteur de
+  // langue n'est affiché). SITE_LANG existe déjà comme point d'accroche
+  // pour une future traduction. Tout le contenu variable (vidéos,
+  // documents, infos pratiques, Cette semaine, galerie, FAQ...) est déjà
+  // centralisé dans des fichiers de données séparés (ex. videos.js,
+  // infos-pratiques.js), ce qui rendra l'ajout d'une traduction bien
+  // plus simple le moment venu : il suffira de dupliquer ces fichiers
+  // par langue plutôt que de tout réécrire.
+  window.SITE_LANG = "fr";
 
   // ---- Fond étoilé (canvas léger, discret) ----
   function initStarField() {
@@ -68,8 +85,17 @@
     });
   }
 
+  // ---- Pied de page : date de dernière mise à jour ----
+  function initFooterUpdated() {
+    var targets = document.querySelectorAll("[data-last-updated]");
+    targets.forEach(function (el) {
+      el.textContent = "Dernière mise à jour : " + LAST_UPDATED;
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initStarField();
     initNavToggle();
+    initFooterUpdated();
   });
 })();

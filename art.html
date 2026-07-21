@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-branch="Art">
 
 <div id="star-field"></div>
 
@@ -34,6 +34,7 @@
         <li><a href="objectifs.html">Objectifs</a></li>
         <li><a href="branches.html" class="active">Branches</a></li>
         <li><a href="videos.html">Vidéos</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
         <li><a href="infos-pratiques.html">Infos pratiques</a></li>
       </ul>
     </nav>
@@ -58,17 +59,37 @@
       <div class="doc-list" id="doc-list"></div>
     </div>
   </section>
+
+  <section class="section" id="branch-extra-section">
+    <div class="wrap">
+      <h2 class="section-title"><span class="spark">✦</span> Aller plus loin</h2>
+      <div class="card-grid" id="branch-extra-links"></div>
+    </div>
+  </section>
+
+  <section class="section" id="branch-links-section">
+    <div class="wrap">
+      <div id="branch-useful-links"></div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
     <span>© 2026 Les Gracieux — Portail de la classe</span>
     <span>Apprendre, progresser et réussir ensemble.</span>
+    <span class="footer-updated" data-last-updated></span>
   </div>
 </footer>
 
 <script src="art-documents.js"></script>
 <script src="render-documents.js"></script>
+<script src="videos.js"></script>
+<script src="qcm-questions.js"></script>
+<script src="texte-trous-questions.js"></script>
+<script src="vrai-faux-questions.js"></script>
+<script src="art-links.js"></script>
+<script src="render-branch-links.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

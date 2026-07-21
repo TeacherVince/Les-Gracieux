@@ -27,6 +27,18 @@
       .join("&");
   }
 
+  // Sert à donner un id stable à chaque section (ex. "video-art"), pour
+  // que les pages de branches puissent créer un lien direct du type
+  // videos.html#video-sciences-et-histoire.
+  function slugify(str) {
+    return String(str)
+      .normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .toLowerCase()
+      .replace(/&/g, "et")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var container = document.getElementById("video-sections");
     if (!container || !window.VIDEOS_DATA) return;
@@ -94,6 +106,7 @@
 
         var section = document.createElement("section");
         section.className = "video-section";
+        section.id = "video-" + slugify(cat);
         section.innerHTML =
           '<h2 class="section-title"><span class="spark">✦</span> ' + escapeHtml(cat) + '</h2>' +
           '<div class="video-grid">' + videos.map(videoCardHtml).join("") + '</div>';

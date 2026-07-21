@@ -30,6 +30,71 @@
     scoreEls.value.textContent = correctCount + " / " + total + " bonnes réponses";
   }
 
+  /* ---------------- Filtrage par matière (?matiere=...) ---------------- */
+  /* Permet aux pages de branches de créer un lien du type
+     exercices.html?matiere=Sciences%20%26%20Histoire pour ne montrer
+     que les exercices de cette matière (si aucun n'est encore associé,
+     tous les exercices restent affichés, avec un message explicatif). */
+
+  function getMatiereFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      return params.get("matiere");
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function subjectMatches(matiere, subject) {
+    if (!matiere || !subject) return false;
+    var s = subject.trim().toLowerCase();
+    var parts = matiere.trim().toLowerCase().split("&").map(function (p) { return p.trim(); });
+    return parts.indexOf(s) !== -1;
+  }
+
+  function filterSets(data, matiere) {
+    if (!data) return data;
+    if (!matiere) return data;
+    var filtered = data.filter(function (set) { return subjectMatches(matiere, set.subject); });
+    return filtered.length ? filtered : data;
+  }
+
+  function initFilterNote() {
+    var note = document.getElementById("exercice-filter-note");
+    var matiere = getMatiereFilter();
+    if (!note || !matiere) return;
+
+    var anyMatch = [window.QCM_DATA, window.BLANKS_DATA, window.TF_DATA].some(function (data) {
+      return (data || []).some(function (set) { return subjectMatches(matiere, set.subject); });
+    });
+
+    note.textContent = anyMatch
+      ? "Exercices filtrés pour : " + matiere + ". "
+      : "Aucun exercice n'est encore associé à « " + matiere + " » : tous les exercices sont affichés. ";
+
+    var link = document.createElement("a");
+    link.href = "exercices.html";
+    link.textContent = "Voir tous les exercices";
+    note.appendChild(link);
+
+    if (anyMatch) {
+      var order = [
+        { key: "QCM_DATA", target: "panel-qcm", tabSelector: '[data-target="panel-qcm"]' },
+        { key: "BLANKS_DATA", target: "panel-blanks", tabSelector: '[data-target="panel-blanks"]' },
+        { key: "TF_DATA", target: "panel-tf", tabSelector: '[data-target="panel-tf"]' }
+      ];
+      var firstMatch = order.filter(function (o) {
+        return (window[o.key] || []).some(function (set) { return subjectMatches(matiere, set.subject); });
+      })[0];
+      if (firstMatch) {
+        document.querySelectorAll(".exercise-tab").forEach(function (t) { t.classList.remove("active"); });
+        document.querySelectorAll(".exercise-panel").forEach(function (p) { p.classList.remove("active"); });
+        document.querySelector(firstMatch.tabSelector).classList.add("active");
+        document.getElementById(firstMatch.target).classList.add("active");
+      }
+    }
+  }
+
   /* ---------------- Onglets ---------------- */
 
   function initTabs() {
@@ -52,7 +117,8 @@
     var host = document.getElementById("panel-qcm");
     if (!host || !window.QCM_DATA) return;
 
-    window.QCM_DATA.forEach(function (set) {
+    var sets = filterSets(window.QCM_DATA, getMatiereFilter());
+    sets.forEach(function (set) {
       var setEl = el("div", "quiz-set");
       setEl.dataset.total = set.questions.length;
 
@@ -117,7 +183,8 @@
     var host = document.getElementById("panel-blanks");
     if (!host || !window.BLANKS_DATA) return;
 
-    window.BLANKS_DATA.forEach(function (set) {
+    var sets = filterSets(window.BLANKS_DATA, getMatiereFilter());
+    sets.forEach(function (set) {
       var setEl = el("div", "quiz-set");
       setEl.dataset.total = set.questions.length;
 
@@ -170,7 +237,8 @@
     var host = document.getElementById("panel-tf");
     if (!host || !window.TF_DATA) return;
 
-    window.TF_DATA.forEach(function (set) {
+    var sets = filterSets(window.TF_DATA, getMatiereFilter());
+    sets.forEach(function (set) {
       var setEl = el("div", "quiz-set");
       setEl.dataset.total = set.questions.length;
 
@@ -232,5 +300,6 @@
     renderQCM();
     renderBlanks();
     renderTF();
+    initFilterNote();
   });
 })();

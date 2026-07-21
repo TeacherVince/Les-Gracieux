@@ -1,77 +1,71 @@
 /* =======================================================================
    INFOS PRATIQUES — Les Gracieux
    -----------------------------------------------------------------------
-   Toute la page se pilote depuis ce seul fichier : pas besoin de toucher
-   à infos-pratiques.html pour mettre à jour une date ou un horaire.
+   Toute la page se pilote depuis ce seul fichier, organisé en quatre
+   grandes parties : agenda, contacts, documents et FAQ.
 
-   Pour MODIFIER une section : change le texte dans le tableau "items".
-   Chaque élément du tableau "items" devient une ligne affichée.
+   ---- agenda ----
+   Chaque ligne renvoie simplement au numéro de la page correspondante
+   dans l'agenda officiel de l'élève (pas besoin de recopier le contenu).
+   label : le nom de la catégorie.
+   page  : le numéro de page à indiquer (texte libre : "12", "12-13"...).
 
-   Pour AJOUTER une section : copie un bloc { ... } ci-dessous (entre
-   les crochets [ ]), colle-le avant le "];" final, et modifie son contenu.
+   ---- contacts ----
+   label : le rôle (Enseignant, École, Secrétariat, PPLS, Urgence...).
+   value : le texte affiché (nom, téléphone, email...).
 
-   icon : une des valeurs suivantes → "calendar", "clock", "drop", "star",
-          "bus", "info" (sinon une icône par défaut est utilisée).
+   ---- documents ----
+   Même principe que sur les pages de branches : title, description
+   (facultatif) et file (nom exact du fichier déposé à la racine du
+   dépôt). Le bouton de téléchargement est ajouté automatiquement.
 
-   attachment (facultatif) : ajoute un bouton de téléchargement PDF à la
-   fin d'une section. Dépose le fichier à la racine du dépôt et indique
-   son nom exact dans "file".
+   ---- faq ----
+   Une petite liste de questions/réponses, affichée discrètement en bas
+   de page. q : la question. a : la réponse.
    ======================================================================= */
 
-window.INFOS_DATA = [
-  {
-    title: "Agenda de la classe",
-    icon: "calendar",
-    items: [
-      "Consulte ici les événements de la semaine (exemple à remplacer).",
-      "Rappel des évaluations et travaux à rendre."
-    ]
-  },
-  {
-    title: "Horaire hebdomadaire",
-    icon: "clock",
-    items: [
-      "Lundi : 8h00 - 15h30",
-      "Mardi : 8h00 - 15h30",
-      "Mercredi : 8h00 - 11h45",
-      "Jeudi : 8h00 - 15h30",
-      "Vendredi : 8h00 - 12h00"
-    ]
-  },
-  {
-    title: "Piscine / Natation",
-    icon: "drop",
-    items: [
-      "Périodes de natation : à compléter (exemple).",
-      "Prévoir maillot, bonnet et serviette."
-    ]
-  },
-  {
-    title: "Dates importantes",
-    icon: "star",
-    items: [
-      "Réunion de parents : date à compléter.",
-      "Vacances scolaires : à compléter."
-    ]
-  },
-  {
-    title: "Sorties scolaires",
-    icon: "bus",
-    items: [
-      "Prochaine sortie : à compléter.",
-      "L'autorisation ci-dessous est un exemple à remplacer."
-    ],
-    attachment: {
-      label: "Autorisation de sortie (exemple)",
+window.INFOS_DATA = {
+  agenda: [
+    { label: "Horaire", page: "3" },
+    { label: "Vacances scolaires", page: "5" },
+    { label: "Absences et demandes de congé", page: "8" },
+    { label: "Contacts utiles", page: "10" },
+    { label: "Éducation numérique", page: "12" },
+    { label: "Relations école-famille", page: "14" }
+  ],
+
+  contacts: [
+    { label: "Enseignant", value: "Exemple à remplacer — nom@ecole.ch" },
+    { label: "École", value: "Nom de l'école — 021 000 00 00" },
+    { label: "Secrétariat", value: "021 000 00 00" },
+    { label: "PPLS", value: "021 000 00 00" },
+    { label: "Urgence", value: "144 (ambulance) / 021 000 00 00 (école)" }
+  ],
+
+  documents: [
+    {
+      title: "Autorisation de sortie (exemple)",
+      description: "Document d'exemple à remplacer par tes propres formulaires.",
       file: "exemple-autorisation-sortie.pdf"
     }
-  },
-  {
-    title: "Informations pour les parents",
-    icon: "info",
-    items: [
-      "Merci de consulter régulièrement cette page.",
-      "Pour toute question, voir la page Contacts (à venir)."
-    ]
-  }
-];
+  ],
+
+  faq: [
+    {
+      q: "Comment annoncer une absence ?",
+      a: "Contacter le secrétariat par téléphone avant 8h00 (voir la carte Contacts ci-dessus)."
+    },
+    {
+      q: "Où trouver les devoirs ?",
+      a: "Dans la carte « Cette semaine » sur la page d'accueil."
+    },
+    {
+      q: "Où télécharger un document ?",
+      a: "Dans la carte « Documents utiles » ci-dessus, ou sur la page de chaque branche."
+    },
+    {
+      q: "Comment contacter l'enseignant ?",
+      a: "Voir ses coordonnées dans la carte Contacts ci-dessus."
+    }
+  ]
+};

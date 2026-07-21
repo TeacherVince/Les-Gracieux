@@ -35,6 +35,7 @@
         <li><a href="objectifs.html">Objectifs</a></li>
         <li><a href="branches.html">Branches</a></li>
         <li><a href="videos.html">Vidéos</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
         <li><a href="infos-pratiques.html">Infos pratiques</a></li>
       </ul>
     </nav>
@@ -46,7 +47,13 @@
     <div class="wrap">
       <span class="eyebrow">✦ Bienvenue</span>
       <h1>Le portail des Gracieux</h1>
-      <p class="lead">Retrouvez ici les objectifs de l'année, les branches enseignées, une bibliothèque de vidéos et les infos pratiques pour les parents.</p>
+      <p class="lead">Le portail des Gracieux permet aux élèves de retrouver les ressources de la classe, aux familles de suivre la vie scolaire et aux parents d'accéder facilement aux informations importantes. Bonne visite !</p>
+    </div>
+  </section>
+
+  <section class="section week-section">
+    <div class="wrap">
+      <div class="week-card" id="week-card"></div>
     </div>
   </section>
 
@@ -94,6 +101,19 @@
           </span>
         </a>
 
+        <a href="galerie.html" class="card">
+          <div class="card-icon icon-rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5.5-5.5a2 2 0 0 0-2.8 0L3 20"/>
+            </svg>
+          </div>
+          <h3>Galerie</h3>
+          <p>Expériences, bricolages, productions et sorties de la classe.</p>
+          <span class="card-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
         <a href="infos-pratiques.html" class="card">
           <div class="card-icon icon-green">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -101,7 +121,7 @@
             </svg>
           </div>
           <h3>Infos pratiques</h3>
-          <p>Agenda, horaires, natation, dates importantes et sorties scolaires.</p>
+          <p>Agenda, contacts, documents utiles et questions fréquentes.</p>
           <span class="card-arrow">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
           </span>
@@ -116,9 +136,12 @@
   <div class="wrap">
     <span>© 2026 Les Gracieux — Portail de la classe</span>
     <span>Apprendre, progresser et réussir ensemble.</span>
+    <span class="footer-updated" data-last-updated></span>
   </div>
 </footer>
 
+<script src="cette-semaine.js"></script>
+<script src="render-cette-semaine.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
