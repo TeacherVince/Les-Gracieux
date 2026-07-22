@@ -1258,6 +1258,30 @@ body.home-page .week-card-header {
   justify-content: center;
 }
 
+.objective-tagline {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: -6px 0 16px;
+}
+
+.objective-subgroup {
+  margin-top: 18px;
+}
+
+.objective-subgroup:first-of-type {
+  margin-top: 0;
+}
+
+.objective-subgroup h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
 /* =========================================================
    Infos pratiques : agenda, contacts, FAQ
    ========================================================= */
@@ -1466,5 +1490,184 @@ textarea:focus-visible,
 
   .contact-value {
     text-align: left;
+  }
+}
+
+/* =========================================================
+   Médiathèque Français : recherche, catégories, cartes, favoris
+   ========================================================= */
+
+.media-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0 0 34px;
+  padding: 10px 16px;
+  background: var(--bg-panel-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  color: var(--text-muted);
+  transition: border-color 0.18s ease;
+}
+
+.media-search:focus-within {
+  border-color: var(--accent-gold);
+  color: var(--text-secondary);
+}
+
+.media-search svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.media-search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+}
+
+.media-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.media-category {
+  margin-bottom: 32px;
+}
+
+.media-category-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0 0 18px;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-family: var(--font-serif);
+}
+
+.media-category-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.media-category-count {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.media-category-chevron {
+  display: flex;
+  color: var(--text-muted);
+  transition: transform 0.18s ease;
+}
+
+.media-category-chevron svg {
+  width: 18px;
+  height: 18px;
+}
+
+.media-category-toggle[aria-expanded="false"] .media-category-chevron {
+  transform: rotate(-90deg);
+}
+
+.media-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.media-card {
+  position: relative;
+  background: var(--bg-panel-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.media-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  background: rgba(19, 26, 44, 0.85);
+}
+
+.media-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.media-card-title {
+  margin: 0;
+  padding: 14px 44px 10px 16px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.media-thumb {
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.media-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media-fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(6, 9, 17, 0.55);
+  border: 1px solid var(--border-soft);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.media-fav-btn:hover {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+.media-fav-btn.is-active {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  background: var(--accent-gold-soft);
+}
+
+.media-fav-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.media-empty {
+  color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+  .media-search {
+    max-width: none;
   }
 }
