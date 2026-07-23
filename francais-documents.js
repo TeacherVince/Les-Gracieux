@@ -16,8 +16,38 @@
 window.DOCUMENTS_DATA = [
   {
     category: "Fiches",
-    title: "Fiche de vocabulaire (exemple)",
-    description: "Document d'exemple à remplacer par tes propres fiches.",
-    file: "exemple-fiche-vocabulaire.pdf"
+    title: "Les principaux homophones",
+    description: "Un dossier pour ne plus confondre les homophones les plus courants (a/à, ou/où, son/sont...).",
+    file: "homophon.pdf"
+  },
+  {
+    category: "Fiches",
+    title: "Les accords dans le groupe nominal",
+    description: "Comment accorder en genre et en nombre les mots du groupe nominal.",
+    file: "accordgn.pdf"
+  },
+  {
+    category: "Fiches",
+    title: "Les types de phrases",
+    description: "Les quatre types de phrases (déclarative, interrogative, impérative, exclamative) et comment les reconnaître.",
+    file: "phrases.pdf"
+  },
+  {
+    category: "Fiches",
+    title: "Les pronoms personnels",
+    description: "Les pronoms personnels selon la personne et le nombre (singulier, pluriel).",
+    file: "pronoms.pdf"
+  },
+  {
+    category: "Fiches",
+    title: "Synonymes et antonymes",
+    description: "La différence entre synonymes et antonymes, avec des exemples.",
+    file: "synonyme.pdf"
+  },
+  {
+    category: "Fiches",
+    title: "Les classes grammaticales",
+    description: "Un mémo des classes grammaticales : nom, adjectif, adverbe, préposition, et bien d'autres.",
+    file: "classegr.pdf"
   }
 ];
