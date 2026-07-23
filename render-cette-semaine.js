@@ -5,18 +5,15 @@
   "use strict";
 
   var TYPES = {
-    devoir:    { label: "Devoir",    icon: "book",     color: "icon-blue" },
-    sortie:    { label: "Sortie",    icon: "bus",      color: "icon-green" },
-    evenement: { label: "Événement", icon: "star",     color: "icon-gold" },
-    materiel:  { label: "Matériel",  icon: "backpack", color: "icon-violet" },
-    info:      { label: "Info",     icon: "info",      color: "icon-neutral" }
+    devoir:    { label: "Devoir",              icon: "book", color: "icon-blue" },
+    sortie:    { label: "Sortie / Événement",  icon: "bus",  color: "icon-green" },
+    evenement: { label: "Sortie / Événement",  icon: "bus",  color: "icon-green" },
+    info:      { label: "Info",                icon: "info", color: "icon-neutral" }
   };
 
   var ICONS = {
     book: '<path d="M4 5.5c3-1 6-1 8 0 2-1 5-1 8 0v13c-3-1-6-1-8 0-2-1-5-1-8 0v-13z"/><path d="M12 5.5v13"/>',
     bus: '<rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/>',
-    star: '<path d="M12 3l2.5 5.5 6 .7-4.5 4 1.3 6-5.3-3-5.3 3 1.3-6-4.5-4 6-.7z"/>',
-    backpack: '<path d="M9 7V6a3 3 0 0 1 6 0v1"/><rect x="5" y="7" width="14" height="13" rx="2"/><path d="M9 12h6"/><path d="M9 16h6"/>',
     info: '<circle cx="12" cy="12" r="9"/><path d="M12 8h.01"/><path d="M11 12h1v5h1"/>'
   };
 
