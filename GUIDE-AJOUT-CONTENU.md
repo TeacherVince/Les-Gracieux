@@ -23,6 +23,17 @@ La miniature YouTube et le bouton "Regarder sur YouTube" se génèrent automatiq
 
 À faire plus tard : ajouter la vidéo "Le fantastique Blob !" dans Sciences & Histoire dès que le bon lien YouTube sera transmis (le lien reçu précédemment pointait par erreur vers la vidéo de l'astronaute).
 
+## Ajouter une vidéo à la médiathèque Français
+
+La branche Français a sa propre médiathèque (page `francais-mediatheque.html`), séparée de la bibliothèque de vidéos générale : elle est organisée en quatre catégories (Grammaire, Conjugaison, Orthographe, Vocabulaire) plutôt que par matière, avec une recherche et des favoris. Fichier à modifier : `francais-mediatheque-data.js`.
+
+1. Copie un bloc existant entre accolades `{ ... }`, colle-le juste avant le `];` final.
+2. Renseigne `id` (un identifiant unique, ex. `fr-vocab-6`), `category` (exactement `"Grammaire"`, `"Conjugaison"`, `"Orthographe"` ou `"Vocabulaire"`), `title` et `url` (l'adresse complète de la leçon).
+3. Pour `image`, ouvre la page de la leçon et récupère l'adresse de son image de présentation (généralement visible juste sous le titre). Cette image sert de vignette sur la carte.
+4. N'oublie pas la virgule après le bloc précédent.
+
+Ces vidéos ne sont pas hébergées sur notre site : chaque carte ouvre la leçon d'origine dans un nouvel onglet. La recherche et le compteur par catégorie se mettent à jour automatiquement, rien d'autre à faire.
+
 ## Ajouter un document dans une branche (Art, Français, Mathématiques, Sciences & Histoire)
 
 Chaque branche a son propre fichier :
@@ -71,7 +82,7 @@ Tant que `image` reste vide (`""`), une vignette "Photo à ajouter" s'affiche à
 
 ## Modifier la page Objectifs
 
-Cette page n'a pas de fichier de contenu séparé : le texte est directement dans `objectifs.html`, dans des blocs qui commencent par `<div class="content-block objective-block ...">`. Pour changer un texte, repère la matière concernée et modifie le texte entre les balises `<li>...</li>` (une ligne = un objectif, numérotée automatiquement). Pour ajouter un objectif, copie une ligne `<li>...</li>` et colle-la juste avant `</ul>`.
+Cette page n'a pas de fichier de contenu séparé : le texte est directement dans `objectifs.html`, dans des blocs qui commencent par `<div class="content-block objective-block ...">`. Pour changer un texte, repère la matière concernée et modifie le texte entre les balises `<li>...</li>` (une ligne = un objectif, numérotée automatiquement dans chaque liste). Pour ajouter un objectif, copie une ligne `<li>...</li>` et colle-la juste avant le `</ul>` correspondant. La petite phrase en italique sous chaque titre (`<p class="objective-tagline">...</p>`) peut aussi être modifiée directement. Le bloc "Sciences, Histoire & Géographie" contient deux listes distinctes (Sciences, puis Histoire & Géographie), chacune numérotée indépendamment à partir de 1.
 
 ## Changer la date de "Dernière mise à jour"
 
