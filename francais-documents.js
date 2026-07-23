@@ -34,7 +34,7 @@ window.DOCUMENTS_DATA = [
   },
   {
     category: "Fiches",
-    title: "Les pronoms personnels",
+    title: "Les pronoms",
     description: "Les pronoms personnels selon la personne et le nombre (singulier, pluriel).",
     file: "pronoms.pdf"
   },
@@ -46,7 +46,7 @@ window.DOCUMENTS_DATA = [
   },
   {
     category: "Fiches",
-    title: "Les classes grammaticales",
+    title: "Les classes grammaticales (adj, adv, prép...)",
     description: "Un mémo des classes grammaticales : nom, adjectif, adverbe, préposition, et bien d'autres.",
     file: "classegr.pdf"
   }
