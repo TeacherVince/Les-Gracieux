@@ -22,13 +22,13 @@ window.DOCUMENTS_DATA = [
   },
   {
     category: "Fiches",
-    title: "Les styles de musique",
+    title: "Les styles musicaux",
     description: "Un tour d'horizon des grands styles musicaux : classique, reggae, électro, rock et jazz.",
     file: "styles.pdf"
   },
   {
     category: "Fiches",
-    title: "Les familles d'instruments",
+    title: "Les familles des instruments",
     description: "Un tableau résumant les 3 familles d'instruments : vents, cordes et percussions.",
     file: "familles.pdf"
   }
