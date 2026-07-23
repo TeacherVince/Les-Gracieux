@@ -15,9 +15,21 @@
 
 window.DOCUMENTS_DATA = [
   {
+    category: "Chansons",
+    title: "Dossier de chansons",
+    description: "Un recueil de chansons à écouter et à chanter en classe.",
+    file: "chansons.pdf"
+  },
+  {
     category: "Fiches",
-    title: "Fiche d'exemple (Art)",
-    description: "Document d'exemple à remplacer par tes propres fiches.",
-    file: "exemple-art.pdf"
+    title: "Les styles de musique",
+    description: "Un tour d'horizon des grands styles musicaux : classique, reggae, électro, rock et jazz.",
+    file: "styles.pdf"
+  },
+  {
+    category: "Fiches",
+    title: "Les familles d'instruments",
+    description: "Un tableau résumant les 3 familles d'instruments : vents, cordes et percussions.",
+    file: "familles.pdf"
   }
 ];
