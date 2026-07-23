@@ -13,8 +13,8 @@
            final. Pour EN SUPPRIMER un, supprime son bloc entier.
 
    type  : détermine l'icône et l'étiquette affichées. Utilise une des
-           valeurs suivantes : "devoir", "sortie", "evenement",
-           "materiel" ou "info".
+           valeurs suivantes : "devoir", "sortie" (regroupe sorties et
+           événements) ou "info".
    text  : le texte affiché (une phrase suffit).
    ======================================================================= */
 
@@ -26,16 +26,8 @@ window.CETTE_SEMAINE_DATA = {
       text: "Exemple à remplacer : réviser la leçon 4 de mathématiques pour vendredi."
     },
     {
-      type: "materiel",
-      text: "Exemple à remplacer : apporter une boîte à chaussures pour le bricolage d'art de jeudi."
-    },
-    {
       type: "sortie",
       text: "Exemple à remplacer : sortie à la piscine mardi matin — prévoir maillot, bonnet et serviette."
-    },
-    {
-      type: "evenement",
-      text: "Exemple à remplacer : photo de classe jeudi à 9h00."
     },
     {
       type: "info",
