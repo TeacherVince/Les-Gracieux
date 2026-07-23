@@ -70,16 +70,6 @@ Fichier à modifier : `infos-pratiques.js`, organisé en quatre parties :
 
 Pour ajouter une ligne dans n'importe laquelle de ces listes : copie un bloc existant et colle-le juste avant le `]` de la liste concernée.
 
-## Ajouter une photo dans la Galerie
-
-Fichier à modifier : `galerie.js`.
-
-1. Dépose la photo à la racine du dépôt (jamais de visage d'élève visible : préfère des photos de mains, de réalisations, ou recadre/floute les visages avant de déposer le fichier).
-2. Copie un bloc existant, colle-le avant le `];` final.
-3. Renseigne `caption` (la légende), `image` (le nom exact du fichier) et `category` (facultatif).
-
-Tant que `image` reste vide (`""`), une vignette "Photo à ajouter" s'affiche à la place : tu peux donc préparer les légendes avant d'avoir les photos.
-
 ## Modifier la page Objectifs
 
 Cette page n'a pas de fichier de contenu séparé : le texte est directement dans `objectifs.html`, dans des blocs qui commencent par `<div class="content-block objective-block ...">`. Pour changer un texte, repère la matière concernée et modifie le texte entre les balises `<li>...</li>` (une ligne = un objectif, numérotée automatiquement dans chaque liste). Pour ajouter un objectif, copie une ligne `<li>...</li>` et colle-la juste avant le `</ul>` correspondant. La petite phrase en italique sous chaque titre (`<p class="objective-tagline">...</p>`) peut aussi être modifiée directement. Le bloc "Sciences, Histoire & Géographie" contient deux listes distinctes (Sciences, puis Histoire & Géographie), chacune numérotée indépendamment à partir de 1.
@@ -94,7 +84,7 @@ Voir la fin de `GUIDE-MISE-EN-LIGNE.md` pour le fonctionnement complet (modérat
 
 ## Traduction (préparation)
 
-Le site n'existe qu'en français pour l'instant, volontairement (pas de sélecteur de langue affiché). Tout le contenu qui change souvent (vidéos, documents, infos pratiques, Cette semaine, galerie, FAQ) est déjà centralisé dans des fichiers de données séparés : le jour où une traduction sera nécessaire, il suffira de dupliquer ces fichiers par langue plutôt que de tout réécrire.
+Le site n'existe qu'en français pour l'instant, volontairement (pas de sélecteur de langue affiché). Tout le contenu qui change souvent (vidéos, documents, infos pratiques, Cette semaine, FAQ) est déjà centralisé dans des fichiers de données séparés : le jour où une traduction sera nécessaire, il suffira de dupliquer ces fichiers par langue plutôt que de tout réécrire.
 
 ## Où éditer ces fichiers
 
