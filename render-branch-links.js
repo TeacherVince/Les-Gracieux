@@ -49,17 +49,32 @@
     if (extraSection && cardsHost) {
       var cards = "";
 
-      var hasVideos = (window.VIDEOS_DATA || []).some(function (v) { return v.category === branche; });
-      if (hasVideos) {
+      // La branche Français a sa propre médiathèque dédiée (davantage de
+      // vidéos, organisées par catégorie) : la carte "Vidéos" y renvoie
+      // toujours, plutôt que vers la bibliothèque générale.
+      if (branche === "Français") {
         cards +=
-          '<a href="videos.html#video-' + slug + '" class="card">' +
+          '<a href="francais-mediatheque.html" class="card">' +
             '<div class="card-icon icon-violet">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5v-7z" fill="currentColor" stroke="none"/></svg>' +
             '</div>' +
             '<h3>Vidéos</h3>' +
-            '<p>Regarder les vidéos de cette matière.</p>' +
+            '<p>Une médiathèque pour réviser grammaire, conjugaison, orthographe et vocabulaire.</p>' +
             '<span class="card-arrow">' + ARROW + '</span>' +
           '</a>';
+      } else {
+        var hasVideos = (window.VIDEOS_DATA || []).some(function (v) { return v.category === branche; });
+        if (hasVideos) {
+          cards +=
+            '<a href="videos.html#video-' + slug + '" class="card">' +
+              '<div class="card-icon icon-violet">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5v-7z" fill="currentColor" stroke="none"/></svg>' +
+              '</div>' +
+              '<h3>Vidéos</h3>' +
+              '<p>Regarder les vidéos de cette matière.</p>' +
+              '<span class="card-arrow">' + ARROW + '</span>' +
+            '</a>';
+        }
       }
 
       var hasExercices = ["QCM_DATA", "BLANKS_DATA", "TF_DATA"].some(function (key) {
@@ -104,6 +119,9 @@
       } else {
         linksSection.style.display = "none";
       }
+    }
+  });
+})();
     }
   });
 })();
