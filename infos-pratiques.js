@@ -66,13 +66,9 @@ window.INFOS_DATA = {
       q: "Où trouver les devoirs ?",
       a: "Dans la carte « Cette semaine » sur la page d'accueil."
     },
-    {
+   {
       q: "Où télécharger un document ?",
       a: "Dans la carte « Documents utiles » ci-dessus, ou sur la page de chaque branche."
-    },
-    {
-      q: "Comment contacter l'enseignant ?",
-      a: "Voir ses coordonnées dans la carte Contacts ci-dessus."
     }
   ]
 };
