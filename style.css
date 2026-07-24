@@ -503,12 +503,12 @@ footer.site-footer .wrap {
 
 .doc-row {
   display: flex;
-  align-items: center;
-  gap: 18px;
+  flex-direction: column;
+  gap: 6px;
   background: var(--bg-panel-soft);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-md);
-  padding: 18px 22px;
+  padding: 16px 20px;
   transition: border-color 0.18s ease, background 0.18s ease;
 }
 
@@ -517,41 +517,118 @@ footer.site-footer .wrap {
   background: rgba(19, 26, 44, 0.85);
 }
 
-.doc-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--accent-blue-soft);
-  color: var(--accent-blue);
+.doc-title {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--text-primary);
+}
+
+.doc-desc {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.doc-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.doc-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: transparent;
+  border: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.doc-action:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.doc-action svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* ---------- Horaire ---------- */
+
+.horaire-thumb-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--bg-panel-soft);
+  cursor: zoom-in;
+  overflow: hidden;
+  transition: border-color 0.18s ease;
+}
+
+.horaire-thumb-btn:hover {
+  border-color: var(--accent-gold);
+}
+
+.horaire-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 9, 18, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  padding: 30px;
+  z-index: 1000;
+  cursor: zoom-out;
 }
 
-.doc-icon svg {
-  width: 20px;
-  height: 20px;
+.lightbox-image {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  cursor: default;
 }
 
-.doc-info {
-  flex: 1;
-  min-width: 0;
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-panel-soft);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.doc-info h3 {
-  margin: 0 0 3px;
-  font-size: 0.98rem;
-}
-
-.doc-info p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.82rem;
-}
-
-.doc-row .btn {
-  flex-shrink: 0;
+.lightbox-close svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* ---------- Exercices ---------- */
