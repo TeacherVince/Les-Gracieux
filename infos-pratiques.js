@@ -31,7 +31,7 @@
 
 window.INFOS_DATA = {
   horaire: {
-    image: "horaire.jpg"
+    image: "horaire.png"
   },
 
   agenda: [
