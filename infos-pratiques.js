@@ -1,8 +1,13 @@
 /* =======================================================================
    INFOS PRATIQUES — Les Gracieux
    -----------------------------------------------------------------------
-   Toute la page se pilote depuis ce seul fichier, organisé en quatre
-   grandes parties : agenda, contacts, documents et FAQ.
+   Toute la page se pilote depuis ce seul fichier, organisé en cinq
+   grandes parties : horaire, agenda, contacts, documents et FAQ.
+
+   ---- horaire ----
+   image : le nom exact du fichier image de l'horaire, déposé à la
+   racine du dépôt (ex. "horaire.jpg"). Affiché en miniature cliquable,
+   qui s'agrandit au clic. Mets image: "" pour masquer la section.
 
    ---- agenda ----
    Chaque ligne renvoie simplement au numéro de la page correspondante
@@ -25,6 +30,10 @@
    ======================================================================= */
 
 window.INFOS_DATA = {
+  horaire: {
+    image: "horaire.jpg"
+  },
+
   agenda: [
     { label: "Horaire", page: "3" },
     { label: "Vacances scolaires", page: "5" },
