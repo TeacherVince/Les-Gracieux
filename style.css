@@ -1098,6 +1098,40 @@ body.home-page footer.site-footer {
   margin-bottom: 0;
 }
 
+.mediatheque-shortcut {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--bg-panel-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 22px 26px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.mediatheque-shortcut:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-gold);
+  background: rgba(19, 26, 44, 0.85);
+}
+
+.mediatheque-shortcut-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.mediatheque-shortcut-text h3 {
+  margin: 0 0 4px;
+}
+
+.mediatheque-shortcut-text p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
 .video-section-title {
   margin-bottom: 18px;
 }
