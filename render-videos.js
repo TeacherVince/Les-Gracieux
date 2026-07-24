@@ -97,10 +97,33 @@
       );
     }
 
+    function francaisShortcutSection() {
+      var section = document.createElement("section");
+      section.className = "video-section";
+      section.id = "video-francais";
+      section.innerHTML =
+        '<h2 class="section-title"><span class="spark">✦</span> Français</h2>' +
+        '<a class="mediatheque-shortcut" href="francais-mediatheque.html">' +
+          '<div class="mediatheque-shortcut-text">' +
+            '<h3>Médiathèque Français</h3>' +
+            '<p>Grammaire, conjugaison, orthographe et vocabulaire : une bibliothèque de vidéos dédiée, avec recherche et favoris.</p>' +
+          '</div>' +
+          '<span class="card-arrow">' +
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>' +
+          '</span>' +
+        '</a>';
+      return section;
+    }
+
     function render() {
       container.innerHTML = "";
 
       CATEGORY_ORDER.forEach(function (cat) {
+        if (cat === "Français") {
+          container.appendChild(francaisShortcutSection());
+          return;
+        }
+
         var videos = window.VIDEOS_DATA.filter(function (v) { return v.category === cat; });
         if (!videos.length) return; // pas de vidéo dans cette matière : pas de section
 
