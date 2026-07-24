@@ -21,17 +21,25 @@
 window.CETTE_SEMAINE_DATA = {
   updated: "Semaine du 24 août 2026",
   items: [
-    {
-      type: "devoir",
-      text: "Exemple à remplacer : réviser la leçon 4 de mathématiques pour vendredi."
-    },
-    {
-      type: "sortie",
-      text: "Exemple à remplacer : sortie à la piscine mardi matin — prévoir maillot, bonnet et serviette."
-    },
-    {
-      type: "info",
-      text: "Exemple à remplacer : pas d'école mercredi après-midi (formation continue des enseignants)."
-    }
-  ]
+     {
+                type: "devoir",
+                text: "Reprendre un rythme scolaire."
+     },
+     {
+                type: "devoir",
+                text: "Bien s'hydrater."
+     },
+     {
+                type: "devoir",
+                text: "Dormir suffisamment."
+     },
+     {
+                type: "sortie",
+                text: "1er cours de natation : mardi 25 août."
+     },
+     {
+                type: "info",
+                text: "Rentrée : le lundi 17 août à 8h40 !"
+     }
+         ]
 };
