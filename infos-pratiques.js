@@ -44,11 +44,9 @@ window.INFOS_DATA = {
   ],
 
   contacts: [
-    { label: "Enseignant", value: "Exemple à remplacer — nom@ecole.ch" },
-    { label: "École", value: "Nom de l'école — 021 000 00 00" },
-    { label: "Secrétariat", value: "021 000 00 00" },
-    { label: "PPLS", value: "021 000 00 00" },
-    { label: "Urgence", value: "144 (ambulance) / 021 000 00 00 (école)" }
+    { label: "École", value: "Etablissement primaire de Morges-Est" },
+    { label: "Secrétariat", value: "021 557 95 15" },
+    { label: "PPLS", value: "021 557 85 60" }
   ],
 
   documents: [
