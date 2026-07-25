@@ -23,28 +23,28 @@ window.VIDEOS_DATA = [
   {
     id: "video-art-1",
     category: "Art",
-    title: "Concerto de clarinette",
+    title: "Sergio Sobrino - Clarinette",
     description: "",
-    youtubeId: "0-jZJcpiy8I"
+    youtubeId: "L7W-OoQVEE0"
   },
   {
     id: "video-art-2",
     category: "Art",
-    title: "Un super bassiste !",
+    title: "Charles Berthoud - Basse",
     description: "",
     youtubeId: "2_qQzd-haA8"
   },
   {
     id: "video-art-3",
     category: "Art",
-    title: "Chanson à l'harmonica !",
+    title: "Indiara Sfair - Harmonica",
     description: "",
-    youtubeId: "d6UtcxyUspQ"
+    youtubeId: "aB9zBhRlCQk"
   },
   {
     id: "video-art-4",
     category: "Art",
-    title: "Une musique de Zelda à l'accordéon !",
+    title: "Zelda BOTW - Accordéon",
     description: "",
     youtubeId: "uhPhK57_Hbo"
   },
