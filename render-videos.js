@@ -1,5 +1,7 @@
 /* Les Gracieux — génère la page vidéos à partir de videos.js, regroupées
-   par matière. Chaque vidéo affiche sa vraie miniature YouTube (aucun
+   par matière. Deux médiathèques (Français et Mathématiques) sont mises
+   en avant tout en haut de la page, avant les vidéos YouTube classées
+   par matière. Chaque vidéo YouTube affiche sa vraie miniature (aucun
    lecteur ne se charge tant que l'utilisateur n'a pas cliqué) et propose
    soit de la regarder directement sur la page, soit sur YouTube dans un
    nouvel onglet. Affiche aussi les commentaires approuvés (comments.js)
@@ -97,33 +99,60 @@
       );
     }
 
-    function francaisShortcutSection() {
+    // Les deux médiathèques (Français et Mathématiques) sont mises en
+    // avant tout en haut de la page, avant les vidéos YouTube classées
+    // par matière : même gabarit que les cartes vidéo (miniature 16:9 +
+    // titre + description), mais avec un contour doré distinctif pour
+    // signaler qu'il s'agit d'une bibliothèque entière plutôt que d'une
+    // seule vidéo.
+    function mediathequeCardHtml(opts) {
+      return (
+        '<a class="video-card mediatheque-card" href="' + escapeHtml(opts.href) + '">' +
+          '<div class="mediatheque-card-visual ' + escapeHtml(opts.visualClass) + '">' +
+            '<span class="mediatheque-card-badge">Médiathèque</span>' +
+            '<span class="mediatheque-card-icon">' + opts.icon + '</span>' +
+          '</div>' +
+          '<div class="video-meta">' +
+            '<span class="video-tag">' + escapeHtml(opts.tag) + '</span>' +
+            '<h3>' + escapeHtml(opts.title) + '</h3>' +
+            '<p>' + escapeHtml(opts.description) + '</p>' +
+          '</div>' +
+        '</a>'
+      );
+    }
+
+    function featuredMediathequesSection() {
       var section = document.createElement("section");
       section.className = "video-section";
-      section.id = "video-francais";
+      section.id = "video-mediatheques";
       section.innerHTML =
-        '<h2 class="section-title"><span class="spark">✦</span> Français</h2>' +
-        '<a class="mediatheque-shortcut" href="francais-mediatheque.html">' +
-          '<div class="mediatheque-shortcut-text">' +
-            '<h3>Médiathèque Français</h3>' +
-            '<p>Grammaire, conjugaison, orthographe et vocabulaire : une bibliothèque de vidéos dédiée, avec recherche et favoris.</p>' +
-          '</div>' +
-          '<span class="card-arrow">' +
-            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>' +
-          '</span>' +
-        '</a>';
+        '<h2 class="section-title"><span class="spark">✦</span> Médiathèques</h2>' +
+        '<div class="mediatheque-grid">' +
+          mediathequeCardHtml({
+            href: "francais-mediatheque.html",
+            visualClass: "mediatheque-card-visual-francais",
+            icon: "📖",
+            tag: "Médiathèque",
+            title: "Français",
+            description: "Grammaire, conjugaison, orthographe et vocabulaire : une bibliothèque de vidéos dédiée, avec recherche et favoris."
+          }) +
+          mediathequeCardHtml({
+            href: "mathematiques-mediatheque.html",
+            visualClass: "mediatheque-card-visual-maths",
+            icon: "🔢",
+            tag: "Médiathèque",
+            title: "Mathématiques",
+            description: "Numération, calcul, mesures et géométrie : une bibliothèque de vidéos dédiée, avec recherche et favoris."
+          }) +
+        '</div>';
       return section;
     }
 
     function render() {
       container.innerHTML = "";
+      container.appendChild(featuredMediathequesSection());
 
       CATEGORY_ORDER.forEach(function (cat) {
-        if (cat === "Français") {
-          container.appendChild(francaisShortcutSection());
-          return;
-        }
-
         var videos = window.VIDEOS_DATA.filter(function (v) { return v.category === cat; });
         if (!videos.length) return; // pas de vidéo dans cette matière : pas de section
 
