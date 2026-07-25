@@ -49,20 +49,6 @@ window.VIDEOS_DATA = [
     youtubeId: "uhPhK57_Hbo"
   },
   {
-    id: "video-maths-1",
-    category: "Mathématiques",
-    title: "Maître Lucas – Multiplier par 10, 100 et 1000",
-    description: "",
-    youtubeId: "5P8jLOcZMoc"
-  },
-  {
-    id: "video-maths-2",
-    category: "Mathématiques",
-    title: "Lire les grands nombres !",
-    description: "",
-    youtubeId: "U0KwKF4Swvg"
-  },
-  {
     id: "video-sciences-2",
     category: "Sciences & Histoire",
     title: "Une vidéo passionnante sur la profondeur des océans !",
