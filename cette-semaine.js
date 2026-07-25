@@ -22,15 +22,15 @@ window.CETTE_SEMAINE_DATA = {
   updated: "Semaine du 24 août 2026",
   items: [
      {
-                type: "devoir",
+                type: "devoir_mardi",
                 text: "Reprendre un rythme scolaire."
      },
      {
-                type: "devoir",
+                type: "devoir_jeudi",
                 text: "Bien s'hydrater."
      },
      {
-                type: "devoir",
+                type: "devoir_vendredi",
                 text: "Dormir suffisamment."
      },
      {
