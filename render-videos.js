@@ -1,12 +1,13 @@
 /* Les Gracieux — génère la page vidéos à partir de videos.js, regroupées
    par matière. Deux médiathèques (Français et Mathématiques) sont mises
    en avant tout en haut de la page, avant les vidéos YouTube classées
-   par matière. Chaque vidéo YouTube affiche sa vraie miniature (aucun
-   lecteur ne se charge tant que l'utilisateur n'a pas cliqué) et propose
-   soit de la regarder directement sur la page, soit sur YouTube dans un
-   nouvel onglet. Affiche aussi les commentaires approuvés (comments.js)
-   et gère l'envoi de nouveaux commentaires vers Netlify Forms pour
-   modération. */
+   par matière. Toutes les cartes (médiathèques et vidéos YouTube)
+   partagent le même format compact : titre + miniature 16:9. Chaque
+   vidéo YouTube affiche sa vraie miniature (aucun lecteur ne se charge
+   tant que l'utilisateur n'a pas cliqué) ; une icône dans le coin permet
+   de l'ouvrir directement sur YouTube dans un nouvel onglet. Affiche
+   aussi les commentaires approuvés (comments.js) et gère l'envoi de
+   nouveaux commentaires vers Netlify Forms pour modération. */
 
 (function () {
   "use strict";
@@ -62,12 +63,12 @@
           }).join("")
         : '<p class="comment-empty">Aucun commentaire pour l\'instant.</p>';
 
-      var descriptionHtml = v.description
-        ? '<p>' + escapeHtml(v.description) + '</p>'
-        : "";
-
       return (
         '<div class="video-card">' +
+          '<a class="video-card-yt-link" href="https://www.youtube.com/watch?v=' + encodeURIComponent(v.youtubeId) + '" target="_blank" rel="noopener" aria-label="Regarder « ' + escapeHtml(v.title) + ' » sur YouTube" title="Regarder sur YouTube">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>' +
+          '</a>' +
+          '<h3 class="video-card-title">' + escapeHtml(v.title) + '</h3>' +
           '<div class="video-frame-wrap" data-youtube-id="' + escapeHtml(v.youtubeId) + '" data-video-title="' + escapeHtml(v.title) + '">' +
             '<button type="button" class="video-thumb-btn" aria-label="Regarder : ' + escapeHtml(v.title) + '">' +
               '<img src="https://i.ytimg.com/vi/' + encodeURIComponent(v.youtubeId) + '/hqdefault.jpg" alt="Miniature de la vidéo : ' + escapeHtml(v.title) + '" loading="lazy">' +
@@ -75,14 +76,6 @@
                 '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' +
               '</span>' +
             '</button>' +
-          '</div>' +
-          '<div class="video-meta">' +
-            '<span class="video-tag">' + escapeHtml(v.category) + '</span>' +
-            '<h3>' + escapeHtml(v.title) + '</h3>' +
-            descriptionHtml +
-            '<div class="video-actions">' +
-              '<a class="btn btn-outline btn-sm" href="https://www.youtube.com/watch?v=' + encodeURIComponent(v.youtubeId) + '" target="_blank" rel="noopener">Regarder sur YouTube ↗</a>' +
-            '</div>' +
           '</div>' +
           '<div class="video-comments">' +
             '<h4>Commentaires</h4>' +
@@ -101,10 +94,10 @@
 
     // Les deux médiathèques (Français et Mathématiques) sont mises en
     // avant tout en haut de la page, avant les vidéos YouTube classées
-    // par matière : même gabarit que les cartes vidéo (miniature 16:9 +
-    // titre + description), mais avec un contour doré distinctif pour
-    // signaler qu'il s'agit d'une bibliothèque entière plutôt que d'une
-    // seule vidéo.
+    // par matière : même gabarit compact que les cartes vidéo (miniature
+    // 16:9 + titre), mais avec un contour doré distinctif pour signaler
+    // qu'il s'agit d'une bibliothèque entière plutôt que d'une seule
+    // vidéo.
     function mediathequeCardHtml(opts) {
       return (
         '<a class="video-card mediatheque-card" href="' + escapeHtml(opts.href) + '">' +
