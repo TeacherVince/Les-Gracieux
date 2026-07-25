@@ -444,15 +444,58 @@ footer.site-footer .wrap {
 
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 22px;
 }
 
 .video-card {
+  position: relative;
   background: var(--bg-panel-soft);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  background: rgba(19, 26, 44, 0.85);
+}
+
+.video-card-yt-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(6, 9, 17, 0.55);
+  border: 1px solid var(--border-soft);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.video-card-yt-link:hover {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+.video-card-yt-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.video-card h3.video-card-title {
+  margin: 0;
+  padding: 14px 44px 10px 16px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .video-frame-wrap {
