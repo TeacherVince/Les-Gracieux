@@ -35,12 +35,10 @@ window.INFOS_DATA = {
   },
 
   agenda: [
-    { label: "Horaire", page: "3" },
-    { label: "Vacances scolaires", page: "5" },
-    { label: "Absences et demandes de congé", page: "8" },
-    { label: "Contacts utiles", page: "10" },
-    { label: "Éducation numérique", page: "12" },
-    { label: "Relations école-famille", page: "14" }
+     { label: "Contacts utiles", page: "2" },
+     { label: "Horaire", page: "4" },
+     { label: "Absences et demande de congé", page: "98" },
+     { label: "Justificatifs d'absence", page: "99 à 111" }
   ],
 
   contacts: [
