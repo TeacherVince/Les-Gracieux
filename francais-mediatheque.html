@@ -12,6 +12,18 @@
 
 <div id="star-field"></div>
 
+<!--
+  Formulaire "canari" pour Netlify : invisible pour les visiteurs,
+  il sert uniquement à ce que Netlify détecte le formulaire de
+  commentaires au moment du déploiement. Ne pas supprimer.
+-->
+<form name="video-comments" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="text" name="video" />
+  <textarea name="message"></textarea>
+  <input type="text" name="bot-field" />
+</form>
+
 <header class="site-header">
   <div class="wrap">
     <a href="index.html" class="brand">
@@ -34,6 +46,7 @@
         <li><a href="objectifs.html">Objectifs</a></li>
         <li><a href="branches.html" class="active">Branches</a></li>
         <li><a href="videos.html">Vidéos</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
         <li><a href="infos-pratiques.html">Infos pratiques</a></li>
       </ul>
     </nav>
@@ -73,6 +86,7 @@
 </footer>
 
 <script src="francais-mediatheque-data.js"></script>
+<script src="comments.js"></script>
 <script src="render-francais-mediatheque.js"></script>
 <script src="main.js"></script>
 </body>
