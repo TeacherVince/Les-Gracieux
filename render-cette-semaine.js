@@ -5,10 +5,13 @@
   "use strict";
 
   var TYPES = {
-    devoir:    { label: "Devoir",              icon: "book", color: "icon-blue" },
-    sortie:    { label: "Sortie / Événement",  icon: "bus",  color: "icon-green" },
-    evenement: { label: "Sortie / Événement",  icon: "bus",  color: "icon-green" },
-    info:      { label: "Info",                icon: "info", color: "icon-neutral" }
+devoir:          { label: "Devoirs",          icon: "book", color: "icon-blue" },
+           devoir_mardi:    { label: "Devoirs mardi",    icon: "book", color: "icon-blue" },
+           devoir_jeudi:    { label: "Devoirs jeudi",    icon: "book", color: "icon-blue" },
+           devoir_vendredi: { label: "Devoirs vendredi", icon: "book", color: "icon-blue" },
+           sortie:          { label: "Sorties / Événements", icon: "bus", color: "icon-green" },
+           evenement:       { label: "Sorties / Événements", icon: "bus", color: "icon-green" },
+           info:            { label: "Infos", icon: "info", color: "icon-neutral" }
   };
 
   var ICONS = {
