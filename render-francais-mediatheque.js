@@ -12,7 +12,10 @@
    - Les favoris sont mémorisés dans le navigateur (localStorage), sans
      compte utilisateur : ils sont donc propres à cet ordinateur.
    - Chaque carte ouvre la leçon d'origine sur maitrelucas.fr dans un
-     nouvel onglet ; aucune vidéo n'est hébergée ou intégrée sur ce site. */
+     nouvel onglet ; aucune vidéo n'est hébergée ou intégrée sur ce site.
+   - Un bandeau "Commentaires" sous chaque carte se déplie pour afficher
+     les commentaires approuvés (comments.js) et un formulaire d'envoi
+     vers Netlify Forms, identique à celui des vidéos YouTube. */
 
 (function () {
   "use strict";
@@ -62,6 +65,12 @@
     return favorites.indexOf(id) !== -1;
   }
 
+  function encodeForm(data) {
+    return Object.keys(data)
+      .map(function (key) { return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]); })
+      .join("&");
+  }
+
   var STAR_ICON =
     '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6.3 6.8.7-5.1 4.7 1.4 6.8L12 17.6l-6 3.4 1.4-6.8-5.1-4.7 6.8-.7z"/></svg>';
 
@@ -71,6 +80,9 @@
   var SEARCH_ICON =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
 
+  var COMMENT_ICON =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>';
+
   document.addEventListener("DOMContentLoaded", function () {
     var host = document.getElementById("mediatheque-root");
     var data = window.FRANCAIS_MEDIATHEQUE_DATA;
@@ -78,9 +90,26 @@
 
     var searchInput = document.getElementById("mediatheque-search");
     var collapsed = {}; // état de repli par catégorie (mémoire en session uniquement)
+    var openComments = {}; // état déplié/replié des commentaires par vidéo (mémoire en session uniquement)
+    var allComments = window.COMMENTS_DATA || [];
+
+    function commentsFor(id) {
+      return allComments.filter(function (c) { return c.videoId === id; });
+    }
 
     function cardHtml(video, favorites) {
       var active = isFavorite(video.id, favorites);
+      var approved = commentsFor(video.id);
+      var isCommentsOpen = !!openComments[video.id];
+      var commentsListHtml = approved.length
+        ? approved.map(function (c) {
+            return '<div class="comment-item">' +
+              '<div class="comment-meta">' + escapeHtml(c.name) + '</div>' +
+              '<p class="comment-text">' + escapeHtml(c.text) + '</p>' +
+              '</div>';
+          }).join("")
+        : '<p class="comment-empty">Aucun commentaire pour l\'instant.</p>';
+
       return (
         '<article class="media-card" data-search="' + escapeHtml(normalize(video.title)) + '">' +
           '<button type="button" class="media-fav-btn' + (active ? " is-active" : "") + '" ' +
@@ -93,6 +122,21 @@
             '<h3 class="media-card-title">' + escapeHtml(video.title) + '</h3>' +
             '<div class="media-thumb"><img src="' + escapeHtml(video.image) + '" alt="" loading="lazy"></div>' +
           '</a>' +
+          '<button type="button" class="media-comments-toggle" data-id="' + escapeHtml(video.id) + '" aria-expanded="' + (isCommentsOpen ? "true" : "false") + '">' +
+            COMMENT_ICON +
+            '<span>Commentaires' + (approved.length ? ' (' + approved.length + ')' : '') + '</span>' +
+            '<span class="media-comments-chevron">' + CHEVRON_ICON + '</span>' +
+          '</button>' +
+          '<div class="media-comments-panel"' + (isCommentsOpen ? "" : ' hidden') + '>' +
+            '<div class="comment-list">' + commentsListHtml + '</div>' +
+            '<form class="comment-form" data-video-id="' + escapeHtml(video.id) + '">' +
+              '<input type="text" name="name" placeholder="Ton prénom" required maxlength="60">' +
+              '<textarea name="message" placeholder="Ton commentaire" required maxlength="500"></textarea>' +
+              '<input type="text" name="bot-field" class="honeypot-field" tabindex="-1" autocomplete="off">' +
+              '<button type="submit" class="btn btn-outline">Envoyer le commentaire</button>' +
+              '<p class="comment-form-status"></p>' +
+            '</form>' +
+          '</div>' +
         '</article>'
       );
     }
@@ -165,6 +209,54 @@
           else favorites.splice(idx, 1);
           setFavorites(favorites);
           render();
+        });
+      });
+
+      host.querySelectorAll(".media-comments-toggle").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var id = btn.getAttribute("data-id");
+          openComments[id] = !openComments[id];
+          render();
+        });
+      });
+
+      host.querySelectorAll(".comment-form").forEach(function (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var status = form.querySelector(".comment-form-status");
+          var nameInput = form.querySelector('[name="name"]');
+          var messageInput = form.querySelector('[name="message"]');
+          var honeypot = form.querySelector('[name="bot-field"]').value;
+
+          if (honeypot) {
+            status.textContent = "Merci, ton commentaire a été envoyé pour validation.";
+            status.className = "comment-form-status show ok";
+            form.reset();
+            return;
+          }
+
+          var payload = {
+            "form-name": "video-comments",
+            name: nameInput.value,
+            video: form.dataset.videoId,
+            message: messageInput.value,
+            "bot-field": ""
+          };
+
+          fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encodeForm(payload)
+          })
+            .then(function () {
+              status.textContent = "Merci ! Ton commentaire a été envoyé et sera visible après validation par l'enseignant.";
+              status.className = "comment-form-status show ok";
+              form.reset();
+            })
+            .catch(function () {
+              status.textContent = "L'envoi a échoué. Réessaie un peu plus tard.";
+              status.className = "comment-form-status show ko";
+            });
         });
       });
     }
