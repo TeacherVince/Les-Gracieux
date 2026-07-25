@@ -33,26 +33,40 @@ devoir:          { label: "Devoirs",          icon: "book", color: "icon-blue" }
     if (!host || !data) return;
 
     var items = data.items || [];
-    var itemsHtml = items.map(function (item) {
-      var meta = TYPES[item.type] || TYPES.info;
-      return (
-        '<div class="week-item">' +
-          '<span class="week-item-icon ' + meta.color + '">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + ICONS[meta.icon] + '</svg>' +
-          '</span>' +
-          '<span class="week-item-body">' +
-            '<span class="week-item-label">' + meta.label + '</span>' +
-            '<p class="week-item-text">' + escapeHtml(item.text) + '</p>' +
-          '</span>' +
-        '</div>'
-      );
-    }).join("");
+function itemHtml(item) {
+         var meta = TYPES[item.type] || TYPES.info;
+         return (
+                    '<div class="week-item">' +
+                      '<span class="week-item-icon ' + meta.color + '">' +
+                        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + ICONS[meta.icon] + '</svg>' +
+                      '</span>' +
+                      '<span class="week-item-body">' +
+                        '<span class="week-item-label">' + meta.label + '</span>' +
+                        '<p class="week-item-text">' + escapeHtml(item.text) + '</p>' +
+                      '</span>' +
+                    '</div>'
+                  );
+}
 
-    host.innerHTML =
-      '<div class="week-card-header">' +
-        '<h2 class="section-title"><span class="spark">✦</span> Cette semaine</h2>' +
-        (data.updated ? '<span class="week-updated">' + escapeHtml(data.updated) + '</span>' : '') +
-      '</div>' +
-      '<div class="week-grid">' + (itemsHtml || '<p class="comment-empty">Rien de particulier cette semaine.</p>') + '</div>';
+         var devoirItems = items.filter(function (item) { return item.type && item.type.indexOf("devoir") === 0; });
+         var otherItems = items.filter(function (item) { return !item.type || item.type.indexOf("devoir") !== 0; });
+
+         var rowsHtml = "";
+         if (devoirItems.length) {
+                  rowsHtml += '<div class="week-grid">' + devoirItems.map(itemHtml).join("") + '</div>';
+         }
+         if (otherItems.length) {
+                  rowsHtml += '<div class="week-grid">' + otherItems.map(itemHtml).join("") + '</div>';
+         }
+         if (!rowsHtml) {
+                  rowsHtml = '<p class="comment-empty">Rien de particulier cette semaine.</p>';
+         }
+
+         host.innerHTML =
+                  '<div class="week-card-header">' +
+                    '<h2 class="section-title"><span class="spark">✦</span> Cette semaine</h2>' +
+                    (data.updated ? '<span class="week-updated">' + escapeHtml(data.updated) + '</span>' : '') +
+                  '</div>' +
+                  rowsHtml;
   });
 })();
