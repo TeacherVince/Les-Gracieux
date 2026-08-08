@@ -490,6 +490,13 @@ footer.site-footer .wrap {
   height: 14px;
 }
 
+/* Dans les médiathèques Arts et Sciences & Histoire, chaque carte a à la
+   fois un lien YouTube et une étoile de favori : on décale le lien
+   YouTube pour qu'il ne chevauche pas l'étoile (voir .media-fav-btn). */
+.media-card .video-card-yt-link {
+  right: 48px;
+}
+
 .video-card h3.video-card-title {
   margin: 0;
   padding: 14px 44px 10px 16px;
@@ -1740,6 +1747,10 @@ textarea:focus-visible,
   gap: 18px;
 }
 
+.media-category-grid[hidden] {
+  display: none;
+}
+
 .media-card {
   position: relative;
   background: var(--bg-panel-soft);
@@ -1879,8 +1890,17 @@ textarea:focus-visible,
 
 .mediatheque-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .mediatheque-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
 }
 
 .video-card.mediatheque-card {
@@ -1904,11 +1924,23 @@ textarea:focus-visible,
 }
 
 .mediatheque-card-visual-francais {
-  background: linear-gradient(135deg, var(--accent-gold-soft), rgba(19, 26, 44, 0.9));
+  background: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 55%, rgba(6, 9, 17, 0.75)),
+    url("mediatheque-francais.png") center/cover no-repeat;
 }
 
 .mediatheque-card-visual-maths {
-  background: linear-gradient(135deg, var(--accent-blue-soft), rgba(19, 26, 44, 0.9));
+  background: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 55%, rgba(6, 9, 17, 0.75)),
+    url("mediatheque-maths.png") center/cover no-repeat;
+}
+
+.mediatheque-card-visual-arts {
+  background: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 55%, rgba(6, 9, 17, 0.75)),
+    url("mediatheque-arts.png") center/cover no-repeat;
+}
+
+.mediatheque-card-visual-sciences {
+  background: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 55%, rgba(6, 9, 17, 0.75)),
+    url("mediatheque-sciences.png") center/cover no-repeat;
 }
 
 .mediatheque-card-badge {
@@ -1925,7 +1957,3 @@ textarea:focus-visible,
   color: var(--text-secondary);
 }
 
-.mediatheque-card-icon {
-  font-size: 2.6rem;
-  line-height: 1;
-}
