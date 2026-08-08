@@ -12,9 +12,28 @@
 (function () {
   "use strict";
 
-  // Ordre d'affichage des matières. Une matière sans vidéo n'affiche
-  // simplement pas de section : rien à faire pour la masquer.
+  // Ordre d'affichage préféré pour les matières connues ; toute autre
+  // matière ajoutée dans videos.js s'affiche quand même, à la suite,
+  // dans l'ordre où elle apparaît dans les données. Une matière sans
+  // vidéo n'affiche simplement pas de section : rien à faire pour la
+  // masquer. Art, Français, Mathématiques et Sciences & Histoire ont
+  // chacune leur propre médiathèque dédiée (voir
+  // featuredMediathequesSection) ; ce fichier ne sert donc plus qu'aux
+  // vidéos ponctuelles qu'on ne veut pas ranger dans une médiathèque.
   var CATEGORY_ORDER = ["Art", "Français", "Mathématiques", "Sciences & Histoire"];
+
+  function orderedCategories(videos) {
+    var seen = {};
+    var ordered = CATEGORY_ORDER.slice();
+    ordered.forEach(function (c) { seen[c] = true; });
+    videos.forEach(function (v) {
+      if (!seen[v.category]) {
+        seen[v.category] = true;
+        ordered.push(v.category);
+      }
+    });
+    return ordered;
+  }
 
   function escapeHtml(str) {
     return String(str)
@@ -103,7 +122,6 @@
         '<a class="video-card mediatheque-card" href="' + escapeHtml(opts.href) + '">' +
           '<div class="mediatheque-card-visual ' + escapeHtml(opts.visualClass) + '">' +
             '<span class="mediatheque-card-badge">Médiathèque</span>' +
-            '<span class="mediatheque-card-icon">' + opts.icon + '</span>' +
           '</div>' +
           '<div class="video-meta">' +
             '<span class="video-tag">' + escapeHtml(opts.tag) + '</span>' +
@@ -124,7 +142,6 @@
           mediathequeCardHtml({
             href: "francais-mediatheque.html",
             visualClass: "mediatheque-card-visual-francais",
-            icon: "📖",
             tag: "Médiathèque",
             title: "Français",
             description: "Grammaire, conjugaison, orthographe et vocabulaire : une bibliothèque de vidéos dédiée, avec recherche et favoris."
@@ -132,10 +149,23 @@
           mediathequeCardHtml({
             href: "mathematiques-mediatheque.html",
             visualClass: "mediatheque-card-visual-maths",
-            icon: "🔢",
             tag: "Médiathèque",
             title: "Mathématiques",
             description: "Numération, calcul, mesures et géométrie : une bibliothèque de vidéos dédiée, avec recherche et favoris."
+          }) +
+          mediathequeCardHtml({
+            href: "arts-mediatheque.html",
+            visualClass: "mediatheque-card-visual-arts",
+            tag: "Médiathèque",
+            title: "Arts",
+            description: "Musique, image, création et expression : une bibliothèque de vidéos dédiée, avec recherche et favoris."
+          }) +
+          mediathequeCardHtml({
+            href: "sciences-histoire-mediatheque.html",
+            visualClass: "mediatheque-card-visual-sciences",
+            tag: "Médiathèque",
+            title: "Sciences & Histoire",
+            description: "Découvertes, exploration, temps et inventions : une bibliothèque de vidéos dédiée, avec recherche et favoris."
           }) +
         '</div>';
       return section;
@@ -145,7 +175,7 @@
       container.innerHTML = "";
       container.appendChild(featuredMediathequesSection());
 
-      CATEGORY_ORDER.forEach(function (cat) {
+      orderedCategories(window.VIDEOS_DATA).forEach(function (cat) {
         var videos = window.VIDEOS_DATA.filter(function (v) { return v.category === cat; });
         if (!videos.length) return; // pas de vidéo dans cette matière : pas de section
 

@@ -1,6 +1,12 @@
 /* =======================================================================
    VIDÉOTHÈQUE — Les Gracieux
    -----------------------------------------------------------------------
+   Les 4 matières (Art, Français, Mathématiques, Sciences & Histoire) ont
+   chacune leur propre médiathèque dédiée (recherche, catégories,
+   favoris, commentaires — voir *-mediatheque-data.js). Ce fichier ne
+   sert donc plus qu'à ajouter, si besoin, une vidéo ponctuelle affichée
+   directement sur la page "Vidéos" en dehors de toute médiathèque.
+
    Pour AJOUTER une vidéo : copie un bloc { ... } ci-dessous, colle-le
    juste avant le "];" final, et modifie les valeurs.
    Pour SUPPRIMER une vidéo : supprime son bloc { ... } en entier.
@@ -10,8 +16,10 @@
                  les commentaires à la bonne vidéo). Ne change jamais
                  l'id d'une vidéo qui a déjà des commentaires.
    category    : matière ("Art", "Français", "Mathématiques" ou
-                 "Sciences & Histoire"). Une matière sans aucune vidéo
-                 n'affiche tout simplement pas de section sur la page.
+                 "Sciences & Histoire" apparaissent en premier et dans
+                 cet ordre ; toute autre valeur crée simplement une
+                 nouvelle section, à la suite). Une matière sans aucune
+                 vidéo n'affiche tout simplement pas de section.
    title       : titre affiché
    description : une phrase de présentation (facultatif, peut être "")
    youtubeId   : le code après "watch?v=" dans l'adresse YouTube
@@ -19,61 +27,4 @@
                       -> youtubeId = "aqz-KE-bpKQ"
    ======================================================================= */
 
-window.VIDEOS_DATA = [
-  {
-    id: "video-art-1",
-    category: "Art",
-    title: "Sergio Sobrino - Clarinette",
-    description: "",
-    youtubeId: "L7W-OoQVEE0"
-  },
-  {
-    id: "video-art-2",
-    category: "Art",
-    title: "Charles Berthoud - Basse",
-    description: "",
-    youtubeId: "2_qQzd-haA8"
-  },
-  {
-    id: "video-art-3",
-    category: "Art",
-    title: "Indiara Sfair - Harmonica",
-    description: "",
-    youtubeId: "aB9zBhRlCQk"
-  },
-  {
-    id: "video-art-4",
-    category: "Art",
-    title: "Zelda BOTW - Accordéon",
-    description: "",
-    youtubeId: "uhPhK57_Hbo"
-  },
-  {
-    id: "video-sciences-2",
-    category: "Sciences & Histoire",
-    title: "Une vidéo passionnante sur la profondeur des océans !",
-    description: "",
-    youtubeId: "PhS30G3utyo"
-  },
-  {
-    id: "video-sciences-3",
-    category: "Sciences & Histoire",
-    title: "Une vidéo montrant un astronaute sortant de la Station spatiale internationale !",
-    description: "",
-    youtubeId: "mMZtpMSmqoE"
-  },
-  {
-    id: "video-sciences-4",
-    category: "Sciences & Histoire",
-    title: "Pourquoi y a-t-il des saisons sur la Terre ?",
-    description: "",
-    youtubeId: "Ps1UPv4ETRk"
-  },
-  {
-    id: "video-sciences-1",
-    category: "Sciences & Histoire",
-    title: "Voyage de la Préhistoire à l'Antiquité",
-    description: "",
-    youtubeId: "Cz4TpP2Isgs"
-  }
-];
+window.VIDEOS_DATA = [];

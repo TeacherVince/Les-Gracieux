@@ -10,6 +10,15 @@
 (function () {
   "use strict";
 
+  // Les exercices autocorrectifs (QCM, textes à trous, vrai/faux) sont
+  // désactivés pour l'instant : la carte "Exercices" n'apparaît plus sur
+  // les pages de branche, donc exercices.html n'est plus accessible
+  // depuis le site. Tout le code (ici et dans exercices.html/.js,
+  // qcm-questions.js, texte-trous-questions.js, vrai-faux-questions.js)
+  // reste en place intact. Pour les réactiver plus tard : repasser cette
+  // valeur à "true".
+  var EXERCICES_ENABLED = false;
+
   var ARROW = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>';
 
   function escapeHtml(str) {
@@ -77,7 +86,7 @@
         }
       }
 
-      var hasExercices = ["QCM_DATA", "BLANKS_DATA", "TF_DATA"].some(function (key) {
+      var hasExercices = EXERCICES_ENABLED && ["QCM_DATA", "BLANKS_DATA", "TF_DATA"].some(function (key) {
         return (window[key] || []).some(function (set) { return subjectMatches(branche, set.subject); });
       });
       if (hasExercices) {

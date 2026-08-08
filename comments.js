@@ -21,10 +21,4 @@
    text    : le texte du commentaire.
    ======================================================================= */
 
-window.COMMENTS_DATA = [
-  {
-    videoId: "video-sciences-1",
-    name: "Exemple",
-    text: "Ceci est un commentaire d'exemple, à supprimer une fois que de vrais commentaires arrivent."
-  }
-];
+window.COMMENTS_DATA = [];
