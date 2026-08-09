@@ -2157,10 +2157,7 @@ textarea:focus-visible,
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
 }
-
 @media (max-width: 640px) {
   .mediatheque-card-visual {
     aspect-ratio: 16 / 10;
@@ -2216,7 +2213,10 @@ textarea:focus-visible,
 }
 
 .mediatheque-card-text {
-  position: relative;
+    position: absolute;
+     left: 0;
+     right: 0;
+     bottom: 0;
   z-index: 2;
   width: 100%;
   padding: 22px 24px 24px;
@@ -2239,6 +2239,13 @@ textarea:focus-visible,
 }
 
 @media (max-width: 640px) {
+     /* Sur téléphone, le texte ne se pose plus sur l'image (illisible sur
+        petit écran) : il redevient un bloc normal, sous la photo. */
+     .mediatheque-card-text {
+            position: static;
+            padding: 14px 16px 18px;
+     }
+   
   .mediatheque-card-text h3 {
     font-size: 1.12rem;
   }
