@@ -370,6 +370,25 @@ footer.site-footer .wrap {
   gap: 10px;
 }
 
+/* Regroupe la phrase "Apprendre, progresser..." et la mention de
+   statut sur deux lignes empilées, pour que la mention reste alignée
+   juste sous cette phrase (et non sous tout le pied de page). */
+.footer-tagline-col {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 4px;
+}
+
+/* Mention discrète du statut du portail : volontairement plus petite
+   et plus effacée que le reste du footer (pas un avertissement,
+   juste une précision). */
+.footer-note {
+     font-size: 0.72rem;
+     color: var(--text-muted);
+     opacity: 0.8;
+}
+
 /* ---------- Pages internes (objectifs, etc.) ---------- */
 
 .page-header {
