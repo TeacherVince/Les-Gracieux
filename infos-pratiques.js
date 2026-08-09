@@ -109,6 +109,10 @@ window.INFOS_DATA = {
     {
       q: "Où retrouver les vidéos pour réviser ?",
       a: "Dans l'onglet « Vidéos », ou depuis la section « Aller plus loin » de chaque branche."
-    }
+    },
+     {
+              q: "Les commentaires publiés sur le site sont-ils modérés ?",
+              a: "Oui. Tous les commentaires sont placés en attente et doivent être validés par l'enseignant avant d'apparaître publiquement sur le site."
+     }
   ]
 };
