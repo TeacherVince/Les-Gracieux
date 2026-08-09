@@ -25,7 +25,7 @@
 
 window.DOCUMENTS_DATA = [
   {
-    category: "Chansons",
+        category: "Fiches",
     title: "Dossier de chansons",
     description: "Un recueil de chansons à écouter et à chanter en classe.",
     file: "chansons.pdf"
