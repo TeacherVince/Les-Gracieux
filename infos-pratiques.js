@@ -48,7 +48,7 @@ window.INFOS_DATA = {
   agenda: [
      { label: "Contacts utiles", page: "2" },
      { label: "Horaire", page: "4" },
-     { label: "Absences et demande de congé", page: "98" },
+     { label: "Absences et congé joker", page: "98" },
      { label: "Justificatifs d'absence", page: "99 à 111" }
   ],
 
