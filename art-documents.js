@@ -11,6 +11,16 @@
    title       : titre affiché
    description : une phrase de contexte
    file        : nom exact du fichier, ex : "fiche-arts-visuels.pdf"
+
+   Deux champs optionnels permettent de faire ressortir un document dans
+   une zone dédiée en haut de page (sinon il reste dans la liste
+   générale ci-dessus) :
+   dateAdded : "2026-08-09" → apparaît dans "Documents récents" pendant
+               21 jours, puis retombe automatiquement dans sa zone
+               normale.
+   type      : "reference" → "Fiches de référence" (documents à garder
+               sous la main toute l'année), ou "revision" → "Pour
+               réviser" (exercices, fiches à retravailler).
    ======================================================================= */
 
 window.DOCUMENTS_DATA = [

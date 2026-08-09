@@ -1,0 +1,14 @@
+# Les Gracieux — configuration Netlify
+# -----------------------------------------------------------------------
+# Le site est 100% statique (pas de build habituellement nécessaire).
+# La seule chose que cette commande fait : régénérer build-info.js avec
+# la date réelle de CE déploiement, pour que le pied de page
+# "Dernière mise à jour" du site reflète la vraie date de mise en ligne
+# plutôt que la date du jour où quelqu'un consulte le site.
+#
+# Ne pas modifier build-info.js à la main : il est réécrit à chaque
+# déploiement par la ligne ci-dessous.
+
+[build]
+  command = "echo \"window.BUILD_DATE = '$(date -u +%Y-%m-%d)';\" > build-info.js"
+  publish = "."

@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Art — Les Gracieux</title>
+<title>Arts — Les Gracieux</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=optional" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-branch="Art">
+<body data-branch="Arts">
 
 <div id="star-field"></div>
 
@@ -47,12 +47,33 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
         Retour aux branches
       </a>
-      <h1>Art</h1>
-      <p class="lead">Fiches et documents à télécharger pour la classe d'art.</p>
+      <h1>Arts</h1>
+      <p class="lead">Fiches et documents à télécharger pour la classe d'arts.</p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="branch-recent-section">
+    <div class="wrap">
+      <h2 class="section-title"><span class="spark">✦</span> Documents récents</h2>
+      <div class="doc-list" id="branch-recent-list"></div>
+    </div>
+  </section>
+
+  <section class="section" id="branch-reference-section">
+    <div class="wrap">
+      <h2 class="section-title"><span class="spark">✦</span> Fiches de référence</h2>
+      <div class="doc-list" id="branch-reference-list"></div>
+    </div>
+  </section>
+
+  <section class="section" id="branch-revision-section">
+    <div class="wrap">
+      <h2 class="section-title"><span class="spark">✦</span> Pour réviser</h2>
+      <div class="doc-list" id="branch-revision-list"></div>
+    </div>
+  </section>
+
+  <section class="section" id="doc-generic-section">
     <div class="wrap">
       <div class="filter-bar" id="doc-filters"></div>
       <div class="doc-list" id="doc-list"></div>
@@ -89,6 +110,7 @@
 <script src="vrai-faux-questions.js"></script>
 <script src="art-links.js"></script>
 <script src="render-branch-links.js"></script>
+<script src="build-info.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

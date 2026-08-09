@@ -40,6 +40,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 112.5%;
 }
 
 body {
@@ -142,6 +143,8 @@ nav.main-nav ul {
 }
 
 nav.main-nav a {
+  position: relative;
+  z-index: 0;
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.94rem;
@@ -157,6 +160,19 @@ nav.main-nav a:hover {
 nav.main-nav a.active {
   color: var(--text-primary);
   border-bottom-color: var(--accent-gold);
+}
+
+/* Repère discret en plus du soulignement doré : un léger halo derrière
+   le texte de la page active, pour qu'elle se distingue au premier
+   coup d'œil dans le menu (desktop et mobile). Purement décoratif
+   (position absolute), n'affecte l'espacement d'aucun autre lien. */
+nav.main-nav a.active::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -6px -10px;
+  background: var(--accent-gold-soft);
+  border-radius: var(--radius-sm);
 }
 
 .nav-toggle {
@@ -362,7 +378,7 @@ footer.site-footer .wrap {
 
 .page-header h1 {
   font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   font-weight: 500;
   margin: 0 0 14px;
 }
@@ -371,6 +387,31 @@ footer.site-footer .wrap {
   color: var(--text-secondary);
   max-width: 680px;
   margin: 0;
+}
+
+.page-header p.lead.lead-full {
+  max-width: 1000px;
+}
+
+@media (max-width: 700px) {
+  .page-header p.lead.lead-full {
+    max-width: 680px;
+  }
+}
+
+.page-header p.lead.per-link {
+  margin-top: 10px;
+}
+
+.page-header p.lead.per-link a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-gold);
+  text-underline-offset: 2px;
+}
+
+.page-header p.lead.per-link a:hover {
+  color: var(--accent-gold);
 }
 
 .content-block {
@@ -613,6 +654,104 @@ footer.site-footer .wrap {
   width: 15px;
   height: 15px;
   flex-shrink: 0;
+}
+
+/* Liste condensée des documents (pages Branches) : une ligne compacte
+   par document, avec les actions "Afficher"/"Télécharger" réduites à
+   deux icônes rondes devant le titre, pour repérer un document plus
+   vite dans une liste longue. */
+.doc-compact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-panel-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.doc-compact-row:hover {
+  border-color: var(--border-strong);
+  background: rgba(19, 26, 44, 0.85);
+}
+
+.doc-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.doc-icon-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.doc-icon-btn svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.doc-compact-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.doc-compact-title {
+  margin: 0 0 2px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-compact-desc {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 480px) {
+  .doc-compact-title,
+  .doc-compact-desc {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+/* Badge "Nouveau" : discret, doré, cohérent avec le reste du site.
+   Capacité partagée (voir isContentNew()/newBadgeHtml() dans main.js),
+   utilisable partout où un titre doit signaler un ajout récent. */
+.badge-new {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-gold-soft);
+  color: var(--accent-gold);
+  border: 1px solid rgba(217, 169, 94, 0.35);
+  vertical-align: middle;
+  margin-left: 8px;
 }
 
 /* ---------- Horaire ---------- */
@@ -1078,7 +1217,7 @@ body.home-page footer.site-footer {
 
 .comment-item .comment-meta {
   font-size: 0.76rem;
-  color: var(--text-muted);
+  color: var(--text-primary);
   margin-bottom: 3px;
 }
 
@@ -1086,6 +1225,17 @@ body.home-page footer.site-footer {
   font-size: 0.88rem;
   color: var(--text-primary);
   margin: 0;
+}
+
+/* Commentaire de l'enseignant : même mise en page que les autres,
+   seul le contour et la couleur du prénom le différencient
+   discrètement (voir le champ "teacher" dans comments.js). */
+.comment-item-teacher {
+  border-color: rgba(217, 169, 94, 0.45);
+}
+
+.comment-meta-teacher-name {
+  color: var(--accent-gold);
 }
 
 .comment-empty {
@@ -1265,7 +1415,7 @@ body.home-page footer.site-footer {
 .week-card {
   background: var(--bg-panel-soft);
   border: 1px solid var(--border-soft);
-  border-top: 3px solid var(--accent-gold);
+  border-top: 2px solid var(--accent-gold);
   border-radius: var(--radius-lg);
   padding: 28px 30px;
 }
@@ -1344,6 +1494,77 @@ body.home-page .week-card {
 
 body.home-page .week-card-header {
   margin-bottom: 14px;
+}
+
+/* ---- Devoirs : 4 colonnes Mardi / Mercredi / Jeudi / Vendredi ---- */
+
+.devoirs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.devoirs-day {
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+
+.devoirs-day-title {
+  margin: 0 0 10px;
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.devoirs-day-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.devoirs-day-list li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.devoirs-day-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+}
+
+.devoirs-day-empty {
+  margin: 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+@media (max-width: 780px) {
+  .devoirs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 460px) {
+  .devoirs-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================================================
@@ -1513,6 +1734,20 @@ body.home-page .week-card-header {
   font-size: 0.94rem;
   color: var(--text-primary);
   text-align: right;
+}
+
+/* Variante pour des valeurs plus longues (phrases plutôt que numéros de
+   téléphone, ex. Piscine et gym) : la valeur s'aligne à gauche et se lit
+   comme une phrase normale plutôt que comme une étiquette courte. */
+.contact-row-wide .contact-value {
+  text-align: left;
+  max-width: 80%;
+}
+
+@media (max-width: 700px) {
+  .contact-row-wide .contact-value {
+    max-width: 100%;
+  }
 }
 
 .faq-section {
@@ -1892,14 +2127,11 @@ textarea:focus-visible,
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-  max-width: 980px;
-  margin: 0 auto;
 }
 
 @media (max-width: 640px) {
   .mediatheque-grid {
     grid-template-columns: 1fr;
-    max-width: 480px;
   }
 }
 
@@ -1907,53 +2139,112 @@ textarea:focus-visible,
   display: block;
   color: inherit;
   text-decoration: none;
-  transition: transform 0.18s ease, border-color 0.18s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .video-card.mediatheque-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--accent-gold);
+  box-shadow: 0 16px 32px rgba(2, 4, 10, 0.4);
 }
 
+/* La carte est désormais un grand portail visuel : l'image occupe toute
+   la carte, le titre et la description sont posés directement dessus.
+   Ratio plus haut (4:3) sur desktop pour donner du poids à l'image ;
+   ratio plus large (16:10) sur mobile pour éviter un défilement trop
+   long. */
 .mediatheque-card-visual {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
 }
 
-.mediatheque-card-visual-francais {
-  background: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 55%, rgba(6, 9, 17, 0.75)),
-    url("mediatheque-francais.png") center/cover no-repeat;
+@media (max-width: 640px) {
+  .mediatheque-card-visual {
+    aspect-ratio: 16 / 10;
+  }
 }
 
-.mediatheque-card-visual-maths {
-  background: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 55%, rgba(6, 9, 17, 0.75)),
-    url("mediatheque-maths.png") center/cover no-repeat;
+.mediatheque-card-bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
 }
 
-.mediatheque-card-visual-arts {
-  background: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 55%, rgba(6, 9, 17, 0.75)),
-    url("mediatheque-arts.png") center/cover no-repeat;
+.video-card.mediatheque-card:hover .mediatheque-card-bg {
+  transform: scale(1.06);
 }
 
-.mediatheque-card-visual-sciences {
-  background: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 55%, rgba(6, 9, 17, 0.75)),
-    url("mediatheque-sciences.png") center/cover no-repeat;
+.mediatheque-card-bg-francais {
+  background-image: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 40%, rgba(6, 9, 17, 0.92) 100%),
+    url("mediatheque-francais.png");
+}
+
+.mediatheque-card-bg-maths {
+  background-image: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 40%, rgba(6, 9, 17, 0.92) 100%),
+    url("mediatheque-maths.png");
+}
+
+.mediatheque-card-bg-arts {
+  background-image: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 40%, rgba(6, 9, 17, 0.92) 100%),
+    url("mediatheque-arts.png");
+}
+
+.mediatheque-card-bg-sciences {
+  background-image: linear-gradient(180deg, rgba(6, 9, 17, 0.05) 40%, rgba(6, 9, 17, 0.92) 100%),
+    url("mediatheque-sciences.png");
 }
 
 .mediatheque-card-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(6, 9, 17, 0.55);
+  background: rgba(6, 9, 17, 0.6);
   border: 1px solid var(--border-soft);
   color: var(--text-secondary);
+}
+
+.mediatheque-card-text {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 22px 24px 24px;
+}
+
+.mediatheque-card-text h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.mediatheque-card-text p {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 0.86rem;
+  line-height: 1.42;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 640px) {
+  .mediatheque-card-text h3 {
+    font-size: 1.12rem;
+  }
+
+  .mediatheque-card-text p {
+    max-width: none;
+  }
 }
 

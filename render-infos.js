@@ -8,6 +8,7 @@
   var ICON_CLOCK = '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>';
   var ICON_PHONE = '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.65 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.22a2 2 0 0 1 2.11-.45c.86.31 1.75.53 2.65.65A2 2 0 0 1 22 16.92z"/>';
   var ICON_DOC = '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>';
+  var ICON_WAVES = '<path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 17c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/>';
   var ICON_EYE = '<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>';
   var ICON_DOWNLOAD = '<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/>';
   var ICON_CLOSE = '<path d="M18 6L6 18"/><path d="M6 6l12 12"/>';
@@ -87,6 +88,21 @@
       }
     }
 
+    var piscineGymHost = document.getElementById("infos-piscine-gym");
+    if (piscineGymHost) {
+      if (data.piscineGym && data.piscineGym.length) {
+        piscineGymHost.innerHTML =
+          "<h2>" + iconSpan(ICON_WAVES) + "Piscine et gym</h2>" +
+          '<div class="contact-list">' +
+          data.piscineGym.map(function (p) {
+            return '<div class="contact-row contact-row-wide"><span class="contact-label">' + escapeHtml(p.label) + '</span><span class="contact-value">' + escapeHtml(p.info) + '</span></div>';
+          }).join('') +
+          '</div>';
+      } else {
+        piscineGymHost.style.display = "none";
+      }
+    }
+
     var contactsHost = document.getElementById("infos-contacts");
     if (contactsHost) {
       if (data.contacts && data.contacts.length) {
@@ -102,6 +118,15 @@
       }
     }
 
+    // d.file peut être soit le nom d'un fichier déposé à la racine du
+    // dépôt (ex. "exemple.pdf"), soit une adresse complète vers un
+    // document externe (ex. "https://www.vd.ch/....pdf") : dans ce
+    // second cas, il ne faut pas l'encoder comme un simple nom de
+    // fichier, sinon le lien casse.
+    function docHref(file) {
+      return /^https?:\/\//i.test(file) ? file : encodeURIComponent(file);
+    }
+
     var docsHost = document.getElementById("infos-documents");
     if (docsHost) {
       if (data.documents && data.documents.length) {
@@ -114,11 +139,11 @@
                 '<h3 class="doc-title">' + escapeHtml(d.title) + '</h3>' +
                 '<p class="doc-desc">' + escapeHtml(d.description || "") + '</p>' +
                 '<div class="doc-actions">' +
-                  '<a class="doc-action" href="' + encodeURIComponent(d.file) + '" target="_blank" rel="noopener" aria-label="Afficher le document">' +
+                  '<a class="doc-action" href="' + docHref(d.file) + '" target="_blank" rel="noopener" aria-label="Afficher le document">' +
                     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON_EYE + '</svg>' +
                     '<span>Afficher</span>' +
                   '</a>' +
-                  '<a class="doc-action" href="' + encodeURIComponent(d.file) + '" download aria-label="Télécharger le document">' +
+                  '<a class="doc-action" href="' + docHref(d.file) + '" download aria-label="Télécharger le document">' +
                     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON_DOWNLOAD + '</svg>' +
                     '<span>Télécharger</span>' +
                   '</a>' +

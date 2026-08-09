@@ -19,6 +19,28 @@
              commentaire reçu sur Netlify).
    name    : prénom affiché avec le commentaire.
    text    : le texte du commentaire.
+   teacher : optionnel. Mets "true" pour un commentaire que TU écris toi-
+             même (une règle, une astuce, un conseil pour la vidéo). Il
+             s'affiche exactement comme les autres (même ordre
+             chronologique, même mise en page), seul ton prénom apparaît
+             en doré pour le différencier discrètement.
+             Exemple :
+             {
+               id: "comment-exemple",
+               videoId: "video-art-1",
+               name: "Vincent",
+               text: "Astuce : écoute d'abord une fois les yeux fermés,
+                      juste pour le son, avant de regarder les doigts.",
+               teacher: true
+             },
    ======================================================================= */
 
-window.COMMENTS_DATA = [];
+window.COMMENTS_DATA = [
+  {
+    id: "comment-teacher-fr-gram-1",
+    videoId: "fr-gram-1",
+    name: "Vincent",
+    text: "L'adjectif donne une précision au nom : → un tir cadré",
+    teacher: true
+  }
+];

@@ -16,11 +16,11 @@
   // matière ajoutée dans videos.js s'affiche quand même, à la suite,
   // dans l'ordre où elle apparaît dans les données. Une matière sans
   // vidéo n'affiche simplement pas de section : rien à faire pour la
-  // masquer. Art, Français, Mathématiques et Sciences & Histoire ont
+  // masquer. Arts, Français, Mathématiques et Sciences & Histoire ont
   // chacune leur propre médiathèque dédiée (voir
   // featuredMediathequesSection) ; ce fichier ne sert donc plus qu'aux
   // vidéos ponctuelles qu'on ne veut pas ranger dans une médiathèque.
-  var CATEGORY_ORDER = ["Art", "Français", "Mathématiques", "Sciences & Histoire"];
+  var CATEGORY_ORDER = ["Arts", "Français", "Mathématiques", "Sciences & Histoire"];
 
   function orderedCategories(videos) {
     var seen = {};
@@ -75,8 +75,13 @@
       var approved = commentsFor(v.id);
       var commentsHtml = approved.length
         ? approved.map(function (c) {
-            return '<div class="comment-item">' +
-              '<div class="comment-meta">' + escapeHtml(c.name) + '</div>' +
+            var isTeacher = !!c.teacher;
+            return '<div class="comment-item' + (isTeacher ? ' comment-item-teacher' : '') + '">' +
+              '<div class="comment-meta">' +
+                (isTeacher
+                  ? '<span class="comment-meta-teacher-name">' + escapeHtml(c.name) + '</span>'
+                  : escapeHtml(c.name)) +
+              '</div>' +
               '<p class="comment-text">' + escapeHtml(c.text) + '</p>' +
               '</div>';
           }).join("")
@@ -87,7 +92,9 @@
           '<a class="video-card-yt-link" href="https://www.youtube.com/watch?v=' + encodeURIComponent(v.youtubeId) + '" target="_blank" rel="noopener" aria-label="Regarder « ' + escapeHtml(v.title) + ' » sur YouTube" title="Regarder sur YouTube">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>' +
           '</a>' +
-          '<h3 class="video-card-title">' + escapeHtml(v.title) + '</h3>' +
+          '<h3 class="video-card-title">' + escapeHtml(v.title) +
+            (window.isContentNew && window.isContentNew(v.dateAdded) ? window.newBadgeHtml() : "") +
+          '</h3>' +
           '<div class="video-frame-wrap" data-youtube-id="' + escapeHtml(v.youtubeId) + '" data-video-title="' + escapeHtml(v.title) + '">' +
             '<button type="button" class="video-thumb-btn" aria-label="Regarder : ' + escapeHtml(v.title) + '">' +
               '<img src="https://i.ytimg.com/vi/' + encodeURIComponent(v.youtubeId) + '/hqdefault.jpg" alt="Miniature de la vidéo : ' + escapeHtml(v.title) + '" loading="lazy">' +
@@ -111,22 +118,23 @@
       );
     }
 
-    // Les deux médiathèques (Français et Mathématiques) sont mises en
-    // avant tout en haut de la page, avant les vidéos YouTube classées
-    // par matière : même gabarit compact que les cartes vidéo (miniature
-    // 16:9 + titre), mais avec un contour doré distinctif pour signaler
-    // qu'il s'agit d'une bibliothèque entière plutôt que d'une seule
-    // vidéo.
+    // Les 4 médiathèques sont mises en avant tout en haut de la page,
+    // avant les vidéos YouTube classées par matière : de grands portails
+    // visuels où l'image occupe l'essentiel de la carte (le titre et la
+    // description sont posés directement sur l'image, sur un léger
+    // dégradé assurant la lisibilité), pour donner l'impression de
+    // choisir dans quelle bibliothèque entrer plutôt que de lire une
+    // simple liste.
     function mediathequeCardHtml(opts) {
       return (
         '<a class="video-card mediatheque-card" href="' + escapeHtml(opts.href) + '">' +
-          '<div class="mediatheque-card-visual ' + escapeHtml(opts.visualClass) + '">' +
+          '<div class="mediatheque-card-visual">' +
+            '<div class="mediatheque-card-bg ' + escapeHtml(opts.visualClass) + '"></div>' +
             '<span class="mediatheque-card-badge">Médiathèque</span>' +
-          '</div>' +
-          '<div class="video-meta">' +
-            '<span class="video-tag">' + escapeHtml(opts.tag) + '</span>' +
-            '<h3>' + escapeHtml(opts.title) + '</h3>' +
-            '<p>' + escapeHtml(opts.description) + '</p>' +
+            '<div class="mediatheque-card-text">' +
+              '<h3>' + escapeHtml(opts.title) + '</h3>' +
+              '<p>' + escapeHtml(opts.description) + '</p>' +
+            '</div>' +
           '</div>' +
         '</a>'
       );
@@ -141,29 +149,25 @@
         '<div class="mediatheque-grid">' +
           mediathequeCardHtml({
             href: "francais-mediatheque.html",
-            visualClass: "mediatheque-card-visual-francais",
-            tag: "Médiathèque",
+            visualClass: "mediatheque-card-bg-francais",
             title: "Français",
             description: "Grammaire, conjugaison, orthographe et vocabulaire : une bibliothèque de vidéos dédiée, avec recherche et favoris."
           }) +
           mediathequeCardHtml({
             href: "mathematiques-mediatheque.html",
-            visualClass: "mediatheque-card-visual-maths",
-            tag: "Médiathèque",
+            visualClass: "mediatheque-card-bg-maths",
             title: "Mathématiques",
             description: "Numération, calcul, mesures et géométrie : une bibliothèque de vidéos dédiée, avec recherche et favoris."
           }) +
           mediathequeCardHtml({
             href: "arts-mediatheque.html",
-            visualClass: "mediatheque-card-visual-arts",
-            tag: "Médiathèque",
+            visualClass: "mediatheque-card-bg-arts",
             title: "Arts",
             description: "Musique, image, création et expression : une bibliothèque de vidéos dédiée, avec recherche et favoris."
           }) +
           mediathequeCardHtml({
             href: "sciences-histoire-mediatheque.html",
-            visualClass: "mediatheque-card-visual-sciences",
-            tag: "Médiathèque",
+            visualClass: "mediatheque-card-bg-sciences",
             title: "Sciences & Histoire",
             description: "Découvertes, exploration, temps et inventions : une bibliothèque de vidéos dédiée, avec recherche et favoris."
           }) +

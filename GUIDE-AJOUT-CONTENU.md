@@ -4,22 +4,28 @@ Aucune de ces opérations ne touche au design ni à la structure du site : tu mo
 
 ## Mettre à jour "Cette semaine" (page d'accueil)
 
-Fichier à modifier : `cette-semaine.js`. C'est la carte la plus visible du site, pensée pour être modifiée chaque semaine en quelques secondes.
+Fichier à modifier : `cette-semaine.js`. Ce sont les deux blocs les plus visibles du site ("Informations de la semaine" et "Devoirs"), pensés pour être modifiés chaque semaine en quelques secondes. Le titre "Semaine du ... au ..." n'est plus à saisir : il est calculé automatiquement à partir de la date du jour.
 
-- `updated` : la petite phrase affichée à droite du titre (mets `""` pour la masquer).
-- `items` : la liste des choses à afficher. Copie un bloc `{ type, text }` existant, colle-le avant le `]` final, et modifie `text`.
-- `type` doit être exactement l'une de ces valeurs : `"devoir"`, `"sortie"`, `"evenement"`, `"materiel"` ou `"info"` (détermine l'icône affichée).
+**`infos`** : tout ce qui est ponctuel cette semaine (sorties, événements, piscine, gym, matériel spécial, changement particulier, rappel...). Copie un bloc `{ type, text }` existant, colle-le avant le `]` final, et modifie `text`. `type` doit être exactement l'une de ces valeurs :
+
+- `"sortie"` : sorties, événements, piscine (regroupés sous "Sorties / Événements")
+- `"materiel"` : quelque chose à prendre ou à prévoir (gym, matériel spécial...)
+- `"info"` : toute autre information importante
+
+**`devoirs`** : un objet avec une liste de phrases pour chacun des 4 jours (`mardi`, `mercredi`, `jeudi`, `vendredi`). Pour ajouter un devoir, copie une ligne entre guillemets dans la liste du bon jour. Pour un jour sans devoir, laisse simplement la liste vide (`[]`) : "Rien de prévu." s'affiche automatiquement.
 
 ## Ajouter une vidéo
 
-Fichier à modifier : `videos.js`. Les vidéos sont automatiquement regroupées par matière sur la page (Art, Français, Mathématiques, Sciences & Histoire) : une matière sans aucune vidéo n'affiche simplement pas de section, tu n'as rien à faire pour la masquer ou l'afficher.
+Fichier à modifier : `videos.js`. Les vidéos sont automatiquement regroupées par matière sur la page (Arts, Français, Mathématiques, Sciences & Histoire) : une matière sans aucune vidéo n'affiche simplement pas de section, tu n'as rien à faire pour la masquer ou l'afficher.
 
 1. Va sur YouTube, ouvre la vidéo, copie le code qui suit `watch?v=` dans l'adresse (ex. pour `youtube.com/watch?v=aqz-KE-bpKQ`, le code est `aqz-KE-bpKQ`). Si l'adresse contient d'autres paramètres après (`&list=...`, `&index=...`), ignore-les : seul le code juste après `watch?v=` compte.
 2. Dans `videos.js`, copie un bloc existant entre accolades `{ ... }`, colle-le juste avant le `];` final.
-3. Remplace `id` (un identifiant unique, ex. `video-maths-3`), `category` (exactement `"Art"`, `"Français"`, `"Mathématiques"` ou `"Sciences & Histoire"`), `title`, `description` (facultatif, laisse `""` si tu n'en veux pas) et `youtubeId` par tes propres valeurs.
+3. Remplace `id` (un identifiant unique, ex. `video-maths-3`), `category` (exactement `"Arts"`, `"Français"`, `"Mathématiques"` ou `"Sciences & Histoire"`), `title`, `description` (facultatif, laisse `""` si tu n'en veux pas) et `youtubeId` par tes propres valeurs.
 4. N'oublie pas la virgule après le bloc précédent.
 
 La miniature YouTube et le bouton "Regarder sur YouTube" se génèrent automatiquement à partir du `youtubeId` : tu n'as rien d'autre à fournir. Cliquer sur la miniature lance la vidéo directement sur la page (rien ne se lance tout seul).
+
+Ajoute `dateAdded: "2026-08-09"` (optionnel) pour faire apparaître un petit badge "Nouveau" à côté du titre pendant 14 jours ; il disparaît ensuite tout seul, rien à faire pour l'enlever.
 
 À faire plus tard : ajouter la vidéo "Le fantastique Blob !" dans Sciences & Histoire dès que le bon lien YouTube sera transmis (le lien reçu précédemment pointait par erreur vers la vidéo de l'astronaute).
 
@@ -34,7 +40,7 @@ La branche Français a sa propre médiathèque (page `francais-mediatheque.html`
 
 Ces vidéos ne sont pas hébergées sur notre site : chaque carte ouvre la leçon d'origine dans un nouvel onglet. La recherche et le compteur par catégorie se mettent à jour automatiquement, rien d'autre à faire.
 
-## Ajouter un document dans une branche (Art, Français, Mathématiques, Sciences & Histoire)
+## Ajouter un document dans une branche (Arts, Français, Mathématiques, Sciences & Histoire)
 
 Chaque branche a son propre fichier :
 
@@ -47,6 +53,13 @@ Chaque branche a son propre fichier :
 2. Dans le fichier de la branche concernée, copie un bloc existant, colle-le avant le `];` final.
 3. Renseigne `category`, `title`, `description`, et `file` (le nom exact de ton fichier).
 
+Deux champs optionnels permettent de faire ressortir un document dans une zone dédiée en haut de la page, au lieu de la liste générale filtrée par catégorie :
+
+- `dateAdded: "2026-08-09"` → le document apparaît dans "Documents récents" pendant 21 jours, puis retombe automatiquement dans sa zone normale.
+- `type: "reference"` → "Fiches de référence" (documents importants à garder sous la main toute l'année), ou `type: "revision"` → "Pour réviser" (exercices, fiches à retravailler).
+
+Tant qu'aucun document n'utilise ces champs, ces zones restent invisibles et la page fonctionne comme avant.
+
 ### Ajouter un lien utile à une branche
 
 Chaque branche a aussi son propre fichier de liens : `art-links.js`, `francais-links.js`, `mathematiques-links.js`, `sciences-histoire-links.js`. Copie le bloc d'exemple en commentaire, décommente-le et renseigne `label` (le texte affiché) et `url` (l'adresse complète, avec `https://`). Tant que le fichier est vide, la section "Liens utiles" ne s'affiche pas sur la page — pas besoin de la masquer toi-même.
@@ -57,15 +70,17 @@ La section "Aller plus loin" de chaque page de branche s'affiche automatiquement
 
 ## Ajouter un exercice (et le lier à une branche)
 
-Fichiers à modifier : `qcm-questions.js` (choix multiples), `texte-trous-questions.js` (texte à trous), `vrai-faux-questions.js` (vrai/faux). Pour qu'un exercice apparaisse dans la carte "Exercices" d'une page de branche, indique dans `subject` un mot qui correspond à la branche (ex. `"Art"`, `"Français"`, `"Mathématiques"`, `"Sciences"` ou `"Histoire"` — ces deux derniers comptent pour la branche "Sciences & Histoire").
+Fichiers à modifier : `qcm-questions.js` (choix multiples), `texte-trous-questions.js` (texte à trous), `vrai-faux-questions.js` (vrai/faux). Pour qu'un exercice apparaisse dans la carte "Exercices" d'une page de branche, indique dans `subject` un mot qui correspond à la branche (ex. `"Arts"`, `"Français"`, `"Mathématiques"`, `"Sciences"` ou `"Histoire"` — ces deux derniers comptent pour la branche "Sciences & Histoire").
 
 ## Modifier la page Infos pratiques
 
-Fichier à modifier : `infos-pratiques.js`, organisé en quatre parties :
+Fichier à modifier : `infos-pratiques.js`, organisé en six parties, affichées dans cet ordre :
 
+- `horaire` : `{ image }`, le nom du fichier image de l'horaire déposé à la racine du dépôt.
 - `agenda` : une liste `{ label, page }` qui renvoie simplement au numéro de la page correspondante dans l'agenda officiel (pas besoin de recopier le contenu de l'agenda).
-- `contacts` : une liste `{ label, value }` (enseignant, école, secrétariat, PPLS, urgence...).
+- `piscineGym` : une liste `{ label, info }` pour les infos stables (jour, fréquence) de la piscine et de la gym. Le détail semaine par semaine (y a-t-il piscine cette semaine, quand prendre ses affaires de gym) reste dans la carte "Informations de la semaine" de la page d'accueil — ne le duplique pas ici.
 - `documents` : une liste `{ title, description, file }`, comme sur les pages de branches — dépose le fichier à la racine du dépôt.
+- `contacts` : une liste `{ label, value }` (enseignant, école, secrétariat, PPLS, urgence...).
 - `faq` : une liste `{ q, a }`, affichée discrètement en bas de page.
 
 Pour ajouter une ligne dans n'importe laquelle de ces listes : copie un bloc existant et colle-le juste avant le `]` de la liste concernée.
@@ -74,13 +89,17 @@ Pour ajouter une ligne dans n'importe laquelle de ces listes : copie un bloc exi
 
 Cette page n'a pas de fichier de contenu séparé : le texte est directement dans `objectifs.html`, dans des blocs qui commencent par `<div class="content-block objective-block ...">`. Pour changer un texte, repère la matière concernée et modifie le texte entre les balises `<li>...</li>` (une ligne = un objectif, numérotée automatiquement dans chaque liste). Pour ajouter un objectif, copie une ligne `<li>...</li>` et colle-la juste avant le `</ul>` correspondant. La petite phrase en italique sous chaque titre (`<p class="objective-tagline">...</p>`) peut aussi être modifiée directement. Le bloc "Sciences, Histoire & Géographie" contient deux listes distinctes (Sciences, puis Histoire & Géographie), chacune numérotée indépendamment à partir de 1.
 
-## Changer la date de "Dernière mise à jour"
+## La date de "Dernière mise à jour"
 
-Fichier à modifier : `main.js`, tout en haut. Une seule ligne à changer : `var LAST_UPDATED = "juillet 2026";`. Elle met à jour le pied de page de TOUTES les pages du site en une seule fois.
+Rien à faire : elle se met à jour toute seule à chaque déploiement Netlify, et reflète la vraie date de mise en ligne (pas la date du jour où quelqu'un consulte le site). Le mécanisme : `netlify.toml` régénère `build-info.js` à chaque déploiement avec la date réelle du build, et `main.js` l'affiche en pied de page sur toutes les pages. Ne modifie pas `build-info.js` à la main, il est réécrit automatiquement.
 
 ## Commentaires sous les vidéos
 
 Voir la fin de `GUIDE-MISE-EN-LIGNE.md` pour le fonctionnement complet (modération incluse). En résumé : les nouveaux commentaires arrivent dans l'onglet "Forms" de ton tableau de bord Netlify, pas directement sur le site. Pour publier un commentaire que tu as approuvé, ajoute-le dans `comments.js` (un bloc `{ videoId, name, text }`, `videoId` devant correspondre à l'`id` de la vidéo dans `videos.js`).
+
+## Recherche globale (préparation)
+
+Il n'y a pas encore de barre de recherche sur le site (pas assez de contenu pour que ce soit utile pour l'instant). `search-index.js` prépare le terrain pour le jour où ça le sera : il n'est chargé sur aucune page aujourd'hui, donc il ne coûte rien. Voir les commentaires en tête du fichier pour la suite le moment venu.
 
 ## Traduction (préparation)
 

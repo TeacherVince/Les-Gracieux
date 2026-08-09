@@ -112,8 +112,13 @@
       var isCommentsOpen = !!openComments[video.id];
       var commentsListHtml = approved.length
         ? approved.map(function (c) {
-            return '<div class="comment-item">' +
-              '<div class="comment-meta">' + escapeHtml(c.name) + '</div>' +
+            var isTeacher = !!c.teacher;
+            return '<div class="comment-item' + (isTeacher ? ' comment-item-teacher' : '') + '">' +
+              '<div class="comment-meta">' +
+                (isTeacher
+                  ? '<span class="comment-meta-teacher-name">' + escapeHtml(c.name) + '</span>'
+                  : escapeHtml(c.name)) +
+              '</div>' +
               '<p class="comment-text">' + escapeHtml(c.text) + '</p>' +
               '</div>';
           }).join("")

@@ -21,6 +21,28 @@
 
   var ARROW = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>';
 
+  // Chaque branche a sa propre médiathèque dédiée (davantage de vidéos,
+  // organisées par catégorie) : la carte "Vidéos" y renvoie toujours,
+  // plutôt que vers la bibliothèque générale (videos.html).
+  var MEDIATHEQUE_BY_BRANCH = {
+    "Français": {
+      href: "francais-mediatheque.html",
+      desc: "Une médiathèque pour réviser grammaire, conjugaison, orthographe et vocabulaire."
+    },
+    "Mathématiques": {
+      href: "mathematiques-mediatheque.html",
+      desc: "Des vidéos courtes pour revoir une notion en quelques minutes, classées par catégorie."
+    },
+    "Arts": {
+      href: "arts-mediatheque.html",
+      desc: "Des vidéos courtes pour découvrir la musique, l'image et la création, classées par catégorie."
+    },
+    "Sciences & Histoire": {
+      href: "sciences-histoire-mediatheque.html",
+      desc: "Des vidéos courtes pour explorer les sciences et l'histoire, classées par catégorie."
+    }
+  };
+
   function escapeHtml(str) {
     return String(str)
       .replace(/&/g, "&amp;")
@@ -58,17 +80,15 @@
     if (extraSection && cardsHost) {
       var cards = "";
 
-      // La branche Français a sa propre médiathèque dédiée (davantage de
-      // vidéos, organisées par catégorie) : la carte "Vidéos" y renvoie
-      // toujours, plutôt que vers la bibliothèque générale.
-      if (branche === "Français") {
+      var mediatheque = MEDIATHEQUE_BY_BRANCH[branche];
+      if (mediatheque) {
         cards +=
-          '<a href="francais-mediatheque.html" class="card">' +
+          '<a href="' + mediatheque.href + '" class="card">' +
             '<div class="card-icon icon-violet">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5v-7z" fill="currentColor" stroke="none"/></svg>' +
             '</div>' +
             '<h3>Vidéos</h3>' +
-            '<p>Une médiathèque pour réviser grammaire, conjugaison, orthographe et vocabulaire.</p>' +
+            '<p>' + escapeHtml(mediatheque.desc) + '</p>' +
             '<span class="card-arrow">' + ARROW + '</span>' +
           '</a>';
       } else {
