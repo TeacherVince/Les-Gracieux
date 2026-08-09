@@ -1,7 +1,7 @@
 /* =======================================================================
    VIDÉOTHÈQUE — Les Gracieux
    -----------------------------------------------------------------------
-   Les 4 matières (Art, Français, Mathématiques, Sciences & Histoire) ont
+   Les 4 matières (Arts, Français, Mathématiques, Sciences & Histoire) ont
    chacune leur propre médiathèque dédiée (recherche, catégories,
    favoris, commentaires — voir *-mediatheque-data.js). Ce fichier ne
    sert donc plus qu'à ajouter, si besoin, une vidéo ponctuelle affichée
@@ -15,7 +15,7 @@
    id          : identifiant unique et stable de la vidéo (sert à relier
                  les commentaires à la bonne vidéo). Ne change jamais
                  l'id d'une vidéo qui a déjà des commentaires.
-   category    : matière ("Art", "Français", "Mathématiques" ou
+   category    : matière ("Arts", "Français", "Mathématiques" ou
                  "Sciences & Histoire" apparaissent en premier et dans
                  cet ordre ; toute autre valeur crée simplement une
                  nouvelle section, à la suite). Une matière sans aucune
@@ -25,6 +25,9 @@
    youtubeId   : le code après "watch?v=" dans l'adresse YouTube
                  ex : https://www.youtube.com/watch?v=aqz-KE-bpKQ
                       -> youtubeId = "aqz-KE-bpKQ"
+   dateAdded   : optionnel, ex. "2026-08-09". Si présent et récent
+                 (moins de 14 jours), un petit badge "Nouveau" discret
+                 apparaît à côté du titre, puis disparaît tout seul.
    ======================================================================= */
 
 window.VIDEOS_DATA = [];
