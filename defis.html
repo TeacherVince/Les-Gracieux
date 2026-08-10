@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Défis — Les Gracieux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=optional" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="star-field"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="20" r="9" stroke="#d9a95e" stroke-width="1.3"/>
+        <ellipse cx="18" cy="20" rx="16" ry="5.5" stroke="#d9a95e" stroke-width="1" transform="rotate(-20 18 20)"/>
+        <circle cx="32" cy="8" r="1.3" fill="#d9a95e"/>
+        <circle cx="7" cy="7" r="0.8" fill="#d9a95e"/>
+        <circle cx="35" cy="20" r="0.7" fill="#d9a95e"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">Les Gracieux</span>
+        <span class="brand-tagline">Portail de la classe</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="objectifs.html">Objectifs</a></li>
+        <li><a href="branches.html">Branches</a></li>
+        <li><a href="videos.html">Vidéos</a></li>
+        <li><a href="defis.html" class="active">Défis</a></li>
+        <li><a href="infos-pratiques.html">Infos pratiques</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">✦ Nouveau</span>
+      <h1>Défis</h1>
+      <p class="lead lead-full">Des petits jeux pour réviser en s'amusant, à faire seul, en quelques minutes. Choisis une matière, puis un sujet : chaque défi a son propre style de jeu, toujours dans le même format pour que tu saches à quoi t'attendre.</p>
+      <p class="lead"><a href="defis-scores.html">Voir mes scores →</a></p>
+    </div>
+  </section>
+
+  <div id="defis-content"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Les Gracieux — Portail de la classe</span>
+    <span class="footer-tagline-col">
+      <span>Apprendre, progresser et réussir ensemble.</span>
+      <span class="footer-note">Portail pédagogique de la classe, conçu et administré par l'enseignant.</span>
+    </span>
+    <span class="footer-updated" data-last-updated></span>
+  </div>
+</footer>
+
+<script src="defis-data.js"></script>
+<script src="defis-random.js"></script>
+<script src="defis-score.js"></script>
+<script src="render-defis.js"></script>
+<script src="build-info.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
