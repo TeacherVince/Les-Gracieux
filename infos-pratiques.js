@@ -110,9 +110,13 @@ window.INFOS_DATA = {
       q: "Où retrouver les vidéos pour réviser ?",
       a: "Dans l'onglet « Vidéos », ou depuis la section « Aller plus loin » de chaque branche."
     },
-     {
-              q: "Les commentaires publiés sur le site sont-ils modérés ?",
-              a: "Oui. Tous les commentaires sont placés en attente et doivent être validés par l'enseignant avant d'apparaître publiquement sur le site."
-     }
+    {
+      q: "Les commentaires publiés sur le site sont-ils modérés ?",
+      a: "Oui. Tous les commentaires sont placés en attente et doivent être validés par l'enseignant avant d'apparaître publiquement sur le site."
+    },
+    {
+      q: "Où sont sauvegardés les scores des défis et les textes écrits par les élèves ?",
+      a: "Tout reste en local, sur l'appareil de l'enfant (ordinateur ou tablette) : rien n'est envoyé sur un serveur.\nSi l'enfant change d'appareil ou de navigateur, il ne retrouvera pas ses scores ni ses textes."
+    }
   ]
 };

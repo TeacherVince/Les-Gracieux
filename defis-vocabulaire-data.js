@@ -1,0 +1,45 @@
+/* =======================================================================
+   DEFIS -- Vocabulaire -- banque de questions QCM
+   Genere par script, a valider via le fichier Excel correspondant avant
+   utilisation en classe.
+   ======================================================================= */
+
+window.VOCABULAIRE_DATA = [
+  { question: "Quel mot est un synonyme de « content » ?", choices: ["heureux", "triste", "fatigué", "fâché"], correct: 0 },
+  { question: "Quel mot est un synonyme de « rapide » ?", choices: ["lent", "vite", "calme", "lourd"], correct: 1 },
+  { question: "Quel mot est un synonyme de « manger » ?", choices: ["dormir", "déguster", "courir", "parler"], correct: 1 },
+  { question: "Quel mot est un synonyme de « beau » ?", choices: ["laid", "joli", "petit", "vieux"], correct: 1 },
+  { question: "Quel mot est un synonyme de « regarder » ?", choices: ["observer", "écouter", "toucher", "sentir"], correct: 0 },
+  { question: "Quel mot est un synonyme de « grand » ?", choices: ["minuscule", "immense", "fin", "court"], correct: 1 },
+  { question: "Quel mot est un synonyme de « peur » ?", choices: ["joie", "crainte", "colère", "surprise"], correct: 1 },
+  { question: "Quel mot est un synonyme de « content » comme dans « il est content de son cadeau » ?", choices: ["ravi", "déçu", "inquiet", "gêné"], correct: 0 },
+  { question: "Quel est l'antonyme (contraire) de « construire » ?", choices: ["bâtir", "détruire", "réparer", "peindre"], correct: 1 },
+  { question: "Quel est l'antonyme de « intérieur » ?", choices: ["dedans", "extérieur", "dessous", "dessus"], correct: 1 },
+  { question: "Quel est l'antonyme de « augmenter » ?", choices: ["diminuer", "grandir", "multiplier", "ajouter"], correct: 0 },
+  { question: "Quel est l'antonyme de « aimer » ?", choices: ["adorer", "détester", "apprécier", "admirer"], correct: 1 },
+  { question: "Quel est l'antonyme de « loin » ?", choices: ["près", "ailleurs", "dehors", "longtemps"], correct: 0 },
+  { question: "Quel est l'antonyme de « peu » ?", choices: ["rarement", "beaucoup", "jamais", "assez"], correct: 1 },
+  { question: "Quel est l'antonyme de « toujours » ?", choices: ["souvent", "parfois", "jamais", "encore"], correct: 2 },
+  { question: "Quel est l'antonyme de « sale » ?", choices: ["propre", "mouillé", "neuf", "brillant"], correct: 0 },
+  { question: "Quel est l'antonyme de « le début » ?", choices: ["le milieu", "la fin", "le centre", "le sommet"], correct: 1 },
+  { question: "Comment dit-on le contraire de « content » en ajoutant un préfixe ?", choices: ["incontent", "mécontent", "décontent", "malcontent"], correct: 1 },
+  { question: "Comment dit-on le contraire de « utile » en ajoutant un préfixe ?", choices: ["mésutile", "désutile", "inutile", "malutile"], correct: 2 },
+  { question: "Comment dit-on le contraire de « adroit » en ajoutant un préfixe ?", choices: ["inadroit", "maladroit", "désadroit", "méadroit"], correct: 1 },
+  { question: "Comment dit-on le contraire de « agréable » en ajoutant un préfixe ?", choices: ["inagréable", "désagréable", "méagréable", "malagréable"], correct: 1 },
+  { question: "Comment dit-on le contraire de « possible » en ajoutant un préfixe ?", choices: ["impossible", "désossible", "mépossible", "inpossible"], correct: 0 },
+  { question: "Comment dit-on le contraire de « lisible » en ajoutant un préfixe ?", choices: ["délisible", "malisible", "illisible", "inlisible"], correct: 2 },
+  { question: "« Un escargot avance lentement mais un lièvre court... » Quel mot complète la phrase ?", choices: ["doucement", "vite", "tard", "peu"], correct: 1 },
+  { question: "« Le charbon est noir mais la neige est... » Quel mot complète la phrase ?", choices: ["grise", "blanche", "sombre", "claire"], correct: 1 },
+  { question: "« Un sac de pierres c'est lourd, mais un sac de plumes c'est... » Quel mot complète la phrase ?", choices: ["léger", "dur", "mou", "épais"], correct: 0 },
+  { question: "Quel mot appartient à la même famille de mots que « terre » ?", choices: ["terrain", "tirer", "trier", "terne"], correct: 0 },
+  { question: "Quel mot appartient à la même famille de mots que « dent » ?", choices: ["dentiste", "dense", "dedans", "dessin"], correct: 0 },
+  { question: "Quel mot appartient à la même famille de mots que « fleur » ?", choices: ["fleuriste", "flouer", "fluide", "flèche"], correct: 0 },
+  { question: "Quel mot appartient à la même famille de mots que « chant » ?", choices: ["chanteur", "champ", "chance", "chat"], correct: 0 },
+  { question: "Quel mot appartient à la même famille de mots que « lait » ?", choices: ["laitier", "lettre", "lit", "laid"], correct: 0 },
+  { question: "Quel mot est un synonyme de « beaucoup » ?", choices: ["peu", "énormément", "rarement", "à peine"], correct: 1 },
+  { question: "Quel mot est un synonyme de « triste » ?", choices: ["joyeux", "chagriné", "calme", "fier"], correct: 1 },
+  { question: "Quel mot est un synonyme de « parler » ?", choices: ["discuter", "écrire", "lire", "dessiner"], correct: 0 },
+  { question: "Quel est l'antonyme de « ouvrir » ?", choices: ["fermer", "tourner", "pousser", "tirer"], correct: 0 },
+  { question: "Quel est l'antonyme de « jeune » ?", choices: ["petit", "âgé", "fort", "grand"], correct: 1 },
+  { question: "Quel est l'antonyme de « lourd » ?", choices: ["léger", "dur", "mou", "solide"], correct: 0 },
+];

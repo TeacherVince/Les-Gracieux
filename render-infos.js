@@ -163,7 +163,7 @@
         faqHost.innerHTML =
           '<h3 class="faq-title">Questions fréquentes</h3>' +
           data.faq.map(function (f) {
-            return '<div class="faq-item"><p class="faq-q">' + escapeHtml(f.q) + '</p><p class="faq-a">' + escapeHtml(f.a) + '</p></div>';
+            return '<div class="faq-item"><p class="faq-q">' + escapeHtml(f.q) + '</p><p class="faq-a">' + escapeHtml(f.a).replace(/\n/g, '<br>') + '</p></div>';
           }).join('');
       } else {
         faqHost.style.display = "none";
