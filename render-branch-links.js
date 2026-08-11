@@ -31,7 +31,7 @@
     },
     "Mathématiques": {
       href: "mathematiques-mediatheque.html",
-      desc: "Des vidéos courtes pour revoir une notion en quelques minutes, classées par catégorie."
+      desc: "Des vidéos courtes pour découvrir ou revoir une notion en quelques minutes, classées par catégorie."
     },
     "Arts": {
       href: "arts-mediatheque.html",

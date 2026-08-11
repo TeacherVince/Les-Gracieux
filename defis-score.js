@@ -35,7 +35,7 @@ window.DefisScore = (function () {
     }
   }
 
-  function record(gameId, score, total, difficulty) {
+  function record(gameId, score, total, difficulty, timeMs) {
     if (!gameId) return;
     var all = readAll();
     if (!all[gameId]) all[gameId] = [];
@@ -43,10 +43,22 @@ window.DefisScore = (function () {
       date: new Date().toISOString(),
       score: score,
       total: total,
-      difficulty: difficulty || null
+      difficulty: difficulty || null,
+      timeMs: (typeof timeMs === "number" && timeMs > 0) ? timeMs : null
     });
     all[gameId] = all[gameId].slice(0, MAX_ENTRIES_PER_GAME);
     writeAll(all);
+  }
+
+  // Meilleur temps (le plus rapide) parmi les parties chronométrées ayant
+  // obtenu EXACTEMENT ce score (ex. 15/15) — sert à afficher un record
+  // "à battre" pour les élèves qui utilisent le chronomètre.
+  function bestTimeForScore(gameId, score) {
+    var entries = history(gameId).filter(function (e) {
+      return e.score === score && typeof e.timeMs === "number" && e.timeMs > 0;
+    });
+    if (!entries.length) return null;
+    return entries.reduce(function (a, b) { return b.timeMs < a.timeMs ? b : a; }).timeMs;
   }
 
   function history(gameId) {
@@ -85,6 +97,7 @@ window.DefisScore = (function () {
     record: record,
     history: history,
     best: best,
+    bestTimeForScore: bestTimeForScore,
     lastPlayed: lastPlayed,
     listGames: listGames,
     clearAll: clearAll

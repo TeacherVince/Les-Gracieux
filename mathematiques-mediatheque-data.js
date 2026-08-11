@@ -35,6 +35,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Numération",
     title: "La classe des millions",
     url: "https://maitrelucas.fr/lecons/classe-des-millions/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/lire-les-grands-nombres-classe-des-millions.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/classe-des-millions.png"
   },
   {
@@ -42,6 +43,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Numération",
     title: "Décomposer des nombres à 9 chiffres",
     url: "https://maitrelucas.fr/lecons/decomposer-des-nombres-a-9-chiffres/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/decomposer-un-nombre-a-9-chiffres.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/decomposer-des-nombres.png"
   },
   {
@@ -49,6 +51,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Numération",
     title: "Comparer et ranger des grands nombres",
     url: "https://maitrelucas.fr/lecons/comparer-ranger-grands-nombres-cm1-cm2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/comparer-des-grands-nombres-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/comparer-et-ranger-des-grands-nombres.png"
   },
   {
@@ -56,6 +59,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Numération",
     title: "Utiliser une droite graduée",
     url: "https://maitrelucas.fr/lecons/utiliser-une-droite-graduee/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/placer-des-nombres-sur-une-droite-graduee.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/utiliser-une-droite-graduee-hatier.png"
   },
 
@@ -65,6 +69,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Addition et soustraction",
     title: "Additions posées avec retenues",
     url: "https://maitrelucas.fr/lecons/additions-posees-avec-retenues-cp-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/additions-posees-avec-retenues-V2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/additions-avec-retenues-hatier.png"
   },
   {
@@ -72,6 +77,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Addition et soustraction",
     title: "Revoir les additions posées",
     url: "https://maitrelucas.fr/lecons/revoir-les-additions-posees/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/additionner-des-nombres-entiers.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/additions-posees-de-nombres-entiers.png"
   },
   {
@@ -79,6 +85,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Addition et soustraction",
     title: "Soustractions posées sans retenue",
     url: "https://maitrelucas.fr/lecons/soustractions-posees-sans-retenues-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/soustrations-posees-sans-retenues.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/soustractions-posees-sans-retenues-2.png"
   },
   {
@@ -86,13 +93,15 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Addition et soustraction",
     title: "Soustractions posées avec retenue",
     url: "https://maitrelucas.fr/lecons/soustractions-posees-avec-retenue-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/soustrations-posees-avec-retenues-2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/soustractions-posees-avec-retenues-2.png"
   },
   {
     id: "math-addsous-5",
     category: "Addition et soustraction",
-    title: "Revoir les soustractions posées",
+    title: "Revoir les soustractions posées",
     url: "https://maitrelucas.fr/lecons/revoir-les-soustractions-posees/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/soustraire-des-nombres-entiers.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/soustractions-posees.png"
   },
 
@@ -102,6 +111,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Multiplication",
     title: "Les multiplications",
     url: "https://maitrelucas.fr/lecons/les-multiplications-ce2-ce1/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/sens-multiplication.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/sens-de-la-multiplication-hatier.png"
   },
   {
@@ -109,6 +119,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Multiplication",
     title: "Débuter les multiplications",
     url: "https://maitrelucas.fr/lecons/debuter-les-multiplications/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/debuter-la-multiplication.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/debuter-la-multiplication-hatier.png"
   },
 
@@ -118,6 +129,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Tables de multiplication",
     title: "Les tables de multiplication",
     url: "https://maitrelucas.fr/lecons/tables-de-multiplication/",
+    ficheUrl: "https://maitrelucas.fr/wp-content/uploads/Fiches-exercices-tables-de-multiplication.zip",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/tables-de-multiplication-2.png"
   },
   {
@@ -125,6 +137,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Tables de multiplication",
     title: "La table de Pythagore",
     url: "https://maitrelucas.fr/lecons/la-table-de-pythagore-cm1-cm2-ce2/",
+    ficheUrl: "https://maitrelucas.fr/wp-content/uploads/Les-tables-de-pythagore.zip",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/Table-de-Pythagore-1.png"
   },
   {
@@ -197,6 +210,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Techniques de multiplication",
     title: "Les multiplications posées à un chiffre",
     url: "https://maitrelucas.fr/lecons/les-multiplications-posees-a-1-chiffre-ce2-cm1-cm2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/multiplication-posee-a-1-chiffre.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/multiplication-posee-a-un-chiffre-1.png"
   },
   {
@@ -204,6 +218,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Techniques de multiplication",
     title: "Les multiplications posées à plusieurs chiffres",
     url: "https://maitrelucas.fr/lecons/les-multiplications-posees-a-plusieurs-chiffres-cm1-cm2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/Exercices-multiplication-posee-a-plusieurs-chiffres.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/multiplication-posee-a-plusieurs-chiffres.png"
   },
 
@@ -229,6 +244,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Résolution de problèmes",
     title: "Les étapes pour résoudre des problèmes",
     url: "https://maitrelucas.fr/lecons/les-etapes-pour-resoudre-des-problemes/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/resoudre-des-problemes-ce1-ce2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/resoudre-des-problemes-ce1-ce2.png"
   },
   {
@@ -236,6 +252,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Résolution de problèmes",
     title: "Résoudre des problèmes",
     url: "https://maitrelucas.fr/lecons/resoudre-des-problemes-ce2-cm1-cm2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/140-enigmes-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/resoudre-des-problemes-cm1-cm2.png"
   },
 
@@ -275,6 +292,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Masses",
     title: "Comparer des masses",
     url: "https://maitrelucas.fr/lecons/comparer-des-masses-cp-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/comparer-des-masses.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/Comparer-des-masses-hatier.png"
   },
 
@@ -284,6 +302,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Contenances",
     title: "Les unités de contenance : litre, décilitre et centilitre",
     url: "https://maitrelucas.fr/lecons/unites-de-contenance-litre-decilitre-centilitre/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/mesurer-des-contenances.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/mesurer-des-contenances-1.png"
   },
 
@@ -293,6 +312,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Heure et durées",
     title: "Lire l'heure",
     url: "https://maitrelucas.fr/lecons/lire-l-heure-cm2-cm1-ce2-ce1-cp/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/lire-les-heures-de-lapres-midi-2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/savoir-lire-lheure.png"
   },
   {
@@ -300,6 +320,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Heure et durées",
     title: "Lire les heures de l'après-midi",
     url: "https://maitrelucas.fr/lecons/lire-les-heures-de-l-apres-midi-ce2-cp-ce1/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/lire-les-heures-de-lapres-midi-2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/lire-les-heures-de-lapres-midi-hatier.png"
   },
   {
@@ -307,6 +328,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Heure et durées",
     title: "Lire les heures : moins dix, moins le quart…",
     url: "https://maitrelucas.fr/lecons/lire-les-heures-moins-10-moins-le-quart-ce2-cm1-cm2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/lire-lheure-moins-le-quart-moins-cinq-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/lire-lheure-aller-plus-loin-1.png"
   },
 
@@ -316,6 +338,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Géométrie",
     title: "Le vocabulaire géométrique",
     url: "https://maitrelucas.fr/lecons/le-vocabulaire-geometrique/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/vocabulaire-geometrique.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/figure-geometrique.png"
   },
   {
@@ -323,6 +346,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Géométrie",
     title: "Les angles droits",
     url: "https://maitrelucas.fr/lecons/les-angles-droits-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/angles-droits-2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/angle-droit-hatier.png"
   },
   {
@@ -330,6 +354,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Géométrie",
     title: "Les angles",
     url: "https://maitrelucas.fr/lecons/les-angles-cm2-cm1/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/les-angles-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/angles-1.png"
   },
   {
@@ -337,6 +362,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Géométrie",
     title: "Droites perpendiculaires et parallèles",
     url: "https://maitrelucas.fr/lecons/droites-perpendiculaires-et-paralleles/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/droites-perpendiculaires-et-paralleles.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/droites-perpendiculaires-et-paralleles.png"
   },
 
@@ -346,6 +372,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Figures géométriques",
     title: "Les polygones",
     url: "https://maitrelucas.fr/lecons/les-polygones-cm1-cm2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/les-polygones-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/les-polygones.png"
   },
   {
@@ -353,6 +380,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Figures géométriques",
     title: "Les triangles",
     url: "https://maitrelucas.fr/lecons/triangles-cm2-cm1/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/triangles-3.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/triangles.png"
   },
   {
@@ -360,6 +388,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Figures géométriques",
     title: "Le triangle rectangle",
     url: "https://maitrelucas.fr/lecons/triangle-rectangle/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/triangle-rectangle.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/triangle-rectangle-hatier.png"
   },
   {
@@ -367,6 +396,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Figures géométriques",
     title: "Le carré",
     url: "https://maitrelucas.fr/lecons/le-carre/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/construire-un-carre-1.jpg",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/construire-un-carre-hatier-1.png"
   },
   {
@@ -374,6 +404,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Figures géométriques",
     title: "Construire un rectangle",
     url: "https://maitrelucas.fr/lecons/construire-un-rectangle/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/construire-un-rectangle.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/construire-un-rectangle-hatier.png"
   },
 
@@ -383,6 +414,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Symétrie",
     title: "Reconnaître les axes de symétrie",
     url: "https://maitrelucas.fr/lecons/reconnaitre-les-axes-de-symetrie/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/reconnaitre-les-axes-de-symetrie.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/reconnaitre-les-axes-de-symetrie-dune-figure.png"
   },
   {
@@ -390,6 +422,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Symétrie",
     title: "Tracer une figure par symétrie axiale",
     url: "https://maitrelucas.fr/lecons/tracer-une-figure-par-symetrie-axiale/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/symetrie-axiale-exercices.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/tracer-une-figure-par-symetrie-axiale.png"
   },
 
@@ -399,6 +432,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Aire et périmètre",
     title: "Le périmètre",
     url: "https://maitrelucas.fr/lecons/perimetre-cm1-cm2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/Perimetre-3.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/perimetre-1.png"
   },
   {
@@ -406,6 +440,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Aire et périmètre",
     title: "L'aire",
     url: "https://maitrelucas.fr/lecons/aire-cm1-cm2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/laire-2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/aire-1.png"
   },
   {
@@ -413,6 +448,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Aire et périmètre",
     title: "Différencier l'aire et le périmètre",
     url: "https://maitrelucas.fr/lecons/differencier-aire-perimetre/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/aire-et-perimetre-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/aire-et-perimetre.png"
   },
 
@@ -422,6 +458,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Repérage dans l'espace",
     title: "Se repérer sur un plan",
     url: "https://maitrelucas.fr/lecons/se-reperer-sur-un-plan/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/se-reperer-sur-un-plan.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/se-reperer-sur-un-plan.png"
   },
   {
@@ -429,6 +466,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
     category: "Repérage dans l'espace",
     title: "Coder des déplacements",
     url: "https://maitrelucas.fr/lecons/coder-des-deplacements/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/coder-des-deplacements.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/coder-des-deplacements.png"
   }
 

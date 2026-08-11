@@ -249,7 +249,7 @@ window.DefisBlanks = (function () {
       setEl.appendChild(scoreBar);
 
       var actionsRow = el("div", "conj-actions-row");
-      actionsRow.style.display = "none";
+      actionsRow.style.display = "flex";
       actionsRow.style.gap = "10px";
       actionsRow.style.marginTop = "14px";
 

@@ -25,6 +25,14 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  function formatTime(ms) {
+    var totalSec = ms / 1000;
+    var min = Math.floor(totalSec / 60);
+    var sec = (totalSec - min * 60).toFixed(1);
+    if (sec < 10) sec = "0" + sec;
+    return min + ":" + sec;
+  }
+
   /* ---------------- Génération des questions ---------------- */
 
   function genQuickQuestion() {
@@ -48,7 +56,10 @@
         qs.push({ text: t + " x " + i + " = ?", answer: String(t * i) });
       }
     });
-    return window.DefisRandom.shuffle(qs);
+    // Toujours 12 calculs au total par partie, peu importe le nombre de
+    // livrets sélectionnés : on pioche 12 questions au hasard parmi
+    // l'ensemble des tables choisies plutôt que 12 par table.
+    return window.DefisRandom.shuffle(qs).slice(0, 12);
   }
 
   /* ---------------- Écran de réglages ---------------- */
@@ -137,7 +148,7 @@
       optionsZone.appendChild(timerLabel);
 
       var timerRow = el("div", "exercise-tabs");
-      var timerChoices = [4, 5, 6, 7, 10, 0]; /* 0 = illimité */
+      var timerChoices = [3, 4, 5, 6, 0]; /* 0 = illimité */
       var selectedTimer = 5;
       timerChoices.forEach(function (sec, i) {
         var btn = el("button", "exercise-tab" + (sec === 5 ? " active" : ""));
@@ -173,6 +184,43 @@
       optionsZone._getTimer = function () { return selectedTimer; };
     }
 
+    // Chronomètre : option facultative, pour les élèves qui veulent se
+    // défier et être les plus rapides. Mesure le temps total de la
+    // partie. Uniquement pour "Calcul rapide" : les Livrets ont déjà
+    // leur propre décompte par question, un second chrono ferait doublon.
+    var chronoBlock = el("div");
+    var chronoLabel = el("p", "q-text");
+    chronoLabel.style.marginTop = "16px";
+    chronoLabel.style.fontWeight = "600";
+    chronoLabel.textContent = "Chronomètre (optionnel)";
+    chronoBlock.appendChild(chronoLabel);
+
+    var chronoDesc = el("p", "q-text");
+    chronoDesc.style.color = "var(--text-muted)";
+    chronoDesc.style.fontSize = "0.9rem";
+    chronoDesc.textContent = "Pour se défier et essayer d'être le plus rapide.";
+    chronoBlock.appendChild(chronoDesc);
+
+    var chronoRow = el("div", "exercise-tabs");
+    var chronoOn = false;
+    var chronoBtnOff = el("button", "exercise-tab active");
+    chronoBtnOff.textContent = "Sans chronomètre";
+    var chronoBtnOn = el("button", "exercise-tab");
+    chronoBtnOn.textContent = "Avec chronomètre";
+    chronoBtnOff.addEventListener("click", function () {
+      chronoOn = false;
+      chronoBtnOff.classList.add("active");
+      chronoBtnOn.classList.remove("active");
+    });
+    chronoBtnOn.addEventListener("click", function () {
+      chronoOn = true;
+      chronoBtnOn.classList.add("active");
+      chronoBtnOff.classList.remove("active");
+    });
+    chronoRow.appendChild(chronoBtnOff);
+    chronoRow.appendChild(chronoBtnOn);
+    chronoBlock.appendChild(chronoRow);
+
     modes.forEach(function (m, i) {
       var btn = el("button", "exercise-tab" + (i === 0 ? " active" : ""));
       btn.textContent = m.label;
@@ -181,22 +229,31 @@
         modeRow.querySelectorAll(".exercise-tab").forEach(function (b) { b.classList.remove("active"); });
         btn.classList.add("active");
         renderOptionsZone();
+        if (selectedMode === "rapide") {
+          chronoBlock.style.display = "";
+        } else {
+          chronoBlock.style.display = "none";
+          chronoOn = false;
+          chronoBtnOff.classList.add("active");
+          chronoBtnOn.classList.remove("active");
+        }
       });
       modeRow.appendChild(btn);
     });
     wrap.appendChild(modeRow);
     wrap.appendChild(optionsZone);
+    wrap.appendChild(chronoBlock);
 
     var startBtn = el("button", "btn btn-primary");
     startBtn.style.marginTop = "24px";
     startBtn.textContent = "Commencer";
     startBtn.addEventListener("click", function () {
       if (selectedMode === "rapide") {
-        onStart({ mode: "rapide" });
+        onStart({ mode: "rapide", chrono: chronoOn });
       } else {
         var tables = optionsZone._getTables ? optionsZone._getTables() : [2];
         var timer = optionsZone._getTimer ? optionsZone._getTimer() : 5;
-        onStart({ mode: "livrets", tables: tables, timer: timer });
+        onStart({ mode: "livrets", tables: tables, timer: timer, chrono: chronoOn });
       }
     });
     wrap.appendChild(startBtn);
@@ -211,7 +268,7 @@
 
     var questions = settings.mode === "livrets"
       ? genLivretQuestions(settings.tables)
-      : (function () { var arr = []; for (var i = 0; i < 15; i++) arr.push(genQuickQuestion()); return arr; })();
+      : (function () { var arr = []; for (var i = 0; i < 10; i++) arr.push(genQuickQuestion()); return arr; })();
 
     var timerSeconds = settings.mode === "livrets" ? settings.timer : 0;
 
@@ -228,6 +285,18 @@
 
     var progressEl = el("p", "quiz-progress");
     setEl.appendChild(progressEl);
+
+    var chronoEl = null;
+    var chronoTickId = null;
+    var chronoStart = null;
+    var chronoElapsedMs = 0;
+    if (settings.chrono) {
+      chronoEl = el("p", "q-text");
+      chronoEl.style.fontWeight = "600";
+      chronoEl.style.color = "var(--accent-gold)";
+      chronoEl.textContent = "⏱ 0:00.0";
+      setEl.appendChild(chronoEl);
+    }
 
     var qEl = el("div", "quiz-question");
     var qText = el("p", "q-text");
@@ -273,7 +342,7 @@
     setEl.appendChild(scoreBar);
 
     var actionsRow = el("div", "conj-actions-row");
-    actionsRow.style.display = "none";
+    actionsRow.style.display = "flex";
     actionsRow.style.gap = "10px";
     actionsRow.style.marginTop = "14px";
     var replayBtn = el("button", "btn btn-outline");
@@ -294,6 +363,11 @@
     var correctCount = 0;
     var missed = [];
     var intervalId = null;
+    // Mode "à la suite" : avec le chrono en Calcul rapide, une erreur ne
+    // fait pas avancer — un nouveau calcul remplace celui raté, et il
+    // faut le réussir pour continuer. Résultat final toujours 15/15,
+    // seul le temps varie d'une partie à l'autre.
+    var retryUntilCorrect = settings.mode === "rapide" && !!settings.chrono;
 
     function clearTimer() {
       if (intervalId) { clearInterval(intervalId); intervalId = null; }
@@ -347,9 +421,19 @@
         ? "Bonne réponse !"
         : (timedOut ? "Temps écoulé ! " : "") + "La bonne réponse était : " + q.answer;
       feedbackEl.classList.add("show", ok ? "ok" : "ko");
-      if (ok) correctCount++; else missed.push(q);
 
-      index++;
+      if (ok) {
+        correctCount++;
+        index++;
+      } else if (retryUntilCorrect) {
+        // On remplace le calcul raté par un nouveau, sans avancer :
+        // le même numéro de calcul reste à résoudre.
+        questions[index] = genQuickQuestion();
+      } else {
+        missed.push(q);
+        index++;
+      }
+
       setTimeout(nextQuestion, 700);
     }
 
@@ -363,7 +447,7 @@
       progressEl.textContent = "Partie terminée !";
       scoreLabel.textContent = correctCount + " bonnes réponses sur " + questions.length;
       scoreValue.textContent = correctCount + " / " + questions.length;
-      if (missed.length) {
+      if (missed.length && settings.mode === "livrets") {
         var missedEl = el("p", "q-text");
         missedEl.style.marginTop = "10px";
         missedEl.textContent = "À revoir : " + missed.map(function (m) { return m.text.replace(" = ?", " = " + m.answer); }).join(" · ");
@@ -371,11 +455,28 @@
       }
       actionsRow.style.display = "flex";
 
+      if (chronoTickId) { clearInterval(chronoTickId); chronoTickId = null; }
+      if (settings.chrono && chronoStart) {
+        chronoElapsedMs = Date.now() - chronoStart;
+        if (chronoEl) chronoEl.textContent = "⏱ " + formatTime(chronoElapsedMs) + " — partie terminée";
+      }
+
       if (window.DefisScore) {
         var gameId = settings.mode === "livrets"
           ? "calcul-livrets-" + settings.tables.slice().sort(function (a, b) { return a - b; }).join("+")
           : "calcul-rapide";
-        window.DefisScore.record(gameId, correctCount, questions.length);
+        window.DefisScore.record(gameId, correctCount, questions.length, null, settings.chrono ? chronoElapsedMs : null);
+
+        if (settings.chrono) {
+          var bestMs = window.DefisScore.bestTimeForScore(gameId, correctCount);
+          var bestEl = el("p", "q-text");
+          bestEl.style.marginTop = "6px";
+          bestEl.style.color = "var(--text-muted)";
+          bestEl.textContent = (bestMs !== null && bestMs < chronoElapsedMs)
+            ? "Meilleur temps pour ce score (" + correctCount + "/" + questions.length + ") : " + formatTime(bestMs)
+            : "Nouveau meilleur temps pour ce score (" + correctCount + "/" + questions.length + ") !";
+          setEl.insertBefore(bestEl, scoreBar);
+        }
       }
     }
 
@@ -383,6 +484,13 @@
     backBtn.addEventListener("click", function () {
       renderSettings(host, function (s) { renderGame(host, s); });
     });
+
+    if (settings.chrono) {
+      chronoStart = Date.now();
+      chronoTickId = setInterval(function () {
+        chronoEl.textContent = "⏱ " + formatTime(Date.now() - chronoStart);
+      }, 100);
+    }
 
     nextQuestion();
   }

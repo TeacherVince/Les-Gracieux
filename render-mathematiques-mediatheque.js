@@ -90,6 +90,9 @@
   var STAR_ICON =
     '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6.3 6.8.7-5.1 4.7 1.4 6.8L12 17.6l-6 3.4 1.4-6.8-5.1-4.7 6.8-.7z"/></svg>';
 
+  var DOWNLOAD_ICON =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>';
+
   var CHEVRON_ICON =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
 
@@ -132,9 +135,17 @@
         : '<p class="comment-empty">Aucun commentaire pour l\'instant.</p>';
 
       return (
-        '<article class="media-card" data-search="' + escapeHtml(normalize(video.title)) + '">' +
+        '<article class="media-card' + (video.ficheUrl ? " has-fiche" : "") + '" data-search="' + escapeHtml(normalize(video.title)) + '">' +
+          (video.ficheUrl
+            ? '<a class="media-fiche-btn" href="' + escapeHtml(video.ficheUrl) + '" target="_blank" rel="noopener" ' +
+                'data-tooltip="Télécharger les exercices" ' +
+                'aria-label="Télécharger la fiche d\'exercices « ' + escapeHtml(video.title) + ' »">' +
+                DOWNLOAD_ICON +
+              '</a>'
+            : '') +
           '<button type="button" class="media-fav-btn' + (active ? " is-active" : "") + '" ' +
             'data-id="' + escapeHtml(video.id) + '" ' +
+            'data-tooltip="' + (active ? "Retirer des favoris" : "Ajouter aux favoris") + '" ' +
             'aria-pressed="' + (active ? "true" : "false") + '" ' +
             'aria-label="' + (active ? "Retirer" : "Ajouter") + ' « ' + escapeHtml(video.title) + ' » des favoris">' +
             STAR_ICON +
@@ -204,6 +215,25 @@
 
       host.innerHTML = html || '<p class="media-empty">Aucune vidéo ne correspond à cette recherche.</p>';
       bindInteractions();
+      applyTitleLayout();
+    }
+
+    // Les 2 icônes (favori + téléchargement) se placent côte à côte quand
+    // le titre tient sur 1 ligne, ou l'une sous l'autre quand il déborde
+    // sur 2 lignes (sinon elles chevauchent le texte ou débordent de la
+    // carte). On mesure la hauteur réelle du titre après rendu pour le
+    // savoir, plutôt que de deviner selon le nombre de mots.
+    function applyTitleLayout() {
+      host.querySelectorAll(".media-card-title").forEach(function (titleEl) {
+        var card = titleEl.closest(".media-card");
+        if (!card) return;
+        var cs = getComputedStyle(titleEl);
+        var lineHeight = parseFloat(cs.lineHeight) || 20;
+        var paddingV = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+        var oneLineHeight = lineHeight + paddingV;
+        var isTwoLines = titleEl.getBoundingClientRect().height > oneLineHeight + 2;
+        card.classList.toggle("title-two-lines", isTwoLines);
+      });
     }
 
     function bindInteractions() {

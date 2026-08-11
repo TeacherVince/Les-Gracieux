@@ -28,8 +28,9 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
   {
     id: "fr-gram-1",
     category: "Grammaire",
-    title: "Les adjectifs CE2",
+    title: "L'adjectif",
     url: "https://maitrelucas.fr/lecons/les-adjectifs-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/adjectif-ce2-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/adjectif.png"
   },
   {
@@ -37,6 +38,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Grammaire",
     title: "Les constituants de la phrase",
     url: "https://maitrelucas.fr/lecons/les-constituants-de-la-phrase/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/constituants-de-la-phrase.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/constituants-de-la-phrase.png"
   },
   {
@@ -44,6 +46,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Grammaire",
     title: "Sujet, verbe et complément",
     url: "https://maitrelucas.fr/lecons/sujet-verbe-complement-ce2-cm1/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/La-phrase-sujet-verbe-et-complement-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/verbe-sujet-verbe-et-complement.png"
   },
   {
@@ -51,13 +54,15 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Grammaire",
     title: "Le sujet",
     url: "https://maitrelucas.fr/lecons/sujet-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/sujet-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/sujet.png"
   },
   {
     id: "fr-gram-5",
     category: "Grammaire",
-    title: "Le verbe CE2",
+    title: "Le verbe",
     url: "https://maitrelucas.fr/lecons/verbe-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/verbe-ce2-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/verbe-ce2.png"
   },
   {
@@ -72,6 +77,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Grammaire",
     title: "C'est quoi le groupe nominal ?",
     url: "https://maitrelucas.fr/lecons/cest-quoi-le-groupe-nominal/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/groupe-nominal-ce1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/le-grounpe-nominal-ce1-ce2.png"
   },
   {
@@ -79,6 +85,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Grammaire",
     title: "Enrichir le groupe nominal",
     url: "https://maitrelucas.fr/lecons/enrichir-le-groupe-nominal/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/adjectif-ce2-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/enrichir-le-groupe-nominal.png"
   },
 
@@ -95,6 +102,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Conjugaison",
     title: "Reconnaître les temps",
     url: "https://maitrelucas.fr/lecons/reconnaitre-les-temps/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/reconnaitreles-phrases-au-passe-au-present-au-futur.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/reconnaitre-le-passe-le-present-et-le-futur.png"
   },
   {
@@ -107,36 +115,41 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
   {
     id: "fr-conj-4",
     category: "Conjugaison",
-    title: "La conjugaison des verbes en -er au présent",
+    title: "Les verbes en ‑er au présent",
     url: "https://maitrelucas.fr/lecons/la-conjugaison-des-verbes-en-er-au-present-ce1/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/conjugaison-verbes-du-premier-groupe-2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/verbes-du-1er-groupe.png"
   },
   {
     id: "fr-conj-5",
     category: "Conjugaison",
-    title: "Conjugaison de être et avoir au présent",
+    title: "Être et avoir au présent",
     url: "https://maitrelucas.fr/lecons/conjugaison-etre-et-avoir-au-present/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/conjugaison-etre-et-avoir-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/verbes-etre-et-avoir.png"
   },
   {
     id: "fr-conj-6",
     category: "Conjugaison",
-    title: "Imparfait des verbes du 1er groupe",
+    title: "Imparfait des verbes en ‑er",
     url: "https://maitrelucas.fr/lecons/imparfait-des-verbes-du-1er-groupe/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/conjugaison-des-verbes-du-1er-groupe-a-limparfait.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/imparfait-1er-groupe.png"
   },
   {
     id: "fr-conj-7",
     category: "Conjugaison",
-    title: "Imparfait des verbes être et avoir",
+    title: "Imparfait des verbes\nêtre et avoir",
     url: "https://maitrelucas.fr/lecons/imparfait-verbes-etre-avoir/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/conjugaison-des-verbes-etre-et-avoir-a-limparfait.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/imparfait-des-verbes-etre-et-avoir.png"
   },
   {
     id: "fr-conj-8",
     category: "Conjugaison",
-    title: "Le futur des verbes du 1er groupe",
+    title: "Le futur des verbes en ‑er",
     url: "https://maitrelucas.fr/lecons/le-futur-des-verbes-du-1er-groupe/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/conjugaison-des-verbes-du-1er-groupe-au-futur.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/fuur-des-verbes-du-1er-groupe-ce1-ce2.png"
   },
   {
@@ -144,20 +157,23 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Conjugaison",
     title: "Futur des verbes être et avoir",
     url: "https://maitrelucas.fr/lecons/futur-des-verbes-etre-avoir/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/conjugaison-des-verbes-etre-et-avoir-au-futur.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/future-etre-et-avoir-ce1.png"
   },
   {
     id: "fr-conj-10",
     category: "Conjugaison",
-    title: "Passé composé verbe en er, premier groupe",
+    title: "Passé composé verbe en ‑er",
     url: "https://maitrelucas.fr/lecons/passe-compose-verbe-er-ce2-ce1/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/passe-compose-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/passe-compose-verbes-du-1er-groupe-1.png"
   },
   {
     id: "fr-conj-11",
     category: "Conjugaison",
-    title: "Passé composé des verbes être et avoir",
+    title: "Passé composé\nêtre et avoir",
     url: "https://maitrelucas.fr/lecons/passe-compose-des-verbes-etre-et-avoir/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/passe-compose-etre-et-avoir-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/passe-compose-des-verbes-etre-et-avoir.png"
   },
 
@@ -167,6 +183,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Orthographe",
     title: "Le pluriel des noms",
     url: "https://maitrelucas.fr/lecons/le-pluriel-des-noms/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/le-pluriel-des-noms.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/pluriel-des-noms.png"
   },
   {
@@ -181,6 +198,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Orthographe",
     title: "m devant m, b, p",
     url: "https://maitrelucas.fr/lecons/m-devant-m-b-p-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/m-devant-m-b-p-2.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/m-devant-m-b-p.png"
   },
 
@@ -188,8 +206,9 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
   {
     id: "fr-vocab-1",
     category: "Vocabulaire",
-    title: "Le dictionnaire et ordre alphabétique",
+    title: "Le dictionnaire et ordre alphabétique",
     url: "https://maitrelucas.fr/lecons/le-dictionnaire-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/dictionnaire-ordre-alphabetique-3.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/dictionnaire-ordre-alphabetique.png"
   },
   {
@@ -197,6 +216,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Vocabulaire",
     title: "Les synonymes",
     url: "https://maitrelucas.fr/lecons/les-synonymes-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/synonymes.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/synonymes.png"
   },
   {
@@ -204,6 +224,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Vocabulaire",
     title: "Les contraires ou antonymes",
     url: "https://maitrelucas.fr/lecons/contraires-antonymes-ce1-ce2/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/antonymes.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/les-antonymes-ce2-cm1-cm2.png"
   },
   {
@@ -211,6 +232,7 @@ window.FRANCAIS_MEDIATHEQUE_DATA = [
     category: "Vocabulaire",
     title: "Les mots de la même famille",
     url: "https://maitrelucas.fr/lecons/les-mots-de-la-meme-famille/",
+    ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/familles-de-mots-ce1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/les-mots-de-la-meme-famille.png"
   },
   {

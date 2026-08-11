@@ -50,7 +50,8 @@ window.CETTE_SEMAINE_DATA = {
 
   devoirs: {
     mardi: [
-      "Reprendre un rythme scolaire."
+      "Reprendre un rythme scolaire.",
+      "Lire un livre."
     ],
     mercredi: [],
     jeudi: [
