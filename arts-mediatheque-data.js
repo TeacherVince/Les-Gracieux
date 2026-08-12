@@ -40,8 +40,6 @@ window.ARTS_MEDIATHEQUE_DATA = [
   { id: "video-art-3", theme: "musique", title: "Indiara Sfair - Harmonica", youtubeId: "aB9zBhRlCQk" },
   { id: "video-art-4", theme: "musique", title: "Zelda BOTW - Accordéon", youtubeId: "uhPhK57_Hbo" },
   { id: "video-art-10", theme: "musique", title: "Wintergatan - Marble Machine (machine à billes musicale)", youtubeId: "IvUU8joBb1Q" },
-  { id: "video-art-11", theme: "musique", title: "Animusic - Pipe Dream", youtubeId: "hyCIpKAIFyo" },
-  { id: "video-art-12", theme: "musique", title: "Animusic - Resonant Chamber", youtubeId: "toXNVbvFXyk" },
 
   /* -------------------- image : 🎭 Illusions & images étonnantes -------- */
   { id: "video-art-8", theme: "image", title: "Une des premières vidéos de l'histoire de l'Humanité", youtubeId: "XxdBtYyiViY" },
@@ -56,14 +54,11 @@ window.ARTS_MEDIATHEQUE_DATA = [
   { id: "video-art-6", theme: "creer", title: "Fabriquer un avion en papier", youtubeId: "-wL3wEKc6sg" },
   { id: "video-art-17", theme: "creer", title: "Créer un flip-book qui s'anime - Centre Pompidou", youtubeId: "UIYrc1ekcTo" },
   { id: "video-art-18", theme: "creer", title: "Le pop-up - Centre Pompidou", youtubeId: "x0GRodqHvoE" },
-  { id: "video-art-19", theme: "creer", title: "Le pochoir - Centre Pompidou", youtubeId: "GLSKLorYi6k" },
   { id: "video-art-20", theme: "creer", title: "Le papier découpé - Centre Pompidou", youtubeId: "dE0D2LNn4mg" },
   { id: "video-art-21", theme: "creer", title: "Le théâtre d'ombres - Centre Pompidou", youtubeId: "Ud3Si5qPw4M" },
 
   /* -------------------------- autrement : 🌀 L'art autrement ------------ */
   { id: "video-art-7", theme: "autrement", title: "Tutoriel danse", youtubeId: "MRs6lxkRykQ" },
-  { id: "video-art-22", theme: "autrement", title: "Le portrait géant fait d'objets - Bernard Pras", youtubeId: "s3x5fwv0UdU" },
-  { id: "video-art-23", theme: "autrement", title: "Les sculptures géantes qui marchent - Strandbeest", youtubeId: "-JyK-TYpUSY" },
-  { id: "video-art-24", theme: "autrement", title: "JR au Louvre et le secret de la Grande Pyramide", youtubeId: "rsnpm1_IXbw", noEmbed: true }
+  { id: "video-art-23", theme: "autrement", title: "Les sculptures géantes qui marchent - Strandbeest", youtubeId: "-JyK-TYpUSY" }
 
 ];

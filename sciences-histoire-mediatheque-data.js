@@ -40,7 +40,6 @@ window.SCIENCES_HISTOIRE_MEDIATHEQUE_DATA = [
   { id: "video-sciences-4", theme: "univers", title: "Pourquoi y a-t-il des saisons sur la Terre ?", youtubeId: "Ps1UPv4ETRk" },
   { id: "video-sciences-3", theme: "univers", title: "Une vidéo montrant un astronaute sortant de la Station spatiale internationale !", youtubeId: "mMZtpMSmqoE" },
   { id: "video-sciences-8", theme: "univers", title: "Pourquoi flotte-t-on dans l'espace ?", youtubeId: "Njz8Gl6FLug" },
-  { id: "video-sciences-13", theme: "univers", title: "Le son de l'Univers entendu par Hubble", youtubeId: "H-Ci_YwfH04" },
   { id: "video-sciences-21", theme: "univers", title: "Le vent sur Mars entendu par la sonde InSight (NASA)", youtubeId: "ZK5bOZx2xXs" },
   { id: "video-sciences-22", theme: "univers", title: "Le « rugissement » de Jupiter capté par la sonde Juno (NASA)", youtubeId: "8CT_txWEo5I" },
   { id: "video-sciences-23", theme: "univers", title: "Le Soleil transformé en musique (NASA)", youtubeId: "-I-zdmg_Dno" },
@@ -72,8 +71,6 @@ window.SCIENCES_HISTOIRE_MEDIATHEQUE_DATA = [
   { id: "video-sciences-1", theme: "histoire", title: "Voyage de la Préhistoire à l'Antiquité", youtubeId: "Cz4TpP2Isgs" },
   { id: "video-sciences-10", theme: "histoire", title: "La Préhistoire", youtubeId: "vxD_G8_WMVE" },
   { id: "video-sciences-19", theme: "histoire", title: "1996 : c'est quoi Internet ? — Archive INA", youtubeId: "NmSEJq4Mfk0" },
-  { id: "video-sciences-20", theme: "histoire", title: "1968 : le film qui anticipait Internet — Archive INA", youtubeId: "FdWYA4Q9CNg" },
-  { id: "video-sciences-31", theme: "histoire", title: "1969 : le premier vol du Concorde — Archive INA", youtubeId: "Uipm-O53GTQ" },
-  { id: "video-sciences-32", theme: "histoire", title: "1944 : la libération de Paris — Archive INA", youtubeId: "qMGXlcqGijw" }
+  { id: "video-sciences-31", theme: "histoire", title: "1969 : le premier vol du Concorde — Archive INA", youtubeId: "Uipm-O53GTQ" }
 
 ];
