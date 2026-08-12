@@ -1,111 +1,79 @@
 /* =======================================================================
    MÉDIATHÈQUE SCIENCES & HISTOIRE — Les Gracieux
    -----------------------------------------------------------------------
-   Vidéos YouTube de sciences et d'histoire, organisées par catégorie et
-   affichées sur sciences-histoire-mediatheque.html. Contrairement aux
-   médiathèques Français et Mathématiques (qui renvoient vers
-   maitrelucas.fr), ces vidéos sont hébergées sur YouTube et se lisent
-   directement dans la carte, comme dans l'onglet "Vidéos" : rien à
-   héberger nous-mêmes.
+   Vidéos YouTube de sciences et d'histoire, organisées par grand thème
+   et affichées sur sciences-histoire-mediatheque.html avec un système de
+   pastilles de filtre (plus agréable à parcourir que des catégories
+   strictes) combiné à la recherche. Ces vidéos sont hébergées sur
+   YouTube et se lisent directement dans la carte, comme dans l'onglet
+   "Vidéos" : rien à héberger nous-mêmes.
 
    Pour AJOUTER une vidéo : copie un bloc { ... } ci-dessous, colle-le
-   avant le "];" final de sa catégorie, et renseigne :
+   avant le "];" final de son thème, et renseigne :
 
    id        : un identifiant unique et stable (sert à relier les
                commentaires à la bonne vidéo — ne change jamais l'id
                d'une vidéo qui a déjà des commentaires).
-   category  : exactement l'une de ces valeurs : "Découvertes",
-               "Exploration", "Temps" ou "Inventions" (détermine la
-               section dans laquelle la vidéo apparaît).
+   theme     : exactement l'une de ces valeurs : "univers", "nature",
+               "eau", "vivant" ou "histoire" (détermine sous quelle
+               pastille de filtre la vidéo apparaît — voir
+               sciences-histoire-mediatheque.html).
    title     : le titre affiché sur la carte.
    youtubeId : le code après "watch?v=" dans l'adresse YouTube
                ex : https://www.youtube.com/watch?v=aqz-KE-bpKQ
                     -> youtubeId = "aqz-KE-bpKQ"
+   noEmbed   : (optionnel) mettre "true" si la chaîne d'origine
+               désactive la lecture intégrée (erreur "Erreur de
+               configuration du lecteur vidéo") : dans ce cas, cliquer
+               sur la vignette ouvre directement YouTube dans un nouvel
+               onglet au lieu de lire la vidéo sur place.
 
-   N'oublie pas la virgule après le bloc précédent.
+   N'oublie pas la virgule après le bloc précédent. Si tu ajoutes ou
+   retires une vidéo, pense aussi à corriger les compteurs affichés dans
+   les pastilles de filtre (data-theme) de
+   sciences-histoire-mediatheque.html.
    ======================================================================= */
 
 window.SCIENCES_HISTOIRE_MEDIATHEQUE_DATA = [
 
-  /* --------------------------- Découvertes ----------------------------- */
-  {
-    id: "video-sciences-4",
-    category: "Découvertes",
-    title: "Pourquoi y a-t-il des saisons sur la Terre ?",
-    youtubeId: "Ps1UPv4ETRk"
-  },
-  {
-    id: "video-sciences-5",
-    category: "Découvertes",
-    title: "Pourquoi le ciel est bleu ?",
-    youtubeId: "fwiEcPCXLcI"
-  },
-  {
-    id: "video-sciences-6",
-    category: "Découvertes",
-    title: "Comment les abeilles fabriquent le miel ?",
-    youtubeId: "9W6y_ug_MuE"
-  },
-  {
-    id: "video-sciences-9",
-    category: "Découvertes",
-    title: "Comment fonctionne le cerveau ?",
-    youtubeId: "5JnwC8ajz18"
-  },
-  {
-    id: "video-sciences-12",
-    category: "Découvertes",
-    title: "Pourquoi les océans sont-ils salés ?",
-    youtubeId: "Ha01wK-DmSY"
-  },
+  /* ---------------------- univers : 🪐 L'Univers et ses mystères -------- */
+  { id: "video-sciences-4", theme: "univers", title: "Pourquoi y a-t-il des saisons sur la Terre ?", youtubeId: "Ps1UPv4ETRk" },
+  { id: "video-sciences-3", theme: "univers", title: "Une vidéo montrant un astronaute sortant de la Station spatiale internationale !", youtubeId: "mMZtpMSmqoE" },
+  { id: "video-sciences-8", theme: "univers", title: "Pourquoi flotte-t-on dans l'espace ?", youtubeId: "Njz8Gl6FLug" },
+  { id: "video-sciences-13", theme: "univers", title: "Le son de l'Univers entendu par Hubble", youtubeId: "H-Ci_YwfH04" },
+  { id: "video-sciences-21", theme: "univers", title: "Le vent sur Mars entendu par la sonde InSight (NASA)", youtubeId: "ZK5bOZx2xXs" },
+  { id: "video-sciences-22", theme: "univers", title: "Le « rugissement » de Jupiter capté par la sonde Juno (NASA)", youtubeId: "8CT_txWEo5I" },
+  { id: "video-sciences-23", theme: "univers", title: "Le Soleil transformé en musique (NASA)", youtubeId: "-I-zdmg_Dno" },
 
-  /* ---------------------------- Exploration ----------------------------- */
-  {
-    id: "video-sciences-2",
-    category: "Exploration",
-    title: "Une vidéo passionnante sur la profondeur des océans !",
-    youtubeId: "PhS30G3utyo"
-  },
-  {
-    id: "video-sciences-3",
-    category: "Exploration",
-    title: "Une vidéo montrant un astronaute sortant de la Station spatiale internationale !",
-    youtubeId: "mMZtpMSmqoE"
-  },
-  {
-    id: "video-sciences-7",
-    category: "Exploration",
-    title: "Les supervolcans : tout comprendre",
-    youtubeId: "-Y4jLQBnz2M"
-  },
-  {
-    id: "video-sciences-8",
-    category: "Exploration",
-    title: "Pourquoi flotte-t-on dans l'espace ?",
-    youtubeId: "Njz8Gl6FLug"
-  },
+  /* -------------------------- nature : 🌿 Mystérieuse Nature ------------ */
+  { id: "video-sciences-5", theme: "nature", title: "Pourquoi le ciel est bleu ?", youtubeId: "fwiEcPCXLcI" },
+  { id: "video-sciences-9", theme: "nature", title: "Comment fonctionne le cerveau ?", youtubeId: "5JnwC8ajz18" },
+  { id: "video-sciences-7", theme: "nature", title: "Les supervolcans : tout comprendre", youtubeId: "-Y4jLQBnz2M" },
+  { id: "video-sciences-14", theme: "nature", title: "Un cristal qui pousse, vu au microscope", youtubeId: "K297toCvHtY" },
+  { id: "video-sciences-25", theme: "nature", title: "Une fleur qui s'ouvre sous nos yeux (National Geographic)", youtubeId: "LjCzPp-MK48" },
+  { id: "video-sciences-26", theme: "nature", title: "La naissance d'un flocon de neige", youtubeId: "Nnq6RU690dg" },
 
-  /* ------------------------------- Temps --------------------------------- */
-  {
-    id: "video-sciences-1",
-    category: "Temps",
-    title: "Voyage de la Préhistoire à l'Antiquité",
-    youtubeId: "Cz4TpP2Isgs"
-  },
-  {
-    id: "video-sciences-10",
-    category: "Temps",
-    title: "La Préhistoire",
-    youtubeId: "vxD_G8_WMVE"
-  },
-  {
-    id: "video-sciences-11",
-    category: "Temps",
-    title: "Pourquoi les dinosaures ont disparu ?",
-    youtubeId: "ClRM6DELlV8"
-  }
+  /* --------------------- eau : 🌊 Le monde magique de l'eau ------------- */
+  { id: "video-sciences-12", theme: "eau", title: "Pourquoi les océans sont-ils salés ?", youtubeId: "Ha01wK-DmSY" },
+  { id: "video-sciences-2", theme: "eau", title: "Une vidéo passionnante sur la profondeur des océans !", youtubeId: "PhS30G3utyo" },
+  { id: "video-sciences-15", theme: "eau", title: "Comment marche une étoile de mer ? Vue par-dessous", youtubeId: "p0VM67cQUWw" },
+  { id: "video-sciences-16", theme: "eau", title: "Le camouflage impressionnant d'un poulpe", youtubeId: "XocHDvHlcJM" },
+  { id: "video-sciences-28", theme: "eau", title: "La méduse, un prédateur extrêmement fragile (National Geographic)", youtubeId: "-Yw90YgzA3I" },
 
-  /* ----------------------------- Inventions -------------------------------
-     (aucune vidéo pour l'instant — ajoute un bloc ici) */
+  /* ------------------------------ vivant : 🦋 La vie sauvage ------------ */
+  { id: "video-sciences-6", theme: "vivant", title: "Comment les abeilles fabriquent le miel ?", youtubeId: "9W6y_ug_MuE" },
+  { id: "video-sciences-11", theme: "vivant", title: "Pourquoi les dinosaures ont disparu ?", youtubeId: "ClRM6DELlV8" },
+  { id: "video-sciences-17", theme: "vivant", title: "Une chenille devient papillon sous nos yeux", youtubeId: "ocWgSgMGxOc" },
+  { id: "video-sciences-18", theme: "vivant", title: "Une fourmi observée en train de manger, au microscope", youtubeId: "w8_nivwW9Kc" },
+  { id: "video-sciences-29", theme: "vivant", title: "La chorégraphie rythmée de l'araignée paon (National Geographic)", youtubeId: "I16wCyrB3fA" },
+  { id: "video-sciences-30", theme: "vivant", title: "Un colibri filmé au ralenti (BBC Earth)", youtubeId: "cro1KFKmCzg" },
+
+  /* --------------------- histoire : 📜 L'Histoire et ses histoires ------ */
+  { id: "video-sciences-1", theme: "histoire", title: "Voyage de la Préhistoire à l'Antiquité", youtubeId: "Cz4TpP2Isgs" },
+  { id: "video-sciences-10", theme: "histoire", title: "La Préhistoire", youtubeId: "vxD_G8_WMVE" },
+  { id: "video-sciences-19", theme: "histoire", title: "1996 : c'est quoi Internet ? — Archive INA", youtubeId: "NmSEJq4Mfk0" },
+  { id: "video-sciences-20", theme: "histoire", title: "1968 : le film qui anticipait Internet — Archive INA", youtubeId: "FdWYA4Q9CNg" },
+  { id: "video-sciences-31", theme: "histoire", title: "1969 : le premier vol du Concorde — Archive INA", youtubeId: "Uipm-O53GTQ" },
+  { id: "video-sciences-32", theme: "histoire", title: "1944 : la libération de Paris — Archive INA", youtubeId: "qMGXlcqGijw" }
 
 ];

@@ -2,20 +2,26 @@
    partir de sciences-histoire-mediatheque-data.js.
 
    Fonctionnement :
-   - 4 catégories fixes (Découvertes, Exploration, Temps, Inventions),
-     chacune avec un compteur et un bouton pour la replier/déplier.
-   - Une pseudo-catégorie "Mes favoris" apparaît en premier dès qu'au
-     moins une vidéo a été mise en favori (étoile sur la carte), et
-     disparaît sinon : rien à configurer.
-   - Une recherche filtre les cartes en direct par titre au fur et à
-     mesure de la saisie (pas de bouton "Rechercher").
+   - Les vidéos sont réparties par grand thème (univers, nature, eau,
+     vivant, histoire). Au lieu de sections repliables, on utilise des
+     pastilles de filtre (voir la barre au-dessus de la grille dans
+     sciences-histoire-mediatheque.html) combinées à la recherche : un
+     clic sur une pastille filtre la grille, la recherche filtre en plus
+     par titre.
+   - Les 2 pastilles sur chaque carte (favori + "voir en grand sur
+     YouTube") suivent exactement les mêmes règles que dans les
+     médiathèques Français et Mathématiques : même taille, mêmes
+     positions, même infobulle au survol, et le même repli l'une sous
+     l'autre quand le titre déborde sur 2 lignes.
    - Les favoris sont mémorisés dans le navigateur (localStorage), sans
      compte utilisateur : ils sont donc propres à cet ordinateur.
-   - Contrairement aux médiathèques Français et Mathématiques, ces
-     vidéos sont hébergées sur YouTube : chaque carte affiche sa vraie
-     miniature et se lit directement au clic (aucun lecteur ne se
-     charge tant que l'utilisateur n'a pas cliqué) ; une icône permet
-     aussi de l'ouvrir directement sur YouTube dans un nouvel onglet.
+   - Chaque carte affiche sa vraie miniature YouTube et se lit
+     directement au clic (aucun lecteur ne se charge tant que
+     l'utilisateur n'a pas cliqué). Certaines vidéos (musées,
+     institutions...) désactivent la lecture intégrée sur YouTube :
+     pour celles-là (noEmbed: true dans les données), un clic sur la
+     vignette ouvre directement YouTube dans un nouvel onglet au lieu
+     d'essayer de lire la vidéo sur place.
    - Un bandeau "Commentaires" sous chaque carte se déplie pour afficher
      les commentaires approuvés (comments.js) et un formulaire d'envoi
      vers Netlify Forms, identique à celui des autres vidéos du site. */
@@ -24,13 +30,6 @@
   "use strict";
 
   var FAVORITES_KEY = "lg-sciences-histoire-favoris";
-
-  var CATEGORIES = [
-    { key: "Découvertes", label: "Découvertes", icon: "🔬" },
-    { key: "Exploration", label: "Exploration", icon: "🧭" },
-    { key: "Temps", label: "Temps", icon: "⏳" },
-    { key: "Inventions", label: "Inventions", icon: "💡" }
-  ];
 
   function escapeHtml(str) {
     return String(str)
@@ -80,9 +79,6 @@
   var CHEVRON_ICON =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
 
-  var SEARCH_ICON =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
-
   var COMMENT_ICON =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>';
 
@@ -93,12 +89,14 @@
     '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
 
   document.addEventListener("DOMContentLoaded", function () {
-    var host = document.getElementById("mediatheque-root");
+    var grid = document.getElementById("mediatheque-grid");
+    var empty = document.getElementById("mediatheque-empty");
     var data = window.SCIENCES_HISTOIRE_MEDIATHEQUE_DATA;
-    if (!host || !data || !data.length) return;
+    if (!grid || !data || !data.length) return;
 
     var searchInput = document.getElementById("mediatheque-search");
-    var collapsed = {}; // état de repli par catégorie (mémoire en session uniquement)
+    var filterBtns = document.querySelectorAll(".filter-btn");
+    var activeTheme = "all";
     var openComments = {}; // état déplié/replié des commentaires par vidéo (mémoire en session uniquement)
     var allComments = window.COMMENTS_DATA || [];
 
@@ -125,18 +123,21 @@
         : '<p class="comment-empty">Aucun commentaire pour l\'instant.</p>';
 
       return (
-        '<article class="media-card" data-search="' + escapeHtml(normalize(video.title)) + '">' +
-          '<a class="video-card-yt-link" href="https://www.youtube.com/watch?v=' + encodeURIComponent(video.youtubeId) + '" target="_blank" rel="noopener" aria-label="Regarder « ' + escapeHtml(video.title) + ' » sur YouTube" title="Regarder sur YouTube">' +
+        '<article class="media-card has-fiche" data-theme="' + escapeHtml(video.theme) + '" data-search="' + escapeHtml(normalize(video.title)) + '">' +
+          '<a class="media-fiche-btn" href="https://www.youtube.com/watch?v=' + encodeURIComponent(video.youtubeId) + '" target="_blank" rel="noopener" ' +
+            'data-tooltip="Voir en grand sur YouTube" ' +
+            'aria-label="Voir « ' + escapeHtml(video.title) + ' » en grand sur YouTube">' +
             YT_ICON +
           '</a>' +
           '<button type="button" class="media-fav-btn' + (active ? " is-active" : "") + '" ' +
             'data-id="' + escapeHtml(video.id) + '" ' +
+            'data-tooltip="' + (active ? "Retirer des favoris" : "Ajouter aux favoris") + '" ' +
             'aria-pressed="' + (active ? "true" : "false") + '" ' +
             'aria-label="' + (active ? "Retirer" : "Ajouter") + ' « ' + escapeHtml(video.title) + ' » des favoris">' +
             STAR_ICON +
           '</button>' +
           '<h3 class="media-card-title">' + escapeHtml(video.title) + '</h3>' +
-          '<div class="video-frame-wrap" data-youtube-id="' + escapeHtml(video.youtubeId) + '" data-video-title="' + escapeHtml(video.title) + '">' +
+          '<div class="video-frame-wrap" data-youtube-id="' + escapeHtml(video.youtubeId) + '" data-video-title="' + escapeHtml(video.title) + '"' + (video.noEmbed ? ' data-no-embed="1"' : '') + '>' +
             '<button type="button" class="video-thumb-btn" aria-label="Regarder : ' + escapeHtml(video.title) + '">' +
               '<img src="https://i.ytimg.com/vi/' + encodeURIComponent(video.youtubeId) + '/hqdefault.jpg" alt="" loading="lazy">' +
               '<span class="video-play-icon">' + PLAY_ICON + '</span>' +
@@ -161,65 +162,55 @@
       );
     }
 
-    function categorySectionHtml(key, label, icon, videos, favorites) {
-      var isOpen = !collapsed[key];
-      return (
-        '<div class="media-category" data-category-key="' + escapeHtml(key) + '">' +
-          '<button type="button" class="media-category-toggle" aria-expanded="' + (isOpen ? "true" : "false") + '">' +
-            '<span class="media-category-name">' + icon + ' ' + escapeHtml(label) +
-              ' <span class="media-category-count">(' + videos.length + ')</span></span>' +
-            '<span class="media-category-chevron">' + CHEVRON_ICON + '</span>' +
-          '</button>' +
-          '<div class="media-category-grid"' + (isOpen ? "" : ' hidden') + '>' +
-            videos.map(function (v) { return cardHtml(v, favorites); }).join("") +
-          '</div>' +
-        '</div>'
-      );
-    }
-
     function render() {
       var favorites = getFavorites();
       var query = normalize(searchInput ? searchInput.value.trim() : "");
-      var html = "";
-
-      // ---- Pseudo-catégorie "Mes favoris" ----
-      if (favorites.length) {
-        var favVideos = data.filter(function (v) { return isFavorite(v.id, favorites); });
-        if (query) favVideos = favVideos.filter(function (v) { return normalize(v.title).indexOf(query) !== -1; });
-        if (favVideos.length || !query) {
-          html += categorySectionHtml("favoris", "Mes favoris", "⭐", favVideos, favorites);
-        }
-      }
-
-      // ---- Catégories fixes ----
-      CATEGORIES.forEach(function (cat) {
-        var videos = data.filter(function (v) { return v.category === cat.key; });
-        if (query) {
-          videos = videos.filter(function (v) { return normalize(v.title).indexOf(query) !== -1; });
-          if (!videos.length) return; // recherche active : catégorie sans résultat masquée
-        }
-        html += categorySectionHtml(cat.key, cat.label, cat.icon, videos, favorites);
+      var visible = data.filter(function (v) {
+        var matchesTheme = activeTheme === "all" || v.theme === activeTheme;
+        var matchesQuery = !query || normalize(v.title).indexOf(query) !== -1;
+        return matchesTheme && matchesQuery;
       });
-
-      host.innerHTML = html || '<p class="media-empty">Aucune vidéo ne correspond à cette recherche.</p>';
+      grid.innerHTML = visible.map(function (v) { return cardHtml(v, favorites); }).join("");
+      if (empty) empty.hidden = visible.length !== 0;
       bindInteractions();
+      applyTitleLayout();
+    }
+
+    // Les 2 icônes (favori + téléchargement) se placent côte à côte quand
+    // le titre tient sur 1 ligne, ou l'une sous l'autre quand il déborde
+    // sur 2 lignes (sinon elles chevauchent le texte ou débordent de la
+    // carte). On mesure la hauteur réelle du titre après rendu pour le
+    // savoir, plutôt que de deviner selon le nombre de mots.
+    function applyTitleLayout() {
+      grid.querySelectorAll(".media-card-title").forEach(function (titleEl) {
+        var card = titleEl.closest(".media-card");
+        if (!card) return;
+        var cs = getComputedStyle(titleEl);
+        var lineHeight = parseFloat(cs.lineHeight) || 20;
+        var paddingV = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+        var oneLineHeight = lineHeight + paddingV;
+        var isTwoLines = titleEl.getBoundingClientRect().height > oneLineHeight + 2;
+        card.classList.toggle("title-two-lines", isTwoLines);
+      });
     }
 
     function bindInteractions() {
-      host.querySelectorAll(".media-category-toggle").forEach(function (btn) {
+      grid.querySelectorAll(".video-thumb-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
-          var section = btn.closest(".media-category");
-          var key = section.getAttribute("data-category-key");
-          var grid = section.querySelector(".media-category-grid");
-          var nowOpen = grid.hasAttribute("hidden"); // sera ouvert après le clic
-          collapsed[key] = !nowOpen;
-          btn.setAttribute("aria-expanded", nowOpen ? "true" : "false");
-          if (nowOpen) grid.removeAttribute("hidden");
-          else grid.setAttribute("hidden", "");
+          var wrap = btn.closest(".video-frame-wrap");
+          var youtubeId = wrap.getAttribute("data-youtube-id");
+          var title = wrap.getAttribute("data-video-title");
+          if (wrap.hasAttribute("data-no-embed")) {
+            window.open("https://www.youtube.com/watch?v=" + encodeURIComponent(youtubeId), "_blank", "noopener");
+            return;
+          }
+          wrap.innerHTML =
+            '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(youtubeId) + '?autoplay=1" ' +
+            'title="' + title + '" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
         });
       });
 
-      host.querySelectorAll(".media-fav-btn").forEach(function (btn) {
+      grid.querySelectorAll(".media-fav-btn").forEach(function (btn) {
         btn.addEventListener("click", function (e) {
           e.preventDefault();
           var id = btn.getAttribute("data-id");
@@ -232,7 +223,7 @@
         });
       });
 
-      host.querySelectorAll(".media-comments-toggle").forEach(function (btn) {
+      grid.querySelectorAll(".media-comments-toggle").forEach(function (btn) {
         btn.addEventListener("click", function () {
           var id = btn.getAttribute("data-id");
           openComments[id] = !openComments[id];
@@ -240,18 +231,7 @@
         });
       });
 
-      host.querySelectorAll(".video-thumb-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var wrap = btn.closest(".video-frame-wrap");
-          var youtubeId = wrap.getAttribute("data-youtube-id");
-          var title = wrap.getAttribute("data-video-title");
-          wrap.innerHTML =
-            '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(youtubeId) + '?autoplay=1" ' +
-            'title="' + title + '" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
-        });
-      });
-
-      host.querySelectorAll(".comment-form").forEach(function (form) {
+      grid.querySelectorAll(".comment-form").forEach(function (form) {
         form.addEventListener("submit", function (e) {
           e.preventDefault();
           var status = form.querySelector(".comment-form-status");
@@ -292,13 +272,28 @@
       });
     }
 
-    if (searchInput) {
-      searchInput.addEventListener("input", function () {
-        collapsed = {}; // une recherche déplie tout : on repart d'un état ouvert
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        filterBtns.forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        activeTheme = btn.getAttribute("data-theme");
         render();
       });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener("input", render);
     }
 
     render();
+
+    // Sur un premier chargement (police pas encore en cache), le rendu
+    // initial peut mesurer les titres avec une police de repli le temps
+    // du téléchargement de Playfair/Inter, ce qui fausse la détection
+    // "1 ligne / 2 lignes" pour applyTitleLayout(). On remesure donc une
+    // fois les polices effectivement prêtes.
+    if (window.document.fonts && window.document.fonts.ready) {
+      window.document.fonts.ready.then(function () { applyTitleLayout(); });
+    }
   });
 })();

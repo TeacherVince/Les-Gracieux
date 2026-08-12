@@ -41,6 +41,10 @@
 html {
   scroll-behavior: smooth;
   font-size: 112.5%;
+  /* Reproduit l'affichage à 90% de zoom navigateur (qui était la
+     référence visuelle habituelle) directement à 100%, pour tout le
+     site : texte, espacements, images, icônes. */
+  zoom: 90%;
 }
 
 body {
@@ -253,6 +257,27 @@ nav.main-nav a.active::before {
   gap: 20px;
 }
 
+/* "Explorer le portail" (accueil) : les 5 cartes tiennent sur une seule
+   ligne sur grand écran (colonnes égales, cartes déjà compactes via
+   body.home-page .card), et repassent en grille souple puis en une
+   colonne sur petits écrans pour ne jamais se retrouver écrasées. */
+.card-grid-portal {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .card-grid-portal {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid-portal {
+    grid-template-columns: 1fr;
+  }
+}
+
 .card {
   position: relative;
   background: var(--bg-panel-soft);
@@ -302,6 +327,7 @@ nav.main-nav a.active::before {
   color: var(--text-secondary);
   font-size: 0.92rem;
   margin: 0;
+  white-space: pre-line;
 }
 
 .card .card-arrow {
@@ -378,6 +404,13 @@ footer.site-footer .wrap {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+}
+
+/* Léger réhaussement (3px) par rapport à la mention de statut juste
+   en dessous, purement visuel : ne modifie pas l'espacement du flux. */
+.footer-tagline {
+  position: relative;
+  top: -3px;
 }
 
 /* Mention discrète du statut du portail : volontairement plus petite
@@ -497,6 +530,15 @@ footer.site-footer .wrap {
 .filter-btn.active {
   background: var(--accent-gold-soft);
   border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.filter-btn .filter-count {
+  color: var(--text-muted);
+  font-size: 0.8em;
+}
+
+.filter-btn.active .filter-count {
   color: var(--accent-gold);
 }
 
@@ -1850,6 +1892,7 @@ body.home-page footer.site-footer {
   margin: 0;
   font-size: 0.9rem;
   color: var(--text-primary);
+  white-space: pre-line;
 }
 
 body.home-page .week-card {
@@ -2707,4 +2750,3 @@ textarea:focus-visible,
     max-width: none;
   }
 }
-
