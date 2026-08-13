@@ -78,6 +78,11 @@ window.INFOS_DATA = {
       title: "Vacances scolaires",
       description: "Le calendrier des vacances scolaires vaudoises, jusqu'en 2031 — parce qu'on aime voir loin.",
       file: "vacances-scolaires-vaudoises.pdf"
+    },
+    {
+      title: "Congé joker - Fonctionnement",
+      description: "Utilisation et fonctionnement des congés joker.",
+      file: "Congé joker - Fonctionnement.pdf"
     }
   ],
 

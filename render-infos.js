@@ -135,18 +135,16 @@
           '<div class="doc-list">' +
           data.documents.map(function (d) {
             return (
-              '<div class="doc-row">' +
-                '<h3 class="doc-title">' + escapeHtml(d.title) + '</h3>' +
-                '<p class="doc-desc">' + escapeHtml(d.description || "") + '</p>' +
-                '<div class="doc-actions">' +
-                  '<a class="doc-action" href="' + docHref(d.file) + '" target="_blank" rel="noopener" aria-label="Afficher le document">' +
-                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON_EYE + '</svg>' +
-                    '<span>Afficher</span>' +
-                  '</a>' +
-                  '<a class="doc-action" href="' + docHref(d.file) + '" download aria-label="Télécharger le document">' +
-                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON_DOWNLOAD + '</svg>' +
-                    '<span>Télécharger</span>' +
-                  '</a>' +
+              '<div class="doc-compact-row">' +
+                '<a class="doc-icon-btn" href="' + docHref(d.file) + '" target="_blank" rel="noopener" aria-label="Afficher ' + escapeHtml(d.title) + '" title="Afficher">' +
+                  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON_EYE + '</svg>' +
+                '</a>' +
+                '<a class="doc-icon-btn" href="' + docHref(d.file) + '" download aria-label="Télécharger ' + escapeHtml(d.title) + '" title="Télécharger">' +
+                  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON_DOWNLOAD + '</svg>' +
+                '</a>' +
+                '<div class="doc-compact-info">' +
+                  '<h3 class="doc-compact-title">' + escapeHtml(d.title) + '</h3>' +
+                  '<p class="doc-compact-desc" title="' + escapeHtml(d.description || "") + '">' + escapeHtml(d.description || "") + '</p>' +
                 '</div>' +
               '</div>'
             );

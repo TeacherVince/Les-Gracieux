@@ -18,7 +18,7 @@
    type : détermine l'icône et l'étiquette affichées. Utilise une des
           valeurs suivantes :
           - "sortie"   : sorties, événements, piscine (regroupés sous
-                         "Sorties / Événements")
+                         "Sorties & événements")
           - "materiel" : quelque chose à prendre ou à prévoir (gym,
                          matériel spécial...)
           - "info"     : toute autre information importante
@@ -36,7 +36,11 @@ window.CETTE_SEMAINE_DATA = {
   infos: [
     {
       type: "sortie",
-      text: "1er cours de natation : mardi 25 août."
+      text: "Piscine : 8 septembre"
+    },
+    {
+      type: "sortie",
+      text: "Journée « Morges est au musée » :\n15 septembre"
     },
     {
       type: "info",

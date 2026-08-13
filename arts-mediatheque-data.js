@@ -40,6 +40,8 @@ window.ARTS_MEDIATHEQUE_DATA = [
   { id: "video-art-3", theme: "musique", title: "Indiara Sfair - Harmonica", youtubeId: "aB9zBhRlCQk" },
   { id: "video-art-4", theme: "musique", title: "Zelda BOTW - Accordéon", youtubeId: "uhPhK57_Hbo" },
   { id: "video-art-10", theme: "musique", title: "Wintergatan - Marble Machine (machine à billes musicale)", youtubeId: "IvUU8joBb1Q" },
+  { id: "video-art-26", theme: "musique", title: "Une biche vient écouter la harpe", youtubeId: "9Xd8xq06FCw" },
+  { id: "video-art-27", theme: "musique", title: "Duo de Oud et de Guitare", youtubeId: "ses7ssgWFEU" },
 
   /* -------------------- image : 🎭 Illusions & images étonnantes -------- */
   { id: "video-art-8", theme: "image", title: "Une des premières vidéos de l'histoire de l'Humanité", youtubeId: "XxdBtYyiViY" },
@@ -56,6 +58,7 @@ window.ARTS_MEDIATHEQUE_DATA = [
   { id: "video-art-18", theme: "creer", title: "Le pop-up - Centre Pompidou", youtubeId: "x0GRodqHvoE" },
   { id: "video-art-20", theme: "creer", title: "Le papier découpé - Centre Pompidou", youtubeId: "dE0D2LNn4mg" },
   { id: "video-art-21", theme: "creer", title: "Le théâtre d'ombres - Centre Pompidou", youtubeId: "Ud3Si5qPw4M" },
+  { id: "video-art-25", theme: "creer", title: "Apprends à dessiner un bel arbre", youtubeId: "GYteaLSCitE" },
 
   /* -------------------------- autrement : 🌀 L'art autrement ------------ */
   { id: "video-art-7", theme: "autrement", title: "Tutoriel danse", youtubeId: "MRs6lxkRykQ" },
