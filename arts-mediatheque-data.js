@@ -39,17 +39,17 @@ window.ARTS_MEDIATHEQUE_DATA = [
   { id: "video-art-2", theme: "musique", title: "Charles Berthoud - Basse", youtubeId: "2_qQzd-haA8" },
   { id: "video-art-3", theme: "musique", title: "Indiara Sfair - Harmonica", youtubeId: "aB9zBhRlCQk" },
   { id: "video-art-4", theme: "musique", title: "Zelda BOTW - Accordéon", youtubeId: "uhPhK57_Hbo" },
-  { id: "video-art-10", theme: "musique", title: "Wintergatan - Marble Machine (machine à billes musicale)", youtubeId: "IvUU8joBb1Q" },
+  { id: "video-art-10", theme: "musique", title: "La machine à billes musicale de Wintergatan", youtubeId: "IvUU8joBb1Q" },
   { id: "video-art-26", theme: "musique", title: "Une biche vient écouter la harpe", youtubeId: "9Xd8xq06FCw" },
   { id: "video-art-27", theme: "musique", title: "Duo de Oud et de Guitare", youtubeId: "ses7ssgWFEU" },
 
   /* -------------------- image : 🎭 Illusions & images étonnantes -------- */
   { id: "video-art-8", theme: "image", title: "Une des premières vidéos de l'histoire de l'Humanité", youtubeId: "XxdBtYyiViY" },
   { id: "video-art-9", theme: "image", title: "Les premiers effets spéciaux du cinéma - Georges Méliès, 1898", youtubeId: "IKQRV4XKZt4" },
-  { id: "video-art-13", theme: "image", title: "Ambiguous Cylinder Illusion", youtubeId: "oWfFco7K9v8" },
-  { id: "video-art-14", theme: "image", title: "Amazing Anamorphic Illusions !", youtubeId: "tBNHPk-Lnkk" },
-  { id: "video-art-15", theme: "image", title: "Silhouette Zoetrope", youtubeId: "2-A_Pcrz6xU" },
-  { id: "video-art-16", theme: "image", title: "Fresh Guacamole - PES", youtubeId: "dNJdJIwCF_Y" },
+  { id: "video-art-14", theme: "image", title: "Illusion anamorphique !", youtubeId: "tBNHPk-Lnkk" },
+  { id: "video-art-13", theme: "image", title: "Un cylindre carré !?", youtubeId: "oWfFco7K9v8" },
+  { id: "video-art-15", theme: "image", title: "La silhouette Zoetrope", youtubeId: "2-A_Pcrz6xU" },
+  { id: "video-art-16", theme: "image", title: "Guacamole en stop-motion", youtubeId: "dNJdJIwCF_Y" },
 
   /* --------------------------- creer : ✋ Créer avec ses mains ----------- */
   { id: "video-art-5", theme: "creer", title: "Fabriquer un bateau en papier", youtubeId: "ZdPtowjRPL4" },
