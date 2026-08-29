@@ -19,10 +19,20 @@
           valeurs suivantes :
           - "sortie"   : sorties, événements, piscine (regroupés sous
                          "Sorties & événements")
+          - "divers"   : nouveautés du site (nouvelle vidéo ajoutée,
+                         mise à jour...). Ajoute "link" (voir plus bas)
+                         pour renvoyer directement vers la page
+                         concernée.
           - "materiel" : quelque chose à prendre ou à prévoir (gym,
                          matériel spécial...)
           - "info"     : toute autre information importante
-   text : le texte affiché (une phrase suffit).
+   text : le texte affiché (une phrase suffit). Si le texte est trop
+          long pour tenir sur une ligne, mets la date à la ligne avec
+          "\n" (voir l'exemple "Morges est au musée" ci-dessous).
+   link : (optionnel, pour "divers" surtout) une URL de page du site
+          (ex. "sciences-histoire-mediatheque.html") qui rend le texte
+          cliquable, pour amener directement vers la médiathèque ou
+          la page concernée.
 
    ---- devoirs ----
    Les devoirs de la semaine, répartis dans les 4 colonnes affichées
@@ -30,39 +40,48 @@
    jour est une liste de phrases : ajoute ou supprime une ligne selon
    les besoins. Une liste vide affiche simplement "Rien de prévu"
    pour ce jour, rien à faire de particulier.
+
+   note : (optionnel) une ligne mise en avant sous les 4 colonnes,
+          pour un concours ou un test à venir. Précise toujours le
+          jour dans le texte, ex. "Concours du vendredi : verbes 5P
+          (présent et imparfait)". Enlève cette ligne (ou mets-la à
+          "") une fois le concours passé.
    ======================================================================= */
 
 window.CETTE_SEMAINE_DATA = {
   infos: [
     {
       type: "sortie",
-      text: "Piscine : 8 septembre"
-    },
-    {
-      type: "sortie",
-      text: "Journée « Morges est au musée » :\n15 septembre"
+      text: "Piscine : 8 septembre\nMorges est au musée : 15 septembre"
     },
     {
       type: "info",
-      text: "Rentrée : le lundi 17 août à 8h40 !"
+      text: "Rencontre parents - direction : 9 septembre"
     },
     {
       type: "materiel",
-      text: "Lundi de la rentrée : prendre ses affaires de gym."
+      text: "Lundi : prendre ses affaires de gym"
+    },
+    {
+      type: "divers",
+      text: "Nouvelle vidéo : La peau de l'eau",
+      link: "sciences-histoire-mediatheque.html"
     }
   ],
 
   devoirs: {
     mardi: [
-      "Reprendre un rythme scolaire.",
-      "Lire un livre."
+      "Fiche français n°1"
     ],
-    mercredi: [],
+    mercredi: [
+      "Allemand : apprendre voc p.10"
+    ],
     jeudi: [
-      "Bien s'hydrater."
+      "Fiche maths n°1 - recto"
     ],
     vendredi: [
-      "Dormir suffisamment."
-    ]
+      "Fiche maths n°1 - verso"
+    ],
+    note: "Concours du vendredi : verbes 5P (présent et imparfait)"
   }
 };

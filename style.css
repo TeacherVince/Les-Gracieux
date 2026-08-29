@@ -1892,7 +1892,22 @@ body.home-page footer.site-footer {
   margin: 0;
   font-size: 0.9rem;
   color: var(--text-primary);
-  white-space: pre-line;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.week-item-line {
+  display: block;
+}
+
+.week-item-link {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.week-item-link:hover {
+  text-decoration: underline;
 }
 
 body.home-page .week-card {
@@ -1960,6 +1975,17 @@ body.home-page .week-card-header {
   font-size: 0.82rem;
   font-style: italic;
   color: var(--text-muted);
+}
+
+.devoirs-note {
+  margin: 14px 0 0;
+  padding: 12px 16px;
+  background: var(--accent-gold-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--accent-gold);
 }
 
 @media (max-width: 780px) {

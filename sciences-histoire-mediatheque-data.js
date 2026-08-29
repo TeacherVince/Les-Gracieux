@@ -36,6 +36,13 @@
 
 window.SCIENCES_HISTOIRE_MEDIATHEQUE_DATA = [
 
+  /* ------------------------------- ajouts récents ----------------------
+     Les vidéos les plus récemment ajoutées viennent en tout premier ici
+     (peu importe leur thème), pour qu'elles apparaissent en tête de la
+     médiathèque dans la vue "Tout". Elles sont bien sûr aussi comptées
+     dans leur thème pour les filtres. */
+  { id: "video-sciences-40", theme: "eau", title: "La peau de l'eau : expérience", youtubeId: "LB7u840H3JQ" },
+
   /* ---------------------- univers : 🪐 L'Univers et ses mystères -------- */
   { id: "video-sciences-4", theme: "univers", title: "Pourquoi y a-t-il des saisons sur la Terre ?", youtubeId: "Ps1UPv4ETRk" },
   { id: "video-sciences-3", theme: "univers", title: "Une vidéo montrant un astronaute sortant de la Station spatiale internationale !", youtubeId: "mMZtpMSmqoE" },
@@ -72,8 +79,7 @@ window.SCIENCES_HISTOIRE_MEDIATHEQUE_DATA = [
   /* --------------------- histoire : 📜 L'Histoire et ses histoires ------ */
   { id: "video-sciences-1", theme: "histoire", title: "Voyage de la Préhistoire à l'Antiquité", youtubeId: "Cz4TpP2Isgs" },
   { id: "video-sciences-10", theme: "histoire", title: "La Préhistoire", youtubeId: "vxD_G8_WMVE" },
-  { id: "video-sciences-19", theme: "histoire", title: "1996 : c'est quoi Internet ? — Archive INA", youtubeId: "NmSEJq4Mfk0" },
-  { id: "video-sciences-31", theme: "histoire", title: "1969 : le premier vol du Concorde — Archive INA", youtubeId: "Uipm-O53GTQ" },
+  { id: "video-sciences-19", theme: "histoire", title: "1996 : c'est quoi Internet ? — Archive INA", youtubeId: "NmSEJq4Mfk0" },
   { id: "video-sciences-34", theme: "histoire", title: "Le tout premier son enregistré de l'Histoire", youtubeId: "NyWBI8UtsD4" },
   { id: "video-sciences-39", theme: "histoire", title: "La conquête de la Terre par nos ancêtres", youtubeId: "YWynUCwXrGo" }
 

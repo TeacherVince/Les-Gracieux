@@ -267,7 +267,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
   {
     id: "math-longueurs-2",
     category: "Longueurs",
-    title: "Unités de longueur : centimètre, mètre et kilomètre",
+    title: "Unités de longueur : centimètre, mètre et kilomètre",
     url: "https://maitrelucas.fr/lecons/unites-de-longueur-ce2-ce1-cp/",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/unites-de-longueur-cm-m-km-hatier.png"
   },
@@ -300,7 +300,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
   {
     id: "math-contenances-1",
     category: "Contenances",
-    title: "Les unités de contenance : litre, décilitre et centilitre",
+    title: "Les unités de contenance : litre, décilitre et centilitre",
     url: "https://maitrelucas.fr/lecons/unites-de-contenance-litre-decilitre-centilitre/",
     ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/mesurer-des-contenances.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/mesurer-des-contenances-1.png"
@@ -326,7 +326,7 @@ window.MATHEMATIQUES_MEDIATHEQUE_DATA = [
   {
     id: "math-heure-3",
     category: "Heure et durées",
-    title: "Lire les heures : moins dix, moins le quart…",
+    title: "Lire les heures : moins dix, moins le quart…",
     url: "https://maitrelucas.fr/lecons/lire-les-heures-moins-10-moins-le-quart-ce2-cm1-cm2/",
     ficheUrl: "https://maitrelucas.b-cdn.net/wp-content/uploads/lire-lheure-moins-le-quart-moins-cinq-1.pdf",
     image: "https://maitrelucas.b-cdn.net/wp-content/uploads/lire-lheure-aller-plus-loin-1.png"
