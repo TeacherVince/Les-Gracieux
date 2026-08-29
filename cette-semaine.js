@@ -52,11 +52,11 @@ window.CETTE_SEMAINE_DATA = {
   infos: [
     {
       type: "sortie",
-      text: "Piscine : 8 septembre\nMorges est au musée : 15 septembre"
+      text: "Piscine : 8 septembre\nMorges est au musée : 15 septembre"
     },
     {
       type: "info",
-      text: "Rencontre parents - direction : 9 septembre"
+      text: "Rencontre parents - direction : 9 septembre"
     },
     {
       type: "materiel",
