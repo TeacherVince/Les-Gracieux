@@ -42,5 +42,11 @@ window.COMMENTS_DATA = [
     name: "Vincent",
     text: "L'adjectif donne une précision au nom : → un tir cadré",
     teacher: true
+  },
+  {
+    id: "comment-mattia-video-sciences-2",
+    videoId: "video-sciences-2",
+    name: "Mattia",
+    text: "Incroyable 🤯😱"
   }
 ];
