@@ -1,0 +1,8 @@
+{
+  "name": "les-gracieux",
+  "private": true,
+  "description": "Site 100% statique. Ce package.json ne sert qu'à fournir la dépendance @netlify/blobs à la Netlify Function du compteur de likes (netlify/functions/like-comment.js) — aucun build front-end.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

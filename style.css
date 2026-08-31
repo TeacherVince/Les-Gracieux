@@ -1614,11 +1614,20 @@ body.home-page footer.site-footer {
 }
 
 .comment-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
   margin-bottom: 8px;
+}
+
+.comment-body {
+  min-width: 0;
+  flex: 1;
 }
 
 .comment-item .comment-meta {
@@ -1631,6 +1640,37 @@ body.home-page footer.site-footer {
   font-size: 0.88rem;
   color: var(--text-primary);
   margin: 0;
+}
+
+.comment-like-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 2px 2px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.comment-like-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.comment-like-count {
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.comment-like-btn:hover,
+.comment-like-btn:hover .comment-like-count {
+  color: #e8577c;
+}
+
+.comment-like-btn.is-liked {
+  color: #e8577c;
 }
 
 /* Commentaire de l'enseignant : même mise en page que les autres,

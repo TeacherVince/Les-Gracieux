@@ -12,3 +12,10 @@
 [build]
   command = "echo \"window.BUILD_DATE = '$(date -u +%Y-%m-%d)';\" > build-info.js"
   publish = "."
+
+# Compteur de "j'aime" des commentaires (netlify/functions/like-comment.js) :
+# petit bout de code serveur, seule partie du site qui n'est pas 100%
+# statique. Utilise Netlify Blobs (stockage inclus chez Netlify, rien à
+# configurer côté compte).
+[functions]
+  directory = "netlify/functions"

@@ -66,6 +66,20 @@
     if (!container || !window.VIDEOS_DATA) return;
 
     var allComments = window.COMMENTS_DATA || [];
+    var LIKE_ENDPOINT = "/.netlify/functions/like-comment";
+    var likeCounts = {}; // compteurs réels (partagés entre tous les visiteurs), reçus de la Netlify Function
+    var HEART_ICON =
+      '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 20.5s-7.5-4.6-10-9.4C.6 7.7 2.3 4.5 5.6 4c2-.3 3.9.6 5 2.2C11.7 4.6 13.6 3.7 15.6 4c3.3.5 5 3.7 3.6 7.1-2.5 4.8-10 9.4-10 9.4z"/></svg>';
+
+    function fetchLikeCounts() {
+      fetch(LIKE_ENDPOINT)
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          likeCounts = data || {};
+          render();
+        })
+        .catch(function () { /* compteurs indisponibles : on garde les valeurs par défaut (0) */ });
+    }
 
     function commentsFor(videoId) {
       return allComments.filter(function (c) { return c.videoId === videoId; });
@@ -76,13 +90,20 @@
       var commentsHtml = approved.length
         ? approved.map(function (c) {
             var isTeacher = !!c.teacher;
+            var likeCount = likeCounts[c.id] != null ? likeCounts[c.id] : 0;
             return '<div class="comment-item' + (isTeacher ? ' comment-item-teacher' : '') + '">' +
+              '<div class="comment-body">' +
               '<div class="comment-meta">' +
                 (isTeacher
                   ? '<span class="comment-meta-teacher-name">' + escapeHtml(c.name) + '</span>'
                   : escapeHtml(c.name)) +
               '</div>' +
               '<p class="comment-text">' + escapeHtml(c.text) + '</p>' +
+              '</div>' +
+              '<button type="button" class="comment-like-btn" data-comment-id="' + escapeHtml(c.id) + '" aria-label="Aimer ce commentaire">' +
+                '<span class="comment-like-count">' + likeCount + '</span>' +
+                HEART_ICON +
+              '</button>' +
               '</div>';
           }).join("")
         : '<p class="comment-empty">Aucun commentaire pour l\'instant.</p>';
@@ -194,6 +215,35 @@
 
       bindThumbs();
       bindForms();
+      bindLikes();
+    }
+
+    function bindLikes() {
+      container.querySelectorAll(".comment-like-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (btn.classList.contains("is-liked")) return; // déjà liké pendant cette visite
+          var id = btn.getAttribute("data-comment-id");
+          var countEl = btn.querySelector(".comment-like-count");
+          var optimistic = (parseInt(countEl.textContent, 10) || 0) + 1;
+          countEl.textContent = optimistic; // affiché tout de suite, sans attendre le serveur
+          btn.classList.add("is-liked");
+          likeCounts[id] = optimistic;
+
+          fetch(LIKE_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ commentId: id })
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              if (data && typeof data.likes === "number") {
+                countEl.textContent = data.likes;
+                likeCounts[id] = data.likes;
+              }
+            })
+            .catch(function () { /* le like reste affiché même si l'envoi échoue */ });
+        });
+      });
     }
 
     function bindThumbs() {
@@ -252,5 +302,6 @@
     }
 
     render();
+    fetchLikeCounts();
   });
 })();

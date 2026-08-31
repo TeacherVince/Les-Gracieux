@@ -81,6 +81,9 @@
   var COMMENT_ICON =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>';
 
+  var HEART_ICON =
+    '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 20.5s-7.5-4.6-10-9.4C.6 7.7 2.3 4.5 5.6 4c2-.3 3.9.6 5 2.2C11.7 4.6 13.6 3.7 15.6 4c3.3.5 5 3.7 3.6 7.1-2.5 4.8-10 9.4-10 9.4z"/></svg>';
+
   var YT_ICON =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>';
 
@@ -98,6 +101,18 @@
     var activeTheme = "all";
     var openComments = {}; // état déplié/replié des commentaires par vidéo (mémoire en session uniquement)
     var allComments = window.COMMENTS_DATA || [];
+    var LIKE_ENDPOINT = "/.netlify/functions/like-comment";
+    var likeCounts = {}; // compteurs réels (partagés entre tous les visiteurs), reçus de la Netlify Function
+
+    function fetchLikeCounts() {
+      fetch(LIKE_ENDPOINT)
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          likeCounts = data || {};
+          render();
+        })
+        .catch(function () { /* compteurs indisponibles : on garde les valeurs par défaut (0) */ });
+    }
 
     function commentsFor(id) {
       return allComments.filter(function (c) { return c.videoId === id; });
@@ -110,13 +125,20 @@
       var commentsListHtml = approved.length
         ? approved.map(function (c) {
             var isTeacher = !!c.teacher;
+            var likeCount = likeCounts[c.id] != null ? likeCounts[c.id] : 0;
             return '<div class="comment-item' + (isTeacher ? ' comment-item-teacher' : '') + '">' +
+              '<div class="comment-body">' +
               '<div class="comment-meta">' +
                 (isTeacher
                   ? '<span class="comment-meta-teacher-name">' + escapeHtml(c.name) + '</span>'
                   : escapeHtml(c.name)) +
               '</div>' +
               '<p class="comment-text">' + escapeHtml(c.text) + '</p>' +
+              '</div>' +
+              '<button type="button" class="comment-like-btn" data-comment-id="' + escapeHtml(c.id) + '" aria-label="Aimer ce commentaire">' +
+                '<span class="comment-like-count">' + likeCount + '</span>' +
+                HEART_ICON +
+              '</button>' +
               '</div>';
           }).join("")
         : '<p class="comment-empty">Aucun commentaire pour l\'instant.</p>';
@@ -222,6 +244,32 @@
         });
       });
 
+      grid.querySelectorAll(".comment-like-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (btn.classList.contains("is-liked")) return; // déjà liké pendant cette visite
+          var id = btn.getAttribute("data-comment-id");
+          var countEl = btn.querySelector(".comment-like-count");
+          var optimistic = (parseInt(countEl.textContent, 10) || 0) + 1;
+          countEl.textContent = optimistic; // affiché tout de suite, sans attendre le serveur
+          btn.classList.add("is-liked");
+          likeCounts[id] = optimistic;
+
+          fetch(LIKE_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ commentId: id })
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              if (data && typeof data.likes === "number") {
+                countEl.textContent = data.likes;
+                likeCounts[id] = data.likes;
+              }
+            })
+            .catch(function () { /* le like reste affiché même si l'envoi échoue */ });
+        });
+      });
+
       grid.querySelectorAll(".media-comments-toggle").forEach(function (btn) {
         btn.addEventListener("click", function () {
           var id = btn.getAttribute("data-id");
@@ -285,6 +333,7 @@
     }
 
     render();
+    fetchLikeCounts();
 
     // Sur un premier chargement (police pas encore en cache), le rendu
     // initial peut mesurer les titres avec une police de repli le temps

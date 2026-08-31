@@ -66,6 +66,11 @@ window.CETTE_SEMAINE_DATA = {
       type: "divers",
       text: "Nouvelle vidéo : La peau de l'eau",
       link: "sciences-histoire-mediatheque.html"
+    },
+    {
+      type: "divers",
+      text: "Nouvelle fonction : tu peux maintenant liker les commentaires des vidéos !",
+      link: "videos.html"
     }
   ],
 
