@@ -52,7 +52,7 @@ window.CETTE_SEMAINE_DATA = {
   infos: [
     {
       type: "sortie",
-      text: "Piscine : 8 septembre\nMorges est au musée : 15 septembre"
+      text: "Morges est au musée : 15 septembre"
     },
     {
       type: "info",
@@ -76,17 +76,19 @@ window.CETTE_SEMAINE_DATA = {
 
   devoirs: {
     mardi: [
-      "Fiche français n°1"
+      "Fiche devoirs Français 2",
+      "Piscine !"
     ],
     mercredi: [
-      "Allemand : apprendre voc p.10"
+      "Allemand : Exercice 1 - page 11"
     ],
     jeudi: [
-      "Fiche maths n°1 - recto"
+      "Fiche maths 2 - recto",
+      "Réviser \"libre Max\" en entier"
     ],
     vendredi: [
-      "Fiche maths n°1 - verso"
+      "Fiche maths 2 - verso"
     ],
-    note: "Concours du vendredi : verbes 5P (présent et imparfait)"
+    note: "Concours du vendredi : additions soustractions en colonne"
   }
 };

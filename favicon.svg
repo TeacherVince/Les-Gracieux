@@ -1,0 +1,8 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="40" height="40" rx="8" fill="#0a0e1a"/>
+  <circle cx="18" cy="20" r="9" fill="none" stroke="#d9a95e" stroke-width="2.1"/>
+  <ellipse cx="18" cy="20" rx="16" ry="5.5" fill="none" stroke="#d9a95e" stroke-width="1.7" transform="rotate(-20 18 20)"/>
+  <circle cx="32" cy="8" r="1.6" fill="#d9a95e"/>
+  <circle cx="7" cy="7" r="1.1" fill="#d9a95e"/>
+  <circle cx="35" cy="20" r="1" fill="#d9a95e"/>
+</svg>

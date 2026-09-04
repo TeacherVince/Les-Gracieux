@@ -19,3 +19,149 @@
 # configurer côté compte).
 [functions]
   directory = "netlify/functions"
+
+# Unification des URL : permet d'accéder à chaque page avec ou sans
+# l'extension .html (ex. /videos affiche le même contenu que
+# /videos.html), sans jamais toucher aux liens internes existants du
+# site (qui continuent tous à utiliser .html normalement). status = 200
+# signifie "servir ce fichier sans changer l'URL affichée" (pas une
+# redirection visible, donc aucun risque de casser un lien).
+[[redirects]]
+  from = "/index"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/art"
+  to = "/art.html"
+  status = 200
+
+[[redirects]]
+  from = "/arts-mediatheque"
+  to = "/arts-mediatheque.html"
+  status = 200
+
+[[redirects]]
+  from = "/branches"
+  to = "/branches.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-calcul-mental"
+  to = "/defis-calcul-mental.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-conjugaison"
+  to = "/defis-conjugaison.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-ecriture"
+  to = "/defis-ecriture.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-geometrie"
+  to = "/defis-geometrie.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-grammaire"
+  to = "/defis-grammaire.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-mesures"
+  to = "/defis-mesures.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-numeration"
+  to = "/defis-numeration.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-operations"
+  to = "/defis-operations.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-orthographe"
+  to = "/defis-orthographe.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-problemes"
+  to = "/defis-problemes.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-scores"
+  to = "/defis-scores.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis-vocabulaire"
+  to = "/defis-vocabulaire.html"
+  status = 200
+
+[[redirects]]
+  from = "/defis"
+  to = "/defis.html"
+  status = 200
+
+[[redirects]]
+  from = "/exercices"
+  to = "/exercices.html"
+  status = 200
+
+[[redirects]]
+  from = "/francais-mediatheque"
+  to = "/francais-mediatheque.html"
+  status = 200
+
+[[redirects]]
+  from = "/francais"
+  to = "/francais.html"
+  status = 200
+
+[[redirects]]
+  from = "/infos-pratiques"
+  to = "/infos-pratiques.html"
+  status = 200
+
+[[redirects]]
+  from = "/mathematiques-mediatheque"
+  to = "/mathematiques-mediatheque.html"
+  status = 200
+
+[[redirects]]
+  from = "/mathematiques"
+  to = "/mathematiques.html"
+  status = 200
+
+[[redirects]]
+  from = "/objectifs"
+  to = "/objectifs.html"
+  status = 200
+
+[[redirects]]
+  from = "/sciences-histoire-mediatheque"
+  to = "/sciences-histoire-mediatheque.html"
+  status = 200
+
+[[redirects]]
+  from = "/sciences-histoire"
+  to = "/sciences-histoire.html"
+  status = 200
+
+[[redirects]]
+  from = "/sciences"
+  to = "/sciences.html"
+  status = 200
+
+[[redirects]]
+  from = "/videos"
+  to = "/videos.html"
+  status = 200

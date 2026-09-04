@@ -183,7 +183,7 @@
           '</button>' +
           '<div class="media-comments-panel"' + (isCommentsOpen ? "" : ' hidden') + '>' +
             '<div class="comment-list">' + commentsListHtml + '</div>' +
-            '<form class="comment-form" data-video-id="' + escapeHtml(video.id) + '">' +
+            '<form class="comment-form" data-video-id="' + escapeHtml(video.id) + '" data-video-title="' + escapeHtml(video.title) + '">' +
               '<input type="text" name="name" placeholder="Ton prénom" required maxlength="60">' +
               '<textarea name="message" placeholder="Ton commentaire" required maxlength="500"></textarea>' +
               '<input type="text" name="bot-field" class="honeypot-field" tabindex="-1" autocomplete="off">' +
@@ -337,7 +337,7 @@
           var payload = {
             "form-name": "video-comments",
             name: nameInput.value,
-            video: form.dataset.videoId,
+            video: form.dataset.videoTitle + " (" + form.dataset.videoId + ")",
             message: messageInput.value,
             "bot-field": ""
           };
