@@ -189,6 +189,55 @@ nav.main-nav a.active::before {
   cursor: pointer;
 }
 
+/* Icône "Installer le site" (écran d'accueil du téléphone) : visible
+   uniquement sur smartphone (même seuil que le menu mobile), et
+   seulement une fois que le script (main.js) l'a rendue visible (elle
+   reste "hidden" par défaut, y compris sur mobile, tant que le
+   téléphone/navigateur ne permet pas l'installation, ou si le site
+   est déjà installé). */
+.pwa-install-wrap {
+  position: relative;
+  display: none;
+}
+
+.pwa-install-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--accent-gold);
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.pwa-ios-tip {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  width: 220px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  z-index: 20;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 760px) {
+  /* La classe "visible" est ajoutée par main.js seulement si
+     l'installation est vraiment possible (ou si c'est un iPhone) :
+     sans cette classe, l'icône reste masquée même sur mobile. */
+  .pwa-install-wrap.visible {
+    display: block;
+  }
+}
+
 /* ---------- Hero ---------- */
 
 .hero {

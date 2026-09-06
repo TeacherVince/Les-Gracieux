@@ -72,6 +72,11 @@
     var stars = [];
     var STAR_COUNT = 140;
 
+    // Scintillement plus marqué sur les autres onglets que sur l'accueil
+    // (+9% d'amplitude), qui garde son intensité d'origine.
+    var isHome = /(^\/|\/index\.html)$/.test(window.location.pathname);
+    var TWINKLE_AMPLITUDE = isHome ? 0.2 : 0.218;
+
     function resize() {
       canvas.width = window.innerWidth;
       canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
@@ -86,7 +91,10 @@
           r: Math.random() * 1.3 + 0.3,
           baseAlpha: Math.random() * 0.3 + 0.12,
           phase: Math.random() * Math.PI * 2,
-          speed: Math.random() * 0.007 + 0.0025
+          // Plage bien plus large qu'avant pour que les étoiles ne
+          // scintillent plus toutes au même rythme : certaines très
+          // lentes, d'autres bien plus rapides.
+          speed: Math.random() * 0.014 + 0.0015
         });
       }
     }
@@ -95,7 +103,7 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (var i = 0; i < stars.length; i++) {
         var s = stars[i];
-        var twinkle = Math.sin(t * s.speed + s.phase) * 0.2 + 0.8;
+        var twinkle = Math.sin(t * s.speed + s.phase) * TWINKLE_AMPLITUDE + (1 - TWINKLE_AMPLITUDE);
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fillStyle = "rgba(240, 244, 255," + (s.baseAlpha * twinkle).toFixed(2) + ")";
@@ -131,9 +139,74 @@
     });
   }
 
+  // ---- Icône "Installer le site" (écran d'accueil, page d'accueil
+  // uniquement) ----
+  // Sur Android/Chrome (et navigateurs basés dessus) : le téléphone
+  // envoie un signal "beforeinstallprompt" quand le site est
+  // installable. On l'intercepte pour afficher notre propre icône au
+  // lieu de la bannière automatique du navigateur, et un clic dessus
+  // ouvre la vraie fenêtre d'installation du téléphone.
+  // Sur iPhone/Safari : Apple ne permet à aucun site de déclencher
+  // lui-même cette fenêtre. On affiche donc l'icône quand même (si le
+  // site n'est pas déjà installé), et un clic affiche une petite bulle
+  // d'explication ("Partager" puis "Sur l'écran d'accueil").
+  // Si le site tourne déjà en tant qu'application installée (sur
+  // n'importe quel téléphone), l'icône ne s'affiche jamais.
+  function initPwaInstall() {
+    var wrap = document.querySelector(".pwa-install-wrap");
+    var btn = document.getElementById("pwa-install-btn");
+    var iosTip = document.getElementById("pwa-ios-tip");
+    if (!wrap || !btn) return;
+
+    var isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true;
+    if (isStandalone) return;
+
+    var isIOS = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+    var deferredPrompt = null;
+
+    function showButton() {
+      btn.hidden = false;
+      wrap.classList.add("visible");
+    }
+
+    if (isIOS) {
+      showButton();
+      btn.addEventListener("click", function () {
+        if (iosTip) iosTip.hidden = !iosTip.hidden;
+      });
+      document.addEventListener("click", function (e) {
+        if (iosTip && !iosTip.hidden && e.target !== btn && !btn.contains(e.target)) {
+          iosTip.hidden = true;
+        }
+      });
+    } else {
+      window.addEventListener("beforeinstallprompt", function (e) {
+        e.preventDefault();
+        deferredPrompt = e;
+        showButton();
+      });
+      btn.addEventListener("click", function () {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.finally(function () {
+          deferredPrompt = null;
+          btn.hidden = true;
+          wrap.classList.remove("visible");
+        });
+      });
+      window.addEventListener("appinstalled", function () {
+        btn.hidden = true;
+        wrap.classList.remove("visible");
+      });
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initStarField();
     initNavToggle();
     initFooterUpdated();
+    initPwaInstall();
   });
 })();

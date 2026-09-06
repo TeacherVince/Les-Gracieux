@@ -46,6 +46,10 @@
           jour dans le texte, ex. "Concours du vendredi : verbes 5P
           (présent et imparfait)". Enlève cette ligne (ou mets-la à
           "") une fois le concours passé.
+   parentNote : (optionnel) un 2e cadre doré, identique à "note",
+          mais réservé à ce que les parents doivent faire (signer un
+          carnet, ramener un document...), ex. "Parents : signer le
+          concours n°1". Enlève cette ligne une fois fait.
    ======================================================================= */
 
 window.CETTE_SEMAINE_DATA = {
@@ -64,13 +68,7 @@ window.CETTE_SEMAINE_DATA = {
     },
     {
       type: "divers",
-      text: "Nouvelle vidéo : La peau de l'eau",
-      link: "sciences-histoire-mediatheque.html"
-    },
-    {
-      type: "divers",
-      text: "Nouvelle fonction : tu peux maintenant liker les commentaires des vidéos !",
-      link: "videos.html"
+      text: "L'app du site est maintenant disponible sur smartphone."
     }
   ],
 
@@ -89,6 +87,7 @@ window.CETTE_SEMAINE_DATA = {
     vendredi: [
       "Fiche maths 2 - verso"
     ],
-    note: "Concours du vendredi : additions soustractions en colonne"
+    note: "Concours du vendredi : additions soustractions en colonne",
+    parentNote: "Parents : signer le concours n°1"
   }
 };

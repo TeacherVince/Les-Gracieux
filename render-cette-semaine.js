@@ -130,12 +130,17 @@
       ? '<p class="devoirs-note">' + escapeHtml(devoirs.note) + '</p>'
       : '';
 
+    var parentNoteHtml = (devoirs && devoirs.parentNote)
+      ? '<p class="devoirs-note">' + escapeHtml(devoirs.parentNote) + '</p>'
+      : '';
+
     host.innerHTML =
       '<div class="week-card-header">' +
         '<h2 class="section-title"><span class="spark">✦</span> Devoirs</h2>' +
       '</div>' +
       gridHtml +
-      noteHtml;
+      noteHtml +
+      parentNoteHtml;
   }
 
   document.addEventListener("DOMContentLoaded", function () {
