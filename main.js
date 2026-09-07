@@ -141,17 +141,21 @@
 
   // ---- Icône "Installer le site" (écran d'accueil, page d'accueil
   // uniquement) ----
-  // Sur Android/Chrome (et navigateurs basés dessus) : le téléphone
-  // envoie un signal "beforeinstallprompt" quand le site est
-  // installable. On l'intercepte pour afficher notre propre icône au
-  // lieu de la bannière automatique du navigateur, et un clic dessus
-  // ouvre la vraie fenêtre d'installation du téléphone.
-  // Sur iPhone/Safari : Apple ne permet à aucun site de déclencher
+  // ---- Icône "Installer le site" (écran d'accueil, smartphone ET
+  // tablette) ----
+  // Sur Android/Chrome (et navigateurs basés dessus, tablette ou
+  // téléphone) : l'appareil envoie un signal "beforeinstallprompt"
+  // quand le site est installable. On l'intercepte pour afficher notre
+  // propre icône au lieu de la bannière automatique du navigateur, et
+  // un clic dessus ouvre la vraie fenêtre d'installation.
+  // Sur iPhone/iPad/Safari : Apple ne permet à aucun site de déclencher
   // lui-même cette fenêtre. On affiche donc l'icône quand même (si le
   // site n'est pas déjà installé), et un clic affiche une petite bulle
   // d'explication ("Partager" puis "Sur l'écran d'accueil").
   // Si le site tourne déjà en tant qu'application installée (sur
-  // n'importe quel téléphone), l'icône ne s'affiche jamais.
+  // n'importe quel appareil), l'icône ne s'affiche jamais. La visibilité
+  // de l'icône elle-même (smartphone/tablette vs ordinateur) est gérée
+  // en CSS via "pointer: coarse" (voir style.css), pas ici.
   function initPwaInstall() {
     var wrap = document.querySelector(".pwa-install-wrap");
     var btn = document.getElementById("pwa-install-btn");
@@ -163,7 +167,14 @@
       window.navigator.standalone === true;
     if (isStandalone) return;
 
-    var isIOS = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+    // Détecte iPhone/iPad/iPod. Depuis plusieurs années, Safari sur iPad
+    // se présente aux sites web comme un Mac (pour recevoir la version
+    // "ordinateur" des sites), donc son navigator.userAgent ne contient
+    // plus "ipad" : on le repère alors via la combinaison "plateforme
+    // Mac + écran tactile" (un vrai Mac n'a jamais d'écran tactile).
+    var isIOS =
+      /iphone|ipad|ipod/i.test(window.navigator.userAgent) ||
+      (window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1);
     var deferredPrompt = null;
 
     function showButton() {

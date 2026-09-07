@@ -189,12 +189,16 @@ nav.main-nav a.active::before {
   cursor: pointer;
 }
 
-/* Icône "Installer le site" (écran d'accueil du téléphone) : visible
-   uniquement sur smartphone (même seuil que le menu mobile), et
-   seulement une fois que le script (main.js) l'a rendue visible (elle
-   reste "hidden" par défaut, y compris sur mobile, tant que le
-   téléphone/navigateur ne permet pas l'installation, ou si le site
-   est déjà installé). */
+/* Icône "Installer le site" (écran d'accueil) : visible sur
+   smartphone ET tablette, jamais sur ordinateur. Plutôt que de se
+   baser sur la largeur de la fenêtre (une tablette peut être aussi
+   large qu'un petit écran d'ordinateur), on utilise "pointer: coarse"
+   : ce test détecte un écran tactile (doigt), quelle que soit sa
+   taille, et exclut les ordinateurs à souris/pavé tactile même sur
+   une fenêtre de navigateur très étroite. Et dans tous les cas,
+   l'icône reste "hidden" par défaut tant que le script (main.js) ne
+   l'a pas rendue visible (installation impossible, ou site déjà
+   installé). */
 .pwa-install-wrap {
   position: relative;
   display: none;
@@ -229,10 +233,11 @@ nav.main-nav a.active::before {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
-@media (max-width: 760px) {
+@media (pointer: coarse) {
   /* La classe "visible" est ajoutée par main.js seulement si
-     l'installation est vraiment possible (ou si c'est un iPhone) :
-     sans cette classe, l'icône reste masquée même sur mobile. */
+     l'installation est vraiment possible (ou si c'est un iPhone/iPad) :
+     sans cette classe, l'icône reste masquée même sur un écran
+     tactile. */
   .pwa-install-wrap.visible {
     display: block;
   }
