@@ -41,6 +41,11 @@
    les besoins. Une liste vide affiche simplement "Rien de prévu"
    pour ce jour, rien à faire de particulier.
 
+   Pour un test/concours un jour précis (pas forcément le vendredi),
+   remplace le texte simple par { text: "...", test: true } : la ligne
+   s'affiche alors en doré, comme le cadre "note" plus bas. Exemple :
+   { text: "Test Assimilé d'allemand : voc page 10", test: true }
+
    note : (optionnel) une ligne mise en avant sous les 4 colonnes,
           pour un concours ou un test à venir. Précise toujours le
           jour dans le texte, ex. "Concours du vendredi : verbes 5P
@@ -58,10 +63,10 @@ window.CETTE_SEMAINE_DATA = {
       type: "sortie",
       text: "Morges est au musée : 15 septembre"
     },
-    {
+    /* {
       type: "info",
       text: "Rencontre parents - direction : 9 septembre"
-    },
+    }, */
     {
       type: "materiel",
       text: "Lundi : prendre ses affaires de gym"
@@ -74,20 +79,24 @@ window.CETTE_SEMAINE_DATA = {
 
   devoirs: {
     mardi: [
-      "Fiche devoirs Français 2",
-      "Piscine !"
+      "Fiche devoirs Français 3",
+      "Morges est au musée ! (pique-nique !)"
     ],
     mercredi: [
+      { text: "Test Assimilé d'allemand : voc page 10", test: true }
+    ],
+    xxOldMercredi: [
       "Allemand : Exercice 1 - page 11"
     ],
     jeudi: [
-      "Fiche maths 2 - recto",
-      "Réviser \"libre Max\" en entier"
+      "Fiche maths 3 - recto",
+      "Réviser \"libre Max\" en entier",
+      "Fiche : les premiers outils et le feu"
     ],
     vendredi: [
-      "Fiche maths 2 - verso"
+      "Fiche maths 3 - verso"
     ],
-    note: "Concours du vendredi : additions soustractions en colonne",
-    parentNote: "Parents : signer le concours n°1"
+    note: "Concours du vendredi : accords verbe et groupe nominal",
+    /* parentNote: "Parents : signer le concours n°1" */
   }
 };

@@ -2064,6 +2064,18 @@ body.home-page .week-card-header {
   background: var(--accent-blue);
 }
 
+/* Item de devoir marqué comme test/concours (voir "test" dans
+   cette-semaine.js) : même couleur dorée que le cadre "note", pour le
+   repérer directement dans la liste du jour concerné. */
+.devoirs-day-list li.is-test {
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.devoirs-day-list li.is-test::before {
+  background: var(--accent-gold);
+}
+
 .devoirs-day-empty {
   margin: 0;
   font-size: 0.82rem;

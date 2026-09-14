@@ -105,9 +105,16 @@
   }
 
   function devoirDayHtml(jour, items) {
+    // Un item peut être soit un simple texte, soit un objet
+    // { text: "...", test: true } pour un test/concours à mettre en
+    // évidence (même couleur dorée que le cadre "note" plus bas), sans
+    // devoir passer par le cadre séparé si ça concerne un jour précis.
     var bodyHtml = items && items.length
-      ? '<ul class="devoirs-day-list">' + items.map(function (text) {
-          return '<li>' + escapeHtml(text) + '</li>';
+      ? '<ul class="devoirs-day-list">' + items.map(function (item) {
+          var isObj = item && typeof item === "object";
+          var text = isObj ? item.text : item;
+          var cls = isObj && item.test ? ' class="is-test"' : '';
+          return '<li' + cls + '>' + escapeHtml(text) + '</li>';
         }).join("") + '</ul>'
       : '<p class="devoirs-day-empty">Rien de prévu.</p>';
 
