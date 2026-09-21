@@ -99,7 +99,6 @@
     host.innerHTML =
       '<div class="week-card-header">' +
         '<h2 class="section-title"><span class="spark">✦</span> Informations de la semaine</h2>' +
-        '<span class="week-updated">' + escapeHtml(computeWeekLabel()) + '</span>' +
       '</div>' +
       bodyHtml;
   }
@@ -144,6 +143,7 @@
     host.innerHTML =
       '<div class="week-card-header">' +
         '<h2 class="section-title"><span class="spark">✦</span> Devoirs</h2>' +
+        '<span class="week-updated">' + escapeHtml(computeWeekLabel()) + '</span>' +
       '</div>' +
       gridHtml +
       noteHtml +

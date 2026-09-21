@@ -272,7 +272,7 @@ nav.main-nav a.active::before {
 .hero p.lead {
   color: var(--text-secondary);
   font-size: 1.08rem;
-  max-width: 620px;
+  max-width: 720px;
   margin: 0;
 }
 
