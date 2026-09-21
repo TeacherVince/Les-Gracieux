@@ -19,6 +19,12 @@
              commentaire reçu sur Netlify).
    name    : prénom affiché avec le commentaire.
    text    : le texte du commentaire.
+   seed    : optionnel. Un nombre de "j'aime" de départ, purement pour
+             motiver les élèves (ex. 12). Il s'ajoute discrètement au
+             vrai compteur (partagé entre visiteurs, stocké côté
+             Netlify) : les vrais clics continuent de s'additionner
+             par-dessus normalement. Laisse ce champ de côté pour un
+             commentaire qui doit partir de 0.
    teacher : optionnel. Mets "true" pour un commentaire que TU écris toi-
              même (une règle, une astuce, un conseil pour la vidéo). Il
              s'affiche exactement comme les autres (même ordre
@@ -37,28 +43,24 @@
 
 window.COMMENTS_DATA = [
   {
-    id: "comment-teacher-fr-gram-1",
-    videoId: "fr-gram-1",
-    name: "Vincent",
-    text: "L'adjectif donne une précision au nom : → un tir cadré",
-    teacher: true
-  },
-  {
     id: "comment-mattia-video-sciences-2",
     videoId: "video-sciences-2",
     name: "Mattia",
-    text: "Incroyable 🤯😱"
+    text: "Incroyable 🤯😱",
+    seed: 13
   },
   {
     id: "comment-jora-video-art-16",
     videoId: "video-art-16",
     name: "Jora",
-    text: "J'aime la video 👍👍😆😝"
+    text: "J'aime la video 👍👍😆😝",
+    seed: 11
   },
   {
     id: "comment-alex-video-art-13",
     videoId: "video-art-13",
     name: "alex",
-    text: "Incroyable!!!"
+    text: "Incroyable!!!",
+    seed: 15
   }
 ];

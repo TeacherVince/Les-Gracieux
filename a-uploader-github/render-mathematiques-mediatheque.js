@@ -114,6 +114,8 @@
     var collapsed = {}; // état de repli par catégorie (mémoire en session uniquement)
     var openComments = {}; // état déplié/replié des commentaires par vidéo (mémoire en session uniquement)
     var allComments = window.COMMENTS_DATA || [];
+    var commentSeeds = {}; // décalage "j'aime" de départ fixé dans comments.js (motivation, purement cosmétique)
+    allComments.forEach(function (c) { if (c.seed) commentSeeds[c.id] = c.seed; });
     var LIKE_ENDPOINT = "/.netlify/functions/like-comment";
     var likeCounts = {}; // compteurs réels (partagés entre tous les visiteurs), reçus de la Netlify Function
 
@@ -138,7 +140,7 @@
       var commentsListHtml = approved.length
         ? approved.map(function (c) {
             var isTeacher = !!c.teacher;
-            var likeCount = likeCounts[c.id] != null ? likeCounts[c.id] : 0;
+            var likeCount = (likeCounts[c.id] != null ? likeCounts[c.id] : 0) + (commentSeeds[c.id] || 0);
             return '<div class="comment-item' + (isTeacher ? ' comment-item-teacher' : '') + '">' +
               '<div class="comment-body">' +
               '<div class="comment-meta">' +
@@ -303,7 +305,7 @@
             .then(function (r) { return r.json(); })
             .then(function (data) {
               if (data && typeof data.likes === "number") {
-                countEl.textContent = data.likes;
+                countEl.textContent = data.likes + (commentSeeds[id] || 0);
                 likeCounts[id] = data.likes;
               }
             })

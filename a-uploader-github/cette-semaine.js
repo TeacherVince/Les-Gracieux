@@ -5,7 +5,8 @@
    d'accueil, juste après le texte d'intro. Pour les mettre à jour
    chaque semaine : modifie simplement les textes ci-dessous. Rien
    d'autre à toucher (le titre "Semaine du ... au ..." est calculé
-   automatiquement à partir de la date du jour).
+   automatiquement à partir de la date du jour, et s'affiche maintenant
+   à côté du titre "Devoirs").
 
    ---- infos ----
    Regroupe TOUT ce qui est ponctuel cette semaine : sorties,
@@ -24,11 +25,12 @@
                          pour renvoyer directement vers la page
                          concernée.
           - "materiel" : quelque chose à prendre ou à prévoir (gym,
-                         matériel spécial...)
-          - "info"     : toute autre information importante
+                         piscine, matériel spécial...)
+          - "info"     : toute autre information importante (congé,
+                         changement d'horaire...)
    text : le texte affiché (une phrase suffit). Si le texte est trop
           long pour tenir sur une ligne, mets la date à la ligne avec
-          "\n" (voir l'exemple "Morges est au musée" ci-dessous).
+          "\n" (voir l'exemple "Morges est au musée" plus bas).
    link : (optionnel, pour "divers" surtout) une URL de page du site
           (ex. "sciences-histoire-mediatheque.html") qui rend le texte
           cliquable, pour amener directement vers la médiathèque ou
@@ -44,32 +46,33 @@
    Pour un test/concours un jour précis (pas forcément le vendredi),
    remplace le texte simple par { text: "...", test: true } : la ligne
    s'affiche alors en doré, comme le cadre "note" plus bas. Exemple :
-   { text: "Test Assimilé d'allemand : voc page 10", test: true }
+   { text: "Test Assimilé : voc page 10", test: true }
 
    note : (optionnel) une ligne mise en avant sous les 4 colonnes,
-          pour un concours ou un test à venir. Précise toujours le
-          jour dans le texte, ex. "Concours du vendredi : verbes 5P
-          (présent et imparfait)". Enlève cette ligne (ou mets-la à
-          "") une fois le concours passé.
+          pour un concours ou un test à venir qui ne concerne pas un
+          jour précis. Précise toujours le jour dans le texte, ex.
+          "Concours du vendredi : verbes 5P (présent et
+          imparfait)". Enlève cette ligne (ou mets-la à "") une fois
+          le concours passé.
    parentNote : (optionnel) un 2e cadre doré, identique à "note",
           mais réservé à ce que les parents doivent faire (signer un
-          carnet, ramener un document...), ex. "Parents : signer le
-          concours n°1". Enlève cette ligne une fois fait.
+          carnet, ramener un document...), ex. "Parents : signer
+          le concours n°1". Enlève cette ligne une fois fait.
    ======================================================================= */
 
 window.CETTE_SEMAINE_DATA = {
   infos: [
     {
       type: "sortie",
-      text: "Morges est au musée : 15 septembre"
+      text: "Night Run : samedi 31 octobre !"
     },
-    /* {
+    {
       type: "info",
-      text: "Rencontre parents - direction : 9 septembre"
-    }, */
+      text: "Délai inscription \"Night Run\" : 04.10.26"
+    },
     {
       type: "materiel",
-      text: "Lundi : prendre ses affaires de gym"
+      text: "Mardi : prendre ses affaires de piscine (bonnet obligatoire)."
     },
     {
       type: "divers",
@@ -78,25 +81,15 @@ window.CETTE_SEMAINE_DATA = {
   ],
 
   devoirs: {
-    mardi: [
-      "Fiche devoirs Français 3",
-      "Morges est au musée ! (pique-nique !)"
-    ],
-    mercredi: [
-      { text: "Test Assimilé d'allemand : voc page 10", test: true }
-    ],
-    xxOldMercredi: [
-      "Allemand : Exercice 1 - page 11"
-    ],
+    mardi: [],
+    mercredi: [],
     jeudi: [
-      "Fiche maths 3 - recto",
-      "Réviser \"libre Max\" en entier",
-      "Fiche : les premiers outils et le feu"
+      "Fiche Français n°4"
     ],
     vendredi: [
-      "Fiche maths 3 - verso"
+      "Fiche maths 4 - recto/verso",
+      { text: "Test Assimilé : verbes 5P (présent et imparfait)", test: true }
     ],
-    note: "Concours du vendredi : accords verbe et groupe nominal",
-    /* parentNote: "Parents : signer le concours n°1" */
+    parentNote: "Parents : concours de maths et de français à signer"
   }
 };
