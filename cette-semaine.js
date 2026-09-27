@@ -72,7 +72,7 @@ window.CETTE_SEMAINE_DATA = {
     },
     {
       type: "materiel",
-      text: "Mardi : prendre ses affaires de piscine (bonnet obligatoire)."
+      text: "Lundi : prendre ses affaires de gym"
     },
     {
       type: "divers",
@@ -81,15 +81,19 @@ window.CETTE_SEMAINE_DATA = {
   ],
 
   devoirs: {
-    mardi: [],
-    mercredi: [],
+    mardi: [
+      "Fiche maths n°5 - recto"
+    ],
+    mercredi: [
+      "Allemand : apprendre voc p13, colonne 1 et 2"
+    ],
     jeudi: [
-      "Fiche Français n°4"
+      "Fiche Français n°5",
+      "Fiche Préhistoire (lecture et questions)"
     ],
     vendredi: [
-      "Fiche maths 4 - recto/verso",
-      { text: "Test Assimilé : verbes 5P (présent et imparfait)", test: true }
-    ],
-    parentNote: "Parents : concours de maths et de français à signer"
+      "Fiche maths 5 - verso",
+      { text: "Concours numération ! suites numériques et calculs en colonne", test: true }
+    ]
   }
 };
