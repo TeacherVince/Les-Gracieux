@@ -75,10 +75,6 @@ window.CETTE_SEMAINE_DATA = {
       text: "Lundi : prendre ses affaires de gym"
     },
     {
-      type: "materiel",
-      text: "Mardi : prendre ses affaires de piscine (bonnet et linge)"
-    },
-    {
       type: "info",
       text: "Vendredi : début des vacances !"
     },
@@ -89,7 +85,9 @@ window.CETTE_SEMAINE_DATA = {
   ],
 
   devoirs: {
-    mardi: [],
+    mardi: [
+      "Piscine ! (bonnet et linge)"
+    ],
     mercredi: [
       "Allemand : apprendre voc p.13 - suite"
     ],
