@@ -68,11 +68,19 @@ window.CETTE_SEMAINE_DATA = {
     },
     {
       type: "info",
-      text: "Délai inscription \"Night Run\" : 04.10.26"
+      text: "Mardi 6 octobre : réunion de parents à 19h00."
     },
     {
       type: "materiel",
       text: "Lundi : prendre ses affaires de gym"
+    },
+    {
+      type: "materiel",
+      text: "Mardi : prendre ses affaires de piscine (bonnet et linge)"
+    },
+    {
+      type: "info",
+      text: "Vendredi : début des vacances !"
     },
     {
       type: "divers",
@@ -81,19 +89,16 @@ window.CETTE_SEMAINE_DATA = {
   ],
 
   devoirs: {
-    mardi: [
-      "Fiche maths n°5 - recto"
-    ],
+    mardi: [],
     mercredi: [
-      "Allemand : apprendre voc p13, colonne 1 et 2"
+      "Allemand : apprendre voc p.13 - suite"
     ],
     jeudi: [
-      "Fiche Français n°5",
-      "Fiche Préhistoire (lecture et questions)"
+      "Fiche maths n°5 - recto",
+      { text: "TS maths - numération", test: true }
     ],
     vendredi: [
-      "Fiche maths 5 - verso",
-      { text: "Concours numération ! suites numériques et calculs en colonne", test: true }
+      "Fiche maths 5 - verso"
     ]
   }
 };
