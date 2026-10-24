@@ -67,16 +67,8 @@ window.CETTE_SEMAINE_DATA = {
       text: "Night Run : samedi 31 octobre !"
     },
     {
-      type: "info",
-      text: "Mardi 6 octobre : réunion de parents à 19h00."
-    },
-    {
       type: "materiel",
       text: "Lundi : prendre ses affaires de gym"
-    },
-    {
-      type: "info",
-      text: "Vendredi : début des vacances !"
     },
     {
       type: "divers",
@@ -86,17 +78,16 @@ window.CETTE_SEMAINE_DATA = {
 
   devoirs: {
     mardi: [
-      "Piscine ! (bonnet et linge)"
+      "Fiche maths 6 - recto"
     ],
-    mercredi: [
-      "Allemand : apprendre voc p.13 - suite"
-    ],
+    mercredi: [],
     jeudi: [
-      "Fiche maths n°5 - recto",
-      { text: "TS maths - numération", test: true }
+      "Fiche français n°6",
+      "Chanson - libre max par cœur"
     ],
     vendredi: [
-      "Fiche maths 5 - verso"
+      { text: "Concours - verbes 1 à 12 - futur", test: true },
+      "Fiche maths 6 - verso"
     ]
   }
 };
