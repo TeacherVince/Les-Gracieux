@@ -101,6 +101,7 @@
     var activeTheme = "all";
     var openComments = {}; // état déplié/replié des commentaires par vidéo (mémoire en session uniquement)
     var allComments = window.COMMENTS_DATA || [];
+    var targetVideoId = (window.location.hash || "").replace("#", ""); // lien direct vers une vidéo (ex. depuis l'accueil)
     var commentSeeds = {}; // décalage "j'aime" de départ fixé dans comments.js (motivation, purement cosmétique)
     allComments.forEach(function (c) { if (c.seed) commentSeeds[c.id] = c.seed; });
     var LIKE_ENDPOINT = "/.netlify/functions/like-comment";
@@ -146,7 +147,7 @@
         : '<p class="comment-empty">Aucun commentaire pour l\'instant.</p>';
 
       return (
-        '<article class="media-card has-fiche" data-theme="' + escapeHtml(video.theme) + '" data-search="' + escapeHtml(normalize(video.title)) + '">' +
+        '<article id="' + escapeHtml(video.id) + '" class="media-card has-fiche' + (video.id === targetVideoId ? ' is-targeted' : '') + '" data-theme="' + escapeHtml(video.theme) + '" data-search="' + escapeHtml(normalize(video.title)) + '">' +
           '<a class="media-fiche-btn" href="https://www.youtube.com/watch?v=' + encodeURIComponent(video.youtubeId) + '" target="_blank" rel="noopener" ' +
             'data-tooltip="Voir en grand sur YouTube" ' +
             'aria-label="Voir « ' + escapeHtml(video.title) + ' » en grand sur YouTube">' +
@@ -336,6 +337,13 @@
 
     render();
     fetchLikeCounts();
+
+    if (targetVideoId) {
+      setTimeout(function () {
+        var target = document.getElementById(targetVideoId);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 400);
+    }
 
     // Sur un premier chargement (police pas encore en cache), le rendu
     // initial peut mesurer les titres avec une police de repli le temps

@@ -43,6 +43,7 @@ window.ARTS_MEDIATHEQUE_DATA = [
   { id: "video-art-26", theme: "musique", title: "Une biche vient écouter la harpe", youtubeId: "9Xd8xq06FCw" },
   { id: "video-art-27", theme: "musique", title: "Duo de Oud et de Guitare", youtubeId: "ses7ssgWFEU" },
   { id: "video-art-28", theme: "musique", title: "Une jeune joueuse de Hand Pan", youtubeId: "0EV_LN9yUss" },
+  { id: "video-art-29", theme: "musique", title: "Top Secret Drum Corps - un groupe de percussions venant de Bâle en Suisse. Impressionnant !!!", youtubeId: "TxsffsSyFaM" },
 
   /* -------------------- image : 🎭 Illusions & images étonnantes -------- */
   { id: "video-art-8", theme: "image", title: "Une des premières vidéos de l'histoire de l'Humanité", youtubeId: "XxdBtYyiViY" },

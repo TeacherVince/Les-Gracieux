@@ -63,12 +63,13 @@
 window.CETTE_SEMAINE_DATA = {
   infos: [
     {
-      type: "sortie",
-      text: "Night Run : samedi 31 octobre !"
-    },
-    {
       type: "materiel",
       text: "Lundi : prendre ses affaires de gym"
+    },
+    {
+      type: "divers",
+      text: "Nouvelle vidéo ajoutée : Top Secret Drum Corps",
+      link: "arts-mediatheque.html#video-art-29"
     },
     {
       type: "divers",
@@ -78,16 +79,19 @@ window.CETTE_SEMAINE_DATA = {
 
   devoirs: {
     mardi: [
-      "Fiche maths 6 - recto"
+      "Piscine ! (bonnet et linge)",
+      "Fiche maths 7 - recto"
     ],
     mercredi: [],
     jeudi: [
-      "Fiche français n°6",
-      "Chanson - libre max par cœur"
+      "Fiche français n°7",
+      { text: "TS Paléolithique", test: true }
     ],
     vendredi: [
-      { text: "Concours - verbes 1 à 12 - futur", test: true },
-      "Fiche maths 6 - verso"
-    ]
+      { text: "ETA : verbes 11 à 14 + être et avoir (3 temps)", test: true },
+      "Fiche maths 7 - verso"
+    ],
+    note: "Jeudi : TS Paléolithique",
+    parentNote: "Vendredi : ETA - verbes 11 à 14 + être et avoir (3 temps)"
   }
 };
