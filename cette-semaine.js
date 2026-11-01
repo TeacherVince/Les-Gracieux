@@ -82,7 +82,9 @@ window.CETTE_SEMAINE_DATA = {
       "Piscine ! (bonnet et linge)",
       "Fiche maths 7 - recto"
     ],
-    mercredi: [],
+    mercredi: [
+      "Allemand : exercices 3a, b, c - p.15"
+    ],
     jeudi: [
       "Fiche français n°7",
       { text: "TS Paléolithique", test: true }
