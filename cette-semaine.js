@@ -79,8 +79,7 @@ window.CETTE_SEMAINE_DATA = {
 
   devoirs: {
     mardi: [
-      "Piscine ! (bonnet et linge)",
-      "Fiche maths 7 - recto"
+      "Piscine ! (bonnet et linge)"
     ],
     mercredi: [
       "Allemand : exercices 3a, b, c - p.15"
@@ -91,7 +90,7 @@ window.CETTE_SEMAINE_DATA = {
     ],
     vendredi: [
       { text: "ETA : verbes 11 à 14 + être et avoir (3 temps)", test: true },
-      "Fiche maths 7 - verso"
+      "Fiche maths 7 - recto-verso"
     ],
     note: "Jeudi : TS Paléolithique",
     parentNote: "Vendredi : ETA - verbes 11 à 14 + être et avoir (3 temps)"

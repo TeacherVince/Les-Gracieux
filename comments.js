@@ -47,20 +47,20 @@ window.COMMENTS_DATA = [
     videoId: "video-sciences-2",
     name: "Mattia",
     text: "Incroyable 🤯😱",
-    seed: 13
+    seed: 18
   },
   {
     id: "comment-jora-video-art-16",
     videoId: "video-art-16",
     name: "Jora",
     text: "J'aime la video 👍👍😆😝",
-    seed: 11
+    seed: 16
   },
   {
     id: "comment-alex-video-art-13",
     videoId: "video-art-13",
     name: "alex",
     text: "Incroyable!!!",
-    seed: 15
+    seed: 20
   }
 ];
