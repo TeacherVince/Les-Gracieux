@@ -26,6 +26,8 @@
                          concernée.
           - "materiel" : quelque chose à prendre ou à prévoir (gym,
                          piscine, matériel spécial...)
+          - "defi"     : défis proposés aux élèves (affichés sous
+                         "Défi des élèves")
           - "info"     : toute autre information importante (congé,
                          changement d'horaire...)
    text : le texte affiché (une phrase suffit). Si le texte est trop
@@ -67,32 +69,29 @@ window.CETTE_SEMAINE_DATA = {
       text: "Lundi : prendre ses affaires de gym"
     },
     {
-      type: "divers",
-      text: "Nouvelle vidéo ajoutée : Top Secret Drum Corps",
-      link: "arts-mediatheque.html#video-art-29"
+      type: "defi",
+      text: "Défi des 30 prépositions !",
+      link: "francais.html#defi-30-prepositions"
     },
     {
       type: "divers",
-      text: "L'app du site est maintenant disponible sur smartphone."
+      text: "Nouvelle vidéo ajoutée : Top Secret Drum Corps",
+      link: "arts-mediatheque.html#video-art-29"
     }
   ],
 
   devoirs: {
     mardi: [
-      "Piscine ! (bonnet et linge)"
+      "Fiche révision français (fourre rouge)",
+      "Fiche maths 8 - recto"
     ],
-    mercredi: [
-      "Allemand : exercices 3a, b, c - p.15"
-    ],
+    mercredi: [],
     jeudi: [
-      "Fiche français n°7",
-      { text: "TS Paléolithique", test: true }
+      "Fiche français n°8"
     ],
     vendredi: [
-      { text: "ETA : verbes 11 à 14 + être et avoir (3 temps)", test: true },
-      "Fiche maths 7 - recto-verso"
-    ],
-    note: "Jeudi : TS Paléolithique",
-    parentNote: "Vendredi : ETA - verbes 11 à 14 + être et avoir (3 temps)"
+      { text: "Concours : verbes 11 à 15 aux 3 temps", test: true },
+      "Fiche maths 8 - verso"
+    ]
   }
 };

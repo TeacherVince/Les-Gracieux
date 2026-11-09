@@ -52,7 +52,8 @@
 
   function docRow(d) {
     var row = document.createElement("div");
-    row.className = "doc-compact-row";
+    row.className = "doc-compact-row" + (d.id && ("#" + d.id) === window.location.hash ? " is-targeted" : "");
+    if (d.id) row.id = d.id;
     row.innerHTML =
       '<a class="doc-icon-btn" href="' + docHref(d.file) + '" target="_blank" rel="noopener" aria-label="Afficher ' + escapeHtml(d.title) + '" title="Afficher">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON_EYE + '</svg>' +
@@ -81,6 +82,13 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    // Lien direct vers un document (ex. depuis l'accueil) : on défile jusqu'à lui.
+    if (window.location.hash) {
+      setTimeout(function () {
+        var target = document.getElementById(window.location.hash.replace("#", ""));
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 300);
+    }
     var all = window.DOCUMENTS_DATA || [];
     var list = document.getElementById("doc-list");
     var filterBar = document.getElementById("doc-filters");

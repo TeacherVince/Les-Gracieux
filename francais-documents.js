@@ -47,5 +47,13 @@ window.DOCUMENTS_DATA = [
     title: "Liste des verbes 5P-6P",
     description: "La liste des verbes à connaître en 5P et 6P.",
     file: "liste-verbes-5p-6p.pdf"
+  },
+  {
+    id: "defi-30-prepositions",
+    category: "Fiches",
+    title: "Le défi des 30 prépositions",
+    description: "La fiche du défi : les 30 prépositions avec une phrase d'exemple chacune.",
+    file: "defi-30-prepositions.pdf",
+    dateAdded: "2026-11-09"
   }
 ];

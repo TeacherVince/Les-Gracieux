@@ -718,6 +718,11 @@ footer.site-footer .wrap {
   transition: border-color 0.18s ease, background 0.18s ease;
 }
 
+.doc-compact-row.is-targeted {
+  outline: 1px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+}
+
 .doc-row:hover {
   border-color: var(--border-strong);
   background: rgba(19, 26, 44, 0.85);

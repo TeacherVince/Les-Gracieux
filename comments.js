@@ -47,20 +47,34 @@ window.COMMENTS_DATA = [
     videoId: "video-sciences-2",
     name: "Mattia",
     text: "Incroyable 🤯😱",
-    seed: 18
+    seed: 20
   },
   {
     id: "comment-jora-video-art-16",
     videoId: "video-art-16",
     name: "Jora",
     text: "J'aime la video 👍👍😆😝",
-    seed: 16
+    seed: 17
   },
   {
     id: "comment-alex-video-art-13",
     videoId: "video-art-13",
     name: "alex",
     text: "Incroyable!!!",
-    seed: 20
+    seed: 23
+  },
+  {
+    id: "comment-micaela-video-art-29",
+    videoId: "video-art-29",
+    name: "Micaela",
+    text: "Trop cool😉",
+    seed: 5
+  },
+  {
+    id: "comment-micaela-video-art-10",
+    videoId: "video-art-10",
+    name: "Micaela",
+    text: "Impressionnant 😲",
+    seed: 3
   }
 ];

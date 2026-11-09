@@ -48,6 +48,7 @@
   var TYPES = {
     sortie:   { label: "Sorties & événements", icon: "bus", color: "icon-green" },
     divers:   { label: "Divers", icon: "sparkle", color: "icon-blue" },
+    defi:     { label: "Défi des élèves", icon: "trophy", color: "icon-violet" },
     materiel: { label: "À prévoir", icon: "bag", color: "icon-gold" },
     info:     { label: "Infos", icon: "info", color: "icon-neutral" }
   };
@@ -56,6 +57,7 @@
     bus: '<rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 12h18"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/>',
     bag: '<path d="M6 8V6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2"/><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 13h18"/>',
     info: '<circle cx="12" cy="12" r="9"/><path d="M12 8h.01"/><path d="M11 12h1v5h1"/>',
+    trophy: '<path d="M8 4h8v5a4 4 0 0 1-8 0V4z"/><path d="M8 6H5a3 3 0 0 0 3 4"/><path d="M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4"/><path d="M8 20h8"/>',
     sparkle: '<path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/><path d="M5.6 5.6l2.8 2.8"/><path d="M15.6 15.6l2.8 2.8"/><path d="M18.4 5.6l-2.8 2.8"/><path d="M8.4 15.6l-2.8 2.8"/>'
   };
 
