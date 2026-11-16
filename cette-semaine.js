@@ -75,23 +75,24 @@ window.CETTE_SEMAINE_DATA = {
     },
     {
       type: "divers",
-      text: "Nouvelle vidéo ajoutée : Top Secret Drum Corps",
-      link: "arts-mediatheque.html#video-art-29"
+      text: "Nouvelle vidéo ajoutée : fusée spatiale (Sciences)",
+      link: "sciences-histoire-mediatheque.html#video-sciences-41"
     }
   ],
 
   devoirs: {
     mardi: [
+      "Piscine !",
       "Fiche révision français (fourre rouge)",
-      "Fiche maths 8 - recto"
+      "Fiche maths 9 - recto"
     ],
     mercredi: [],
     jeudi: [
-      "Fiche français n°8"
+      "Fiche français n°9"
     ],
     vendredi: [
-      { text: "Concours : verbes 11 à 15 aux 3 temps", test: true },
-      "Fiche maths 8 - verso"
+      { text: "Concours : les 30 prépositions !", test: true },
+      "Fiche maths 9 - verso"
     ]
   }
 };
