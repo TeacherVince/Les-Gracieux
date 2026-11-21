@@ -41,6 +41,7 @@ window.SCIENCES_HISTOIRE_MEDIATHEQUE_DATA = [
      (peu importe leur thème), pour qu'elles apparaissent en tête de la
      médiathèque dans la vue "Tout". Elles sont bien sûr aussi comptées
      dans leur thème pour les filtres. */
+  { id: "video-sciences-42", theme: "histoire", title: "La musique à la Préhistoire !", youtubeId: "bqgFK3kowgM" },
   { id: "video-sciences-41", theme: "univers", title: "Atterrissage et décollage d'une fusée spatiale !", youtubeId: "mfQjG4t4M08" },
   { id: "video-sciences-40", theme: "eau", title: "La peau de l'eau : expérience", youtubeId: "LB7u840H3JQ" },
 

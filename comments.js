@@ -54,7 +54,7 @@ window.COMMENTS_DATA = [
     videoId: "video-art-16",
     name: "Jora",
     text: "J'aime la video 👍👍😆😝",
-    seed: 17
+    seed: 19
   },
   {
     id: "comment-alex-video-art-13",
@@ -68,13 +68,20 @@ window.COMMENTS_DATA = [
     videoId: "video-art-29",
     name: "Micaela",
     text: "Trop cool😉",
-    seed: 5
+    seed: 8
   },
   {
     id: "comment-micaela-video-art-10",
     videoId: "video-art-10",
     name: "Micaela",
     text: "Impressionnant 😲",
-    seed: 3
+    seed: 4
+  },
+  {
+    id: "comment-gabriel-video-sciences-39",
+    videoId: "video-sciences-39",
+    name: "Gabriel",
+    text: "Trop stylé",
+    seed: 2
   }
 ];

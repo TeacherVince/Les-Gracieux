@@ -75,24 +75,25 @@ window.CETTE_SEMAINE_DATA = {
     },
     {
       type: "divers",
-      text: "Nouvelle vidéo ajoutée : fusée spatiale (Sciences)",
-      link: "sciences-histoire-mediatheque.html#video-sciences-41"
+      text: "Nouvelle vidéo ajoutée : La musique à la Préhistoire !",
+      link: "sciences-histoire-mediatheque.html#video-sciences-42"
     }
   ],
 
   devoirs: {
     mardi: [
-      "Piscine !",
       "Fiche révision français (fourre rouge)",
-      "Fiche maths 9 - recto"
+      "Réviser les livrets (concours)"
     ],
-    mercredi: [],
+    mercredi: [
+      "Allemand : voc p.16 par cœur"
+    ],
     jeudi: [
       "Fiche français n°9"
     ],
     vendredi: [
-      { text: "Concours : les 30 prépositions !", test: true },
-      "Fiche maths 9 - verso"
+      "Fiche maths n°9 recto/verso",
+      { text: "Concours : les livrets 1, 2, 3, 5, 9, 10", test: true }
     ]
   }
 };
